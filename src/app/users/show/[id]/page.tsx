@@ -7,7 +7,7 @@ import CustomerInfoList from "@app/components/CustomerInfoList";
 import { Show } from "@refinedev/antd";
 
 export default function UserShow() {
-  const breakpoint = Grid.useBreakpoint();
+  //   const breakpoint = Grid.useBreakpoint();
   const { query: queryResult } = useShow();
 
   const { data } = queryResult;
@@ -22,7 +22,7 @@ export default function UserShow() {
         }}
       >
         <CustomerInfoSummary customer={user} />
-        <CustomerInfoList customer={user} />
+        {/* <CustomerInfoList customer={user} /> */}
         {/* <CustomerOrderHistory customer={user} />  */}
       </Flex>
     </Show>
