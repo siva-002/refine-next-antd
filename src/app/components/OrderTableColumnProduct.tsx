@@ -18,7 +18,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
     list: order?.products || [],
     field: "id",
   });
-  console.log(uniqueProducts)
+  console.log(uniqueProducts);
   const visibleProducts = uniqueProducts.slice(0, visibleProductCount);
   const unvisibleProducts = uniqueProducts.slice(visibleProductCount);
 
@@ -32,8 +32,9 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
             content={<Typography.Text>{product.name}</Typography.Text>}
           >
             <Badge
+            color="blue"
               style={{
-                color: "blue",
+                color: "#fff",
               }}
               count={product.count}
             >
