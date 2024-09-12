@@ -21,7 +21,7 @@ import {
 import { Avatar, Button, Space, Table } from "antd";
 import { Children, PropsWithChildren } from "react";
 
-export default function UsersList({ children }: PropsWithChildren) {
+export default function UsersList() {
   const { tableProps } = useTable({
     syncWithLocation: true,
   });
@@ -77,7 +77,6 @@ export default function UsersList({ children }: PropsWithChildren) {
           )}
         />
       </Table>
-      {children}
     </List>
   );
 }
