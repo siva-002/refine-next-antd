@@ -1,3 +1,4 @@
+"use client"
 import { CheckCircleOutlined, PauseCircleOutlined } from '@ant-design/icons'
 import { Tag } from 'antd'
 import React from 'react'
