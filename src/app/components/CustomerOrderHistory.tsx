@@ -32,7 +32,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
     queryOptions: {
       enabled: customer !== undefined,
     },
-    syncWithLocation: true,
+    syncWithLocation: false,
   });
 
   return (
