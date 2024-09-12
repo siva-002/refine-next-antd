@@ -10,10 +10,10 @@ export default function UserShow() {
   //   const breakpoint = Grid.useBreakpoint();
   const { query: queryResult } = useShow();
 
-  const { data } = queryResult;
+  const { data, isLoading } = queryResult;
   const user = data?.data;
   return (
-    <Show>
+    <Show isLoading={isLoading}>
       <Flex
         vertical
         gap={32}
