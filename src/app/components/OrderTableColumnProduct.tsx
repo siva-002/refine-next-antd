@@ -11,6 +11,7 @@ type Props = {
 };
 
 export const OrderTableColumnProducts = ({ order }: Props) => {
+  console.log(order);
   const t = useTranslate();
   const { token } = theme.useToken();
 
@@ -18,7 +19,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
     list: order?.products || [],
     field: "id",
   });
-  console.log(uniqueProducts);
+  // console.log(uniqueProducts);
   const visibleProducts = uniqueProducts.slice(0, visibleProductCount);
   const unvisibleProducts = uniqueProducts.slice(visibleProductCount);
 
@@ -32,11 +33,11 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
             content={<Typography.Text>{product.name}</Typography.Text>}
           >
             <Badge
-            color="blue"
+              color="blue"
               style={{
                 color: "#fff",
               }}
-              count={product.count}
+              count={product.count === 1 ? 0 : product.count}
             >
               <Avatar
                 shape="square"
