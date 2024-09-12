@@ -8,10 +8,12 @@ export default function Order() {
     syncWithLocation: false,
   });
 
-  console.log(tableQuery);
+  const data = tableQuery.data;
+
+  // console.log(tableQuery);
   return (
     <List>
-      <Table {...tableQuery}>
+      <Table {...data}>
         <Table.Column dataIndex={["status", "text"]} title="Status" />
         <Table.Column dataIndex={["store", "title"]} title="Store" />
       </Table>
