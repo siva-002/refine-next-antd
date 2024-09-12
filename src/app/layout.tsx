@@ -47,7 +47,8 @@ export default function RootLayout({
                     {
                       name: "users",
                       list: "/users",
-                      // show: "/users/show/:id",
+                      show: "/users/show/:id",
+                      
                     },
                     {
                       name: "orders",

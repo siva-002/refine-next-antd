@@ -71,7 +71,7 @@ export default function UsersList() {
               icon={<EyeOutlined />}
               onClick={() => {
                 return go({
-                  to: `${showUrl("Users", record.id)}`,
+                  to: `${showUrl("users", record.id)}`,
                 });
               }}
             />
