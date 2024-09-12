@@ -1,49 +1,50 @@
 "use client";
-import { HttpError, useTable } from "@refinedev/core";
-import { List } from "@refinedev/antd";
-import React from "react";
-import type { IUser, IOrder, IOrderFilterVariables } from "../interfaces";
-import { Table } from "antd";
-export default function Order() {
-  const { tableQuery } = useTable<IOrder, HttpError, IOrderFilterVariables>({
-    filters: {
-      initial: [
-        {
-          field: "user.fullName",
-          operator: "contains",
-          value: "",
-        },
-        {
-          field: "store.title",
-          operator: "contains",
-          value: "",
-        },
-      ],
-    },
-    syncWithLocation: false,
-  });
-  // get {data,isLoading}=tableQuery
-  const { data, isLoading } = tableQuery;
 
-  console.log(data?.data);
+import { EyeOutlined } from "@ant-design/icons";
+import Status from "@app/components/status";
+// import UserStatus from "@components/userstatus/page";
+import {
+  DateField,
+  DeleteButton,
+  EditButton,
+  List,
+  ListButton,
+  MarkdownField,
+  ShowButton,
+  useTable,
+} from "@refinedev/antd";
+import {
+  type BaseRecord,
+  useMany,
+  useGo,
+  useNavigation,
+} from "@refinedev/core";
+import { Avatar, Button, Space, Table } from "antd";
+import { Children, PropsWithChildren } from "react";
+
+export default function UsersList() {
+  const { tableProps } = useTable({
+    syncWithLocation: true,
+  });
+
+  const go = useGo();
+
+  const { showUrl } = useNavigation();
+
   return (
     <List>
-      <Table dataSource={data?.data ?? []}>
+      <Table {...tableProps} rowKey="id">
         <Table.Column
-          key={"events.ordernumber"}
-          dataIndex={["events", "ordernumber"]}
-          title="Order Id"
+          dataIndex={["events", "orderNumber"]}
+          title={"Order Id"}
         />
+
         <Table.Column
-          key={"status.text"}
+          key="status.text"
+          title={"Status"}
           dataIndex={["status", "text"]}
-          title="Status"
         />
-        <Table.Column
-          key={"store.title"}
-          dataIndex={["store", "title"]}
-          title="Store"
-        />
+        <Table.Column key="" title={"Store"} dataIndex={["store", "title"]} />
       </Table>
     </List>
   );
