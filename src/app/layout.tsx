@@ -44,6 +44,18 @@ export default function RootLayout({
                     dataProvider={dataProvider}
                     notificationProvider={useNotificationProvider}
                     authProvider={authProvider}
+                    resources={[
+                        {
+                        name: "users",
+                        list: "/users",
+                        create: "/users/create",
+                        edit: "/users/edit/:id",
+                        show: "/users/show/:id",
+                        meta: {
+                          canDelete: true,
+                        },
+                      }
+                    ]}
                     options={{
                       syncWithLocation: true,
                       warnWhenUnsavedChanges: true,
