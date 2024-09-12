@@ -6,6 +6,20 @@ import type { IUser, IOrder, IOrderFilterVariables } from "../interfaces";
 import { Table } from "antd";
 export default function Order() {
   const { tableQuery } = useTable<IOrder, HttpError, IOrderFilterVariables>({
+    filters: {
+      initial: [
+        {
+          field: "user.fullName",
+          operator: "contains",
+          value: "",
+        },
+        {
+          field: "store.title",
+          operator: "contains",
+          value: "",
+        },
+      ],
+    },
     syncWithLocation: false,
   });
   // get {data,isLoading}=tableQuery
@@ -15,6 +29,11 @@ export default function Order() {
   return (
     <List>
       <Table dataSource={data?.data ?? []}>
+        <Table.Column
+          key={"events.ordernumber"}
+          dataIndex={["events", "ordernumber"]}
+          title="Order Id"
+        />
         <Table.Column
           key={"status.text"}
           dataIndex={["status", "text"]}
