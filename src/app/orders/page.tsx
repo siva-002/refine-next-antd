@@ -1,8 +1,19 @@
-import React from 'react'
+import { useTable } from "@refinedev/core";
+import { List, Table } from "antd";
+import React from "react";
 
-export default function Order(){
+export default function Order() {
+  const { tableProps } = useTable({
+    syncWithLocation: false,
+  });
+
+  console.log(tableProps);
   return (
-    <div>orders page</div>
-  )
+    <List>
+      <Table {...tableProps}>
+        <Table.Column dataIndex={["status", "text"]} title="Status" />
+        <Table.Column dataIndex={["store", "title"]} title="Store" />
+      </Table>
+    </List>
+  );
 }
-
