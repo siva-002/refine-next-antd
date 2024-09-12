@@ -1,9 +1,11 @@
-import { Header} from "@components/header";
+// "use client";
+
+import { Header } from "@components/header";
+// import { CustomHeader } from "@components/sider-title";
 import { authProviderServer } from "@providers/auth-provider";
 import { ThemedLayoutV2 } from "@refinedev/antd";
 import { redirect } from "next/navigation";
 import React from "react";
-
 
 export default async function Layout({ children }: React.PropsWithChildren) {
   const data = await getData();
@@ -12,7 +14,15 @@ export default async function Layout({ children }: React.PropsWithChildren) {
     return redirect(data?.redirectTo || "/login");
   }
 
-  return <ThemedLayoutV2 Header={Header} >{children}</ThemedLayoutV2>;
+  return (
+    <ThemedLayoutV2
+      Header={Header}
+    //   Title={CustomHeader}
+      // initialSiderCollapsed={false}
+    >
+      {children}
+    </ThemedLayoutV2>
+  );
 }
 
 async function getData() {

@@ -1,73 +1,83 @@
 "use client";
+
+import { EyeOutlined } from "@ant-design/icons";
+// import UserStatus from "@components/userstatus/page";
 import {
   DateField,
   DeleteButton,
   EditButton,
   List,
+  ListButton,
   MarkdownField,
   ShowButton,
   useTable,
 } from "@refinedev/antd";
-import { type BaseRecord, useMany } from "@refinedev/core";
-import { Avatar, Space, Table, Typography } from "antd";
+import {
+  type BaseRecord,
+  useMany,
+  useGo,
+  useNavigation,
+} from "@refinedev/core";
+import { Avatar, Button, Space, Table } from "antd";
+import { Children, PropsWithChildren } from "react";
 
-export default function UsersList() {
+export default function UsersList({ children }: PropsWithChildren) {
   const { tableProps } = useTable({
     syncWithLocation: true,
   });
 
-//   const { data: categoryData, isLoading: categoryIsLoading } = useMany({
-//     resource: "categories",
-//     ids:
-//       tableProps?.dataSource
-//         ?.map((item) => item?.category?.id)
-//         .filter(Boolean) ?? [],
-//     queryOptions: {
-//       enabled: !!tableProps?.dataSource,
-//     },
-//   });
+  const go = useGo();
+
+  const { showUrl } = useNavigation();
 
   return (
     <List>
       <Table {...tableProps} rowKey="id">
+        <Table.Column dataIndex={"id"} title={"ID"} />
         <Table.Column
-          key="id"
-          dataIndex="id"
-          title="ID #"
-          render={(value) => (
-            <Typography.Text
-              style={{
-                whiteSpace: "nowrap",
-              }}
-            >
-              #{value}
-            </Typography.Text>
-          )}/> 
-      
-       <Table.Column
           align="center"
           key="avatar"
-          dataIndex={["avatar"]}
-          title="Avatar"
-          render={(value) => <Avatar src={value[0].url} />}
-        />
-        <Table.Column
-          title={"Actions"}
-          dataIndex="actions"
-          render={(_, record: BaseRecord) => (
-            <Space>
-              <EditButton hideText size="small" recordItemId={record.id} />
-              <ShowButton hideText size="small" recordItemId={record.id} />
-              <DeleteButton hideText size="small" recordItemId={record.id} />
-            </Space>
+          dataIndex={"avatar"}
+          title={"Avatar"}
+          render={(value) => (
+            <Avatar
+              src={
+                "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+              }
+              alt="sadf"
+            />
           )}
         />
-         <Table.Column
-          key="fullName"
-          dataIndex="fullName"
-          title="Name"
+        <Table.Column title={"Name"} dataIndex={"fullName"} />
+        <Table.Column title={"Ph.no"} dataIndex={"gsm"} />
+        <Table.Column
+          key="createdAt"
+          dataIndex="createdAt"
+          title={"Created at"}
+          render={(value) => <DateField value={value} format="LLL" />}
+          sorter
+        />
+        <Table.Column
+          dataIndex={"isActive"}
+          title={"Status"}
+
+        />
+        <Table.Column
+          fixed="right"
+          title={"Actions"}
+          render={(_, record) => (
+            <Button
+              icon={<EyeOutlined />}
+              onClick={() => {
+                return go({
+                  to: `${showUrl("Users", record.id)}`,
+                });
+              }}
+            />
+          )}
         />
       </Table>
+      {children}
     </List>
   );
 }
