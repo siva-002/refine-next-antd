@@ -18,6 +18,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
     list: order?.products || [],
     field: "id",
   });
+  console.log(uniqueProducts)
   const visibleProducts = uniqueProducts.slice(0, visibleProductCount);
   const unvisibleProducts = uniqueProducts.slice(visibleProductCount);
 
@@ -32,7 +33,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
           >
             <Badge
               style={{
-                color: "#fff",
+                color: "red",
               }}
               count={product.count === 1 ? 0 : product.count}
             >
@@ -47,7 +48,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
       })}
       {!!unvisibleProducts.length && (
         <Popover
-          title={t("orders.fields.products")}
+          title={"products"}
           content={
             <Flex gap={8}>
               {unvisibleProducts.map((product) => {
