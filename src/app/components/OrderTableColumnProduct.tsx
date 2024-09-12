@@ -35,7 +35,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
               style={{
                 color: "red",
               }}
-              count={product.count === 1 ? 0 : product.count}
+              count={product.count === 1 ? 7 : product.count}
             >
               <Avatar
                 shape="square"
