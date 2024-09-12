@@ -1,6 +1,7 @@
 "use client";
 
 import { EyeOutlined } from "@ant-design/icons";
+import OrderStatus from "@app/components/OrderStatus";
 import Status from "@app/components/status";
 // import UserStatus from "@components/userstatus/page";
 import {
@@ -43,9 +44,12 @@ export default function UsersList() {
         />
 
         <Table.Column
-          key="status.text"
+          key="status.id"
           title={"Status"}
-          dataIndex={["status", "text"]}
+          dataIndex={["status", "id"]}
+          render={(status) => {
+            return <OrderStatus id={status.id} text={status.text} />;
+          }}
         />
         <Table.Column
           key="store.title"
