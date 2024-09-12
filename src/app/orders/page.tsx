@@ -3,6 +3,7 @@
 import { EyeOutlined } from "@ant-design/icons";
 import CalculatePrice from "@app/components/CalculatePrice";
 import OrderStatus from "@app/components/OrderStatus";
+import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
 import Status from "@app/components/status";
 // import UserStatus from "@components/userstatus/page";
 import {
@@ -53,6 +54,14 @@ export default function UsersList() {
           dataIndex={"status"}
           render={(status) => {
             return <OrderStatus id={status.id} text={status.text} />;
+          }}
+        />
+        <Table.Column
+          key="products"
+          title={"Products"}
+          dataIndex={"products"}
+          render={(products) => {
+            return <OrderTableColumnProducts order={products} />;
           }}
         />
         <Table.Column
