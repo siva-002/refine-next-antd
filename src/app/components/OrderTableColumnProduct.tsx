@@ -16,7 +16,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
   const { token } = theme.useToken();
 
   const uniqueProducts = getUniqueListWithCount({
-    list: order?.products || [],
+    list: order || [],
     field: "id",
   });
   // console.log(uniqueProducts);

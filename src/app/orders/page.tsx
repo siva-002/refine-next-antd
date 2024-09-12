@@ -30,15 +30,15 @@ export default function UsersList() {
     syncWithLocation: true, //TableProps<BaseRecord>
   });
 
-  const go = useGo();
+  // const go = useGo();
 
   console.log(tableProps);
 
-  const { showUrl } = useNavigation();
+  // const { showUrl } = useNavigation();
 
   return (
     <List>
-      <Table {...tableProps} rowKey="id">
+      <Table {...tableProps} rowKey="id" >
         <Table.Column
           key="orderNumber"
           dataIndex={"orderNumber"}
@@ -60,7 +60,7 @@ export default function UsersList() {
           key="products"
           dataIndex="products"
           title={"products"}
-          render={(_, record) => {
+          render={(record) => {
             return <OrderTableColumnProducts order={record} />;
           }}
         />

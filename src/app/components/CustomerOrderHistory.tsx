@@ -78,8 +78,8 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
         key="products"
         dataIndex="products"
         title={"products"}
-        render={(_, record) => {
-          return <OrderTableColumnProducts order={record} />;
+        render={(products) => {
+          return <OrderTableColumnProducts order={products} />;
         }}
       />
       <Table.Column
