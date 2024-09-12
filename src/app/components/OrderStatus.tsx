@@ -10,17 +10,21 @@ import { Tag } from "antd";
 const OrderStatus = ({ id, text }: IOrderStatus) => {
   switch (id) {
     case 1:
-    return (
-      <Tag icon={<CheckCircleOutlined />} color="success">
-        Delivered
-      </Tag>
-    );
+      return (
+        <Tag icon={<ClockCircleOutlined />} color="success">
+          Pending
+        </Tag>
+      );
     case 2:
-      return <h1></h1>;
+      return (
+        <Tag icon={<ClockCircleOutlined />} color="success">
+          Ready
+        </Tag>
+      );
     case 3:
       return (
         <Tag icon={<CheckCircleOutlined />} color="success">
-          Delivered
+          On the way
         </Tag>
       );
     case 4:
