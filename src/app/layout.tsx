@@ -6,7 +6,6 @@ import routerProvider from "@refinedev/nextjs-router";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React, { Suspense } from "react";
-
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ColorModeContextProvider } from "@contexts/color-mode";
 import { authProvider } from "@providers/auth-provider";
@@ -44,11 +43,15 @@ export default function RootLayout({
                     dataProvider={dataProvider}
                     notificationProvider={useNotificationProvider}
                     authProvider={authProvider}
-                    resources={[
-              
+                    resources={[   
                     {
-                      name: "Users",
+                      name: "users",
                       list: "/users",
+                      // show: "/users/show/:id",
+                    },
+                    {
+                      name: "orders",
+                      list: "/orders",
                       // show: "/users/show/:id",
                     },
                   ]}
