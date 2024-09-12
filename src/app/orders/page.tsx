@@ -65,6 +65,14 @@ export default function UsersList() {
           }}
         />
         <Table.Column
+          key="products"
+          dataIndex="products"
+          title={"products"}
+          render={(_, record) => {
+            return <OrderTableColumnProducts order={record} />;
+          }}
+        />
+        <Table.Column
           key="store.title"
           title={"Store"}
           dataIndex={["store", "title"]}
