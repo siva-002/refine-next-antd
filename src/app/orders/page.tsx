@@ -44,9 +44,9 @@ export default function UsersList() {
         />
 
         <Table.Column
-          key="status.id"
+          key="status"
           title={"Status"}
-          dataIndex={["status", "id"]}
+          dataIndex={"status"}
           render={(status) => {
             return <OrderStatus id={status.id} text={status.text} />;
           }}
