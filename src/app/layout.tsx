@@ -34,11 +34,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Suspense>
-          <GitHubBanner />
+          {/* <GitHubBanner /> */}
           <RefineKbarProvider>
             <AntdRegistry>
               <ColorModeContextProvider defaultMode={defaultMode}>
-                <DevtoolsProvider>
+                {/* <DevtoolsProvider> */}
                   <Refine
                     routerProvider={routerProvider}
                     dataProvider={dataProvider}
@@ -54,7 +54,7 @@ export default function RootLayout({
                     {children}
                     <RefineKbar />
                   </Refine>
-                </DevtoolsProvider>
+                {/* </DevtoolsProvider> */}
               </ColorModeContextProvider>
             </AntdRegistry>
           </RefineKbarProvider>
