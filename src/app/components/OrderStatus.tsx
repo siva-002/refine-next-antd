@@ -14,31 +14,31 @@ const OrderStatus = ({ id, text }: IOrderStatus) => {
     case 1:
       return (
         <Tag icon={<ExclamationCircleOutlined />} color="default">
-          Pending
+          {text || "pending"}
         </Tag>
       );
     case 2:
       return (
         <Tag icon={<ClockCircleOutlined />} color="warning">
-          Ready
+          {text || "ready"}
         </Tag>
       );
     case 3:
       return (
         <Tag icon={<SyncOutlined spin />} color="processing">
-          On the way
+          {text || "On the way"}
         </Tag>
       );
     case 4:
       return (
         <Tag icon={<CheckCircleOutlined />} color="success">
-          Delivered
+          {text || "Delivered"}
         </Tag>
       );
     default:
       return (
         <Tag icon={<CloseCircleOutlined />} color="error">
-          Cancelled
+          {text || "Cancelled"}
         </Tag>
       );
   }

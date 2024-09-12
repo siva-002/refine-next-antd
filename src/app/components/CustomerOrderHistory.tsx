@@ -3,6 +3,7 @@ import { NumberField, useTable } from "@refinedev/antd";
 import { type HttpError, useNavigation, useTranslate } from "@refinedev/core";
 import { Table, Typography } from "antd";
 import { OrderTableColumnProducts } from "./OrderTableColumnProduct";
+import OrderStatus from "./OrderStatus";
 // import { OrderStatus, OrderTableColumnProducts } from "../../order";
 
 type Props = {
@@ -66,11 +67,11 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
         )}
       />
       <Table.Column
-        key="status.text"
+        key="status"
         dataIndex="status"
         title={"status"}
         render={(status) => {
-          return status.text;
+          return <OrderStatus id={status.id} text={status.text} />;
         }}
       />
       <Table.Column
