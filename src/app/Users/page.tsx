@@ -11,21 +11,21 @@ import {
 import { type BaseRecord, useMany } from "@refinedev/core";
 import { Avatar, Space, Table, Typography } from "antd";
 
-export default function BlogPostList() {
+export default function UsersList() {
   const { tableProps } = useTable({
     syncWithLocation: true,
   });
 
-  const { data: categoryData, isLoading: categoryIsLoading } = useMany({
-    resource: "categories",
-    ids:
-      tableProps?.dataSource
-        ?.map((item) => item?.category?.id)
-        .filter(Boolean) ?? [],
-    queryOptions: {
-      enabled: !!tableProps?.dataSource,
-    },
-  });
+//   const { data: categoryData, isLoading: categoryIsLoading } = useMany({
+//     resource: "categories",
+//     ids:
+//       tableProps?.dataSource
+//         ?.map((item) => item?.category?.id)
+//         .filter(Boolean) ?? [],
+//     queryOptions: {
+//       enabled: !!tableProps?.dataSource,
+//     },
+//   });
 
   return (
     <List>
