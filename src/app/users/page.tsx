@@ -1,6 +1,7 @@
 "use client";
 
 import { EyeOutlined } from "@ant-design/icons";
+import Status from "@app/components/status";
 // import UserStatus from "@components/userstatus/page";
 import {
   DateField,
@@ -60,7 +61,7 @@ export default function UsersList() {
         <Table.Column
           dataIndex={"isActive"}
           title={"Status"}
-
+          render={(value)=><Status value={value}/>}
         />
         <Table.Column
           fixed="right"
