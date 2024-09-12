@@ -1,4 +1,4 @@
-import { Flex, Popover, Typography, Badge, Avatar, theme } from "antd";
+import { Flex, Popover, Typography, Badge, Avatar, theme, Spin } from "antd";
 // import { getUniqueListWithCount } from "../../../utils";
 // import type { IOrder } from "../../../interfaces";
 import { useTranslate } from "@refinedev/core";
@@ -23,7 +23,9 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
   const visibleProducts = uniqueProducts.slice(0, visibleProductCount);
   const unvisibleProducts = uniqueProducts.slice(visibleProductCount);
 
-  return (
+  return !visibleProducts ? (
+    <Spin />
+  ) : (
     <Flex gap={12}>
       {visibleProducts.map((product) => {
         const image = product.images?.[0];
