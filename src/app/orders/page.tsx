@@ -7,15 +7,23 @@ export default function Order() {
   const { tableQuery } = useTable<IOrder, HttpError, IOrderFilterVariables>({
     syncWithLocation: false,
   });
+  // get {data,isLoading}=tableQuery
+  const { data } = tableQuery;
 
-  const data = tableQuery.data;
-
-  // console.log(tableQuery);
+  console.log(data);
   return (
     <List>
       <Table {...data}>
-        <Table.Column dataIndex={["status", "text"]} title="Status" />
-        <Table.Column dataIndex={["store", "title"]} title="Store" />
+        <Table.Column
+          key={"status.text"}
+          dataIndex={["status", "text"]}
+          title="Status"
+        />
+        <Table.Column
+          key={"store.title"}
+          dataIndex={["store", "title"]}
+          title="Store"
+        />
       </Table>
     </List>
   );
