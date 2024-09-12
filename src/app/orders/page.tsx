@@ -13,7 +13,7 @@ export default function Order() {
   console.log(data);
   return (
     <List>
-      <Table {...data}>
+      <Table {...data?.data}>
         <Table.Column
           key={"status.text"}
           dataIndex={["status", "text"]}
