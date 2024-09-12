@@ -22,7 +22,7 @@ export default function UserShow() {
         }}
       >
         <CustomerInfoSummary customer={user} />
-        {/* <CustomerInfoList customer={user} /> */}
+        <CustomerInfoList customer={user} />
         {/* <CustomerOrderHistory customer={user} />  */}
       </Flex>
     </Show>
