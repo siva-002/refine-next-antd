@@ -24,10 +24,12 @@ import { Children, PropsWithChildren } from "react";
 
 export default function UsersList() {
   const { tableProps } = useTable({
-    syncWithLocation: true,
+    syncWithLocation: true, //TableProps<BaseRecord>
   });
 
   const go = useGo();
+
+  console.log(tableProps);
 
   const { showUrl } = useNavigation();
 
@@ -35,7 +37,8 @@ export default function UsersList() {
     <List>
       <Table {...tableProps} rowKey="id">
         <Table.Column
-          dataIndex={["events", "orderNumber"]}
+          key="orderNumber"
+          dataIndex={"orderNumber"}
           title={"Order Id"}
         />
 
@@ -44,7 +47,11 @@ export default function UsersList() {
           title={"Status"}
           dataIndex={["status", "text"]}
         />
-        <Table.Column key="" title={"Store"} dataIndex={["store", "title"]} />
+        <Table.Column
+          key="store.title"
+          title={"Store"}
+          dataIndex={["store", "title"]}
+        />
       </Table>
     </List>
   );
