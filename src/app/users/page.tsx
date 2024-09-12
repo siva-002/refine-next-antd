@@ -61,20 +61,13 @@ export default function UsersList() {
         <Table.Column
           dataIndex={"isActive"}
           title={"Status"}
-          render={(value)=><Status value={value}/>}
+          render={(value) => <Status value={value} />}
         />
         <Table.Column
           fixed="right"
           title={"Actions"}
           render={(_, record) => (
-            <Button
-              icon={<EyeOutlined />}
-              onClick={() => {
-                return go({
-                  to: `${showUrl("users", record.id)}`,
-                });
-              }}
-            />
+            <ShowButton hideText size="small" recordItemId={record.id} />
           )}
         />
       </Table>

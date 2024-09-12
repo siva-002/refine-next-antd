@@ -1,3 +1,4 @@
+"use client"
 import { DateField } from '@refinedev/antd';
 import { Card, List, Space, Typography, theme } from 'antd';
 import React from 'react'

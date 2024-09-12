@@ -1,3 +1,4 @@
+"use client"
 import { Avatar, Flex, Typography } from 'antd'
 import React from 'react'
 
