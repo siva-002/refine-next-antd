@@ -33,9 +33,9 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
           >
             <Badge
               style={{
-                color: "red",
+                color: "blue",
               }}
-              count={product.count === 1 ? 7 : product.count}
+              count={product.count}
             >
               <Avatar
                 shape="square"
@@ -46,7 +46,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
           </Popover>
         );
       })}
-      {!!unvisibleProducts.length && (
+      {/* {!!unvisibleProducts.length && (
         <Popover
           title={"products"}
           content={
@@ -62,7 +62,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
                       style={{
                         color: "#fff",
                       }}
-                      count={product.count === 1 ? 0 : product.count}
+                      count={product.count}
                     >
                       <Avatar
                         shape="square"
@@ -91,7 +91,7 @@ export const OrderTableColumnProducts = ({ order }: Props) => {
             </Typography.Text>
           </Avatar>
         </Popover>
-      )}
+      )} */}
     </Flex>
   );
 };
