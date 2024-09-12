@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { HttpError, useTable } from "@refinedev/core";
 import { List, Table } from "antd";
 import React from "react";
