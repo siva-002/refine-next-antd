@@ -32,7 +32,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
     queryOptions: {
       enabled: customer !== undefined,
     },
-    syncWithLocation: false,
+    syncWithLocation: true,
   });
 
   return (
@@ -76,7 +76,7 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
       <Table.Column
         key="products"
         dataIndex="products"
-        title={t("orders.fields.products")}
+        title={"products"}
         render={(_, record) => {
           return <OrderTableColumnProducts order={record} />;
         }}
