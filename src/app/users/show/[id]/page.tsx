@@ -5,6 +5,7 @@ import { Flex, Grid } from "antd";
 import CustomerInfoSummary from "@app/components/CustomerInfoSummary";
 import CustomerInfoList from "@app/components/CustomerInfoList";
 import { Show } from "@refinedev/antd";
+import { CustomerOrderHistory } from "@app/components/CustomerOrderHistory";
 
 export default function UserShow() {
   //   const breakpoint = Grid.useBreakpoint();
@@ -23,7 +24,7 @@ export default function UserShow() {
       >
         <CustomerInfoSummary customer={user} />
         <CustomerInfoList customer={user} />
-        {/* <CustomerOrderHistory customer={user} />  */}
+        <CustomerOrderHistory customer={user} /> 
       </Flex>
     </Show>
   );
