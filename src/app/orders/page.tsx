@@ -65,9 +65,10 @@ export default function UsersList() {
       <Table
         {...tableProps}
         rowKey="id"
-        onRow={(_, record: any) => {
+        onRow={(record: any) => {
+          // console.log(record.id);
           return {
-            onClick: () => show("orders", parseInt(record?.id)),
+            onClick: () => show("orders", record?.id),
           };
         }}
       >

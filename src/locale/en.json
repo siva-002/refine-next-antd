@@ -12,7 +12,12 @@
     "fields": {
       "status": "status",
       "amount": "amount",
-      "store": "store"
+      "store": "Store",
+      "courier": "Courier",
+      "phone": "Phone",
+      "customer": "Customer",
+      "createdAt": "Created At",
+      "deliveryTime": "Delivery Time"
     }
   }
 }
