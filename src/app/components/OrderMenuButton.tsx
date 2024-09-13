@@ -7,13 +7,15 @@ import {
 import { Button, Dropdown, Menu } from "antd";
 import React from "react";
 import type { MenuProps, DropDownProps } from "antd";
-import type { IOrderStatus } from "@app/interfaces";
+import type { IOrder } from "@app/interfaces";
+import { useUpdate } from "@refinedev/core";
 
-type Istatus = {
-  status: IOrderStatus;
-};
-const OrderMenuButton = ({ status }: Istatus) => {
-  const { id, text } = status;
+const OrderMenuButton = ({ record }: { record: IOrder }) => {
+  const { mutate } = useUpdate({
+    resource: "orders",
+    id: record?.id,
+  });
+  const { id, text } = record?.status;
   const items: MenuProps["items"] = [
     {
       key: 1,
@@ -34,6 +36,16 @@ const OrderMenuButton = ({ status }: Istatus) => {
             ? "rgba(0,0,0,0.03)"
             : "none",
       },
+      onClick: () => {
+        mutate({
+          values: {
+            status: {
+              id: 2,
+              text: "Ready",
+            },
+          },
+        });
+      },
     },
     {
       key: 2,
@@ -48,6 +60,16 @@ const OrderMenuButton = ({ status }: Istatus) => {
             ? "rgba(0,0,0,0.03)"
             : "none",
         marginTop: "2px",
+      },
+      onClick: () => {
+        mutate({
+          values: {
+            status: {
+              id: 5,
+              text: "Cancelled",
+            },
+          },
+        });
       },
     },
   ];

@@ -93,8 +93,8 @@ export default function UsersList() {
           key="status"
           title="Actions"
           dataIndex={"status"}
-          render={(status) => {
-            return <OrderMenuButton status={status} />;
+          render={(record) => {
+            return <OrderMenuButton record={record} />;
           }}
         />
       </Table>
