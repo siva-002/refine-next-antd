@@ -57,7 +57,7 @@ export default function UsersList() {
       resource: "orderStatuses",
       optionLabel: "text",
       optionValue: "text",
-      defaultValue: getDefaultFilter("status.text", filters, "in"),
+      // defaultValue: getDefaultFilter("status.text", filters, "in"),
     });
 
   return (
@@ -77,6 +77,7 @@ export default function UsersList() {
           key="status"
           title={"Status"}
           dataIndex={"status"}
+          defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
               {/* <Select {...selectProps}></Select> */}
