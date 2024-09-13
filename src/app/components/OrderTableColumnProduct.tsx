@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const OrderTableColumnProducts = ({ order }: Props) => {
-  console.log(order);
+  // console.log(order);
   const t = useTranslate();
   const { token } = theme.useToken();
 
