@@ -12,7 +12,7 @@ import OrderMenuButton from "@app/components/OrderMenuButton";
 import OrderStatus from "@app/components/OrderStatus";
 import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
 import Status from "@app/components/status";
-import { IOrder } from "@app/interfaces";
+import { IOrder, IOrderStatus } from "@app/interfaces";
 // import UserStatus from "@components/userstatus/page";
 import {
   DateField,
@@ -31,8 +31,9 @@ import {
   useGo,
   useNavigation,
   getDefaultFilter,
+  useSelect,
 } from "@refinedev/core";
-import { Input, MenuProps, theme } from "antd";
+import { Input, MenuProps, Select, theme } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
 import { Children, PropsWithChildren, useState } from "react";
 
@@ -47,6 +48,13 @@ export default function UsersList() {
   // console.log(tableProps);
 
   // const { showUrl } = useNavigation();
+
+  const { options, defaultValueQuery, onSearch } = useSelect<IOrderStatus>({
+    resource: "orderStatuses",
+    optionLabel: "text",
+    optionValue: "text",
+    defaultValue: getDefaultFilter("status.text", filters, "in"),
+  });
 
   return (
     <List>
@@ -65,6 +73,15 @@ export default function UsersList() {
           key="status"
           title={"Status"}
           dataIndex={"status"}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Select
+                options={options}
+                onSearch={onSearch}
+                placeholder="Select status to search"
+              ></Select>
+            </FilterDropdown>
+          )}
           render={(status) => {
             return <OrderStatus id={status.id} text={status.text} />;
           }}
