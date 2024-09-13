@@ -28,6 +28,8 @@ import {
   useMany,
   useGo,
   useNavigation,
+  getDefaultFilter,
+  useSelect,
 } from "@refinedev/core";
 import type { MenuProps } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
@@ -44,6 +46,24 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
+  type IProps = {
+    selectProps: IOrderStatus;
+  };
+  const { selectProps }: any = useSelect({
+    resource: "orderStatuses",
+    optionLabel: "text",
+    optionValue: "text",
+    defaultValue: getDefaultFilter("status.text", filters, "in"),
+  });
+  console.log(selectProps);
+  // const { options, defaultValueQuery, onSearch, query } =
+  //   useSelect<IOrderStatus>({
+  //     resource: "orderStatuses",
+  //     optionLabel: "text",
+  //     optionValue: "text",
+  //     defaultValue: getDefaultFilter("status.text", filters, "in"),
+  //   });
+
   return (
     <List>
       <Table {...tableProps} rowKey="id">
@@ -55,11 +75,21 @@ export default function UsersList() {
             return `#${orderid}`;
           }}
         />
-
-        <Table.Column
-          key="status"
+        <Table.Column<IOrder>
+          key="status.text"
           title={"Status"}
           dataIndex={"status"}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Select {...selectProps} ></Select>
+              {/* <Select
+                options={options}
+                onSearch={onSearch}
+                placeholder="Select status to search"
+                value={query}
+              ></Select> */}
+            </FilterDropdown>
+          )}
           render={(status) => {
             return <OrderStatus id={status.id} text={status.text} />;
           }}
