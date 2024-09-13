@@ -40,7 +40,7 @@ export default function UsersList() {
 
   // const go = useGo();
 
-  console.log(tableProps);
+  // console.log(tableProps);
 
   // const { showUrl } = useNavigation();
 
@@ -51,6 +51,7 @@ export default function UsersList() {
           key="orderNumber"
           dataIndex={"orderNumber"}
           title={"Order Id"}
+          
           render={(orderid) => {
             return `#${orderid}`;
           }}
@@ -94,7 +95,7 @@ export default function UsersList() {
           key="status"
           title="Actions"
           dataIndex={"status"}
-          render={(_value, record) => {
+          render={(_, record) => {
             return <OrderMenuButton record={record} />;
           }}
         />
