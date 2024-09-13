@@ -4,6 +4,7 @@ import { type HttpError, useNavigation, useTranslate } from "@refinedev/core";
 import { Table, Typography } from "antd";
 import { OrderTableColumnProducts } from "./OrderTableColumnProduct";
 import OrderStatus from "./OrderStatus";
+import { IOrder } from "@app/interfaces";
 // import { OrderStatus, OrderTableColumnProducts } from "../../order";
 
 type Props = {
@@ -66,12 +67,12 @@ export const CustomerOrderHistory = ({ customer }: Props) => {
           </Typography.Text>
         )}
       />
-      <Table.Column
+      <Table.Column<IOrder>
         key="status"
         dataIndex="status"
         title={"status"}
-        render={(status) => {
-          return <OrderStatus id={status.id} text={status.text} />;
+        render={(_, record) => {
+          return <OrderStatus record={record} />;
         }}
       />
       <Table.Column

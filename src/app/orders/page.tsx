@@ -72,7 +72,7 @@ export default function UsersList() {
           }}
         />
 
-        <Table.Column
+        <Table.Column<IOrder>
           key="status.text"
           title={"Status"}
           dataIndex={["status", "text"]}
@@ -87,8 +87,8 @@ export default function UsersList() {
               ></Select>
             </FilterDropdown>
           )}
-          render={(status) => {
-            return <OrderStatus id={status.id} text={status.text} />;
+          render={(_, record) => {
+            return <OrderStatus record={record} />;
           }}
         />
         <Table.Column

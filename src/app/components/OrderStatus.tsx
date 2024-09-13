@@ -1,5 +1,5 @@
 import React from "react";
-import type { IOrderStatus } from "../interfaces";
+import type { IOrder, IOrderStatus } from "../interfaces";
 import {
   CheckCircleOutlined,
   ClockCircleOutlined,
@@ -9,7 +9,8 @@ import {
 } from "@ant-design/icons";
 import { Tag } from "antd";
 
-const OrderStatus = ({ id, text }: IOrderStatus) => {
+const OrderStatus = ({ record }: { record: IOrder }) => {
+  const { id, text } = record?.status;
   switch (id) {
     case 1:
       return (
