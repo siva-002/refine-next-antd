@@ -7,6 +7,7 @@ import {
   MoreOutlined,
 } from "@ant-design/icons";
 import CalculatePrice from "@app/components/CalculatePrice";
+import OrderMenuButton from "@app/components/OrderMenuButton";
 import OrderStatus from "@app/components/OrderStatus";
 import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
 import Status from "@app/components/status";
@@ -42,27 +43,7 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  type MenuItem = Required<MenuProps>["items"][number];
-  const menuitems: MenuItem[] = [
-    {
-      key: 1,
-      icon: <CheckCircleOutlined />,
-      label: "Accept",
-      disabled: true,
-      style: {
-        color: "green",
-      },
-    },
-    {
-      key: 2,
-      icon: <CloseCircleOutlined />,
-      label: "Reject",
-      disabled: true,
-      style: {
-        color: "red",
-      },
-    },
-  ];
+
   return (
     <List>
       <Table {...tableProps} rowKey="id">
@@ -112,17 +93,7 @@ export default function UsersList() {
         <Table.Column
           key="actions"
           render={() => {
-            const [collapses, setcollapse] = useState(false);
-
-            return (
-              <>
-                <Button
-                  onClick={(col) => setcollapse(!col)}
-                  icon={<MoreOutlined />}
-                />
-                <Menu items={menuitems} inlineCollapsed={collapses} />
-              </>
-            );
+            return <OrderMenuButton />;
           }}
         />
       </Table>
