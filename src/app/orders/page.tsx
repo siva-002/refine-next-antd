@@ -51,21 +51,13 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  const [selectedStatus, setSelectedStatus] = useState<string | undefined>(
-    getDefaultFilter("status.text", filters, "in")
-  );
-
-  const { options, defaultValueQuery, query } = useSelect<IOrderStatus>({
-    resource: "orderStatuses",
-    optionLabel: "text",
-    optionValue: "text",
-    defaultValue: selectedStatus,
-  });
-  const handleStatusChange = (value: string) => {
-    setSelectedStatus(value);
-    // You might need to update the filter or perform some action here
-    console.log("Selected status:", value);
-  };
+  const { options, defaultValueQuery, onSearch, query } =
+    useSelect<IOrderStatus>({
+      resource: "orderStatuses",
+      optionLabel: "text",
+      optionValue: "text",
+      defaultValue: getDefaultFilter("status.text", filters, "in"),
+    });
 
   return (
     <List>
@@ -89,9 +81,8 @@ export default function UsersList() {
               {/* <Select {...selectProps}></Select> */}
               <Select
                 options={options}
+                onChange={onSearch}
                 placeholder="Select status to search"
-                value={selectedStatus} // Use selected status from state
-                onChange={handleStatusChange}
               ></Select>
             </FilterDropdown>
           )}
