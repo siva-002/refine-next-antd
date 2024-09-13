@@ -11,6 +11,9 @@ import { ColorModeContextProvider } from "@contexts/color-mode";
 import { authProvider } from "@providers/auth-provider";
 import { dataProvider } from "@providers/data-provider";
 import "@refinedev/antd/dist/reset.css";
+import i18nProvider from "@components/i18n/i18nProvider";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const metadata: Metadata = {
   title: "Refine",
@@ -38,17 +41,17 @@ export default function RootLayout({
             <AntdRegistry>
               <ColorModeContextProvider defaultMode={defaultMode}>
                 {/* <DevtoolsProvider> */}
-                  <Refine
-                    routerProvider={routerProvider}
-                    dataProvider={dataProvider}
-                    notificationProvider={useNotificationProvider}
-                    authProvider={authProvider}
-                    resources={[   
+                <Refine
+                  routerProvider={routerProvider}
+                  dataProvider={dataProvider}
+                  notificationProvider={useNotificationProvider}
+                  authProvider={authProvider}
+                  i18nProvider={i18nProvider}
+                  resources={[
                     {
                       name: "users",
                       list: "/users",
                       show: "/users/show/:id",
-                      
                     },
                     {
                       name: "orders",
@@ -56,16 +59,16 @@ export default function RootLayout({
                       // show: "/users/show/:id",
                     },
                   ]}
-                    options={{
-                      syncWithLocation: true,
-                      warnWhenUnsavedChanges: true,
-                      useNewQueryKeys: true,
-                      projectId: "pMrfpJ-uo1R1T-OkWlNh",
-                    }}
-                  >
-                    {children}
-                    <RefineKbar />
-                  </Refine>
+                  options={{
+                    syncWithLocation: true,
+                    warnWhenUnsavedChanges: true,
+                    useNewQueryKeys: true,
+                    projectId: "pMrfpJ-uo1R1T-OkWlNh",
+                  }}
+                >
+                  {children}
+                  <RefineKbar />
+                </Refine>
                 {/* </DevtoolsProvider> */}
               </ColorModeContextProvider>
             </AntdRegistry>

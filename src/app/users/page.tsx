@@ -64,7 +64,7 @@ export default function UsersList() {
           render={(value) => <Status value={value} />}
         />
         <Table.Column
-          fixed="right"
+          // fixed="right"
           title={"Actions"}
           render={(_, record) => (
             <ShowButton hideText size="small" recordItemId={record.id} />

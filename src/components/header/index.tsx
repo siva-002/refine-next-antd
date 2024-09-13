@@ -23,7 +23,7 @@ type IUser = {
 };
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-  sticky = true,
+  // sticky = true,
 }) => {
   const { token } = useToken();
   const { data: user } = useGetIdentity<IUser>();
@@ -38,11 +38,11 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     height: "64px",
   };
 
-  if (sticky) {
-    headerStyles.position = "sticky";
-    headerStyles.top = 0;
-    headerStyles.zIndex = 1;
-  }
+  // if (sticky) {
+  //   // headerStyles.position = "sticky";
+  //   headerStyles.top = 0;
+  //   headerStyles.zIndex = 1;
+  // }
 
   return (
     <AntdLayout.Header style={headerStyles}>

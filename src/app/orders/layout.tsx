@@ -1,5 +1,5 @@
-
 import { Header } from "@components/header";
+import { CustomHeader } from "@components/sider-title";
 import { authProviderServer } from "@providers/auth-provider";
 import { ThemedLayoutV2 } from "@refinedev/antd";
 import { redirect } from "next/navigation";
@@ -13,9 +13,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
   }
 
   return (
-    <ThemedLayoutV2
-      Header={Header}
-    >
+    <ThemedLayoutV2 Header={Header} Title={CustomHeader}>
       {children}
     </ThemedLayoutV2>
   );

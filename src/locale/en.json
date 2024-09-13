@@ -1,0 +1,18 @@
+{
+  "pages": {
+    "login": {
+      "title": "Admin Login"
+    }
+  },
+  "sider": {
+    "title": "FineFood"
+  },
+  "orders": {
+    "order": "order id",
+    "fields": {
+      "status": "status",
+      "amount": "amount",
+      "store": "store"
+    }
+  }
+}
