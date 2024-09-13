@@ -77,7 +77,8 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
   return (
     <Dropdown menu={{ items }} arrow={false}>
       <Button
-        icon={<MoreOutlined onClick={(e) => e.stopPropagation()} />}
+        icon={<MoreOutlined />}
+        onClick={(e) => e.stopPropagation()}
       ></Button>
     </Dropdown>
   );
