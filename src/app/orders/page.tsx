@@ -52,13 +52,12 @@ export default function UsersList() {
   // const { showUrl } = useNavigation();
 
   console.log(filters);
-  const { options, defaultValueQuery, onSearch, query } =
-    useSelect<IOrderStatus>({
-      resource: "orderStatuses",
-      optionLabel: "text",
-      optionValue: "text",
-      // defaultValue: getDefaultFilter("status.text", filters, "in"),
-    });
+  const { options, onSearch } = useSelect<IOrderStatus>({
+    resource: "orderStatuses",
+    optionLabel: "text",
+    optionValue: "text",
+    defaultValue: getDefaultFilter("status.text", filters, "in"),
+  });
 
   return (
     <List>
@@ -77,7 +76,7 @@ export default function UsersList() {
           key="status.text"
           title={"Status"}
           dataIndex={["status", "text"]}
-          defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
+          // defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
               {/* <Select {...selectProps}></Select> */}
