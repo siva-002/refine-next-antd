@@ -50,7 +50,7 @@ export default function UsersList() {
 
   // console.log(tableProps);
 
-  const { show } = useNavigation();
+  const { showUrl } = useNavigation();
 
   console.log(filters);
   const { options, onSearch } = useSelect<IOrderStatus>({
@@ -66,8 +66,9 @@ export default function UsersList() {
         {...tableProps}
         rowKey="id"
         onRow={(_, record: any) => {
+          console.log(record);
           return {
-            onClick: () => show("orders", parseInt(record?.id)),
+            onClick: () => showUrl("orders", parseInt(record?.id)),
           };
         }}
       >
