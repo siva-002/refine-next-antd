@@ -71,19 +71,17 @@ export default function UsersList() {
             return `#${orderid}`;
           }}
         />
-
         <Table.Column<IOrder>
           key="status.text"
           title={"Status"}
           dataIndex={["status", "text"]}
-          // defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
-              {/* <Select {...selectProps}></Select> */}
               <Select
                 options={options}
                 onChange={onSearch}
                 placeholder="Select status to search"
+                style={{ width: "200px" }}
               ></Select>
             </FilterDropdown>
           )}
