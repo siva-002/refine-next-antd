@@ -29,7 +29,7 @@ import {
 } from "@refinedev/core";
 import type { MenuProps } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
-import { Children, PropsWithChildren } from "react";
+import { Children, PropsWithChildren, useState } from "react";
 
 export default function UsersList() {
   const { tableProps } = useTable({
@@ -45,22 +45,22 @@ export default function UsersList() {
   type MenuItem = Required<MenuProps>["items"][number];
   const menuitems: MenuItem[] = [
     {
-      key: "menu-item",
-      icon: <MoreOutlined />,
-      children: [
-        {
-          key: 1,
-          icon: <CheckCircleOutlined />,
-          label: "Accept",
-          disabled: true,
-        },
-        {
-          key: 2,
-          icon: <CloseCircleOutlined />,
-          label: "Reject",
-          disabled: true,
-        },
-      ],
+      key: 1,
+      icon: <CheckCircleOutlined />,
+      label: "Accept",
+      disabled: true,
+      style: {
+        color: "green",
+      },
+    },
+    {
+      key: 2,
+      icon: <CloseCircleOutlined />,
+      label: "Reject",
+      disabled: true,
+      style: {
+        color: "red",
+      },
     },
   ];
   return (
@@ -112,7 +112,17 @@ export default function UsersList() {
         <Table.Column
           key="actions"
           render={() => {
-            return <Menu items={menuitems} />;
+            const [collapse, setcollapse] = useState(false);
+            
+            return (
+              <>
+                <Button
+                  onClick={(col) => setcollapse(!col)}
+                  icon={<MoreOutlined />}
+                />
+                <Menu items={menuitems} inlineCollapsed={collapse} />
+              </>
+            );
           }}
         />
       </Table>
