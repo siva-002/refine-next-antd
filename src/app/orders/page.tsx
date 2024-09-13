@@ -1,6 +1,11 @@
 "use client";
 
-import { EyeOutlined } from "@ant-design/icons";
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  EyeOutlined,
+  MoreOutlined,
+} from "@ant-design/icons";
 import CalculatePrice from "@app/components/CalculatePrice";
 import OrderStatus from "@app/components/OrderStatus";
 import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
@@ -22,7 +27,8 @@ import {
   useGo,
   useNavigation,
 } from "@refinedev/core";
-import { Avatar, Button, Space, Table } from "antd";
+import type { MenuProps } from "antd";
+import { Avatar, Button, Menu, Space, Table } from "antd";
 import { Children, PropsWithChildren } from "react";
 
 export default function UsersList() {
@@ -36,9 +42,30 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
+  type MenuItem = Required<MenuProps>["items"][number];
+  const menuitems: MenuItem[] = [
+    {
+      key: "menu-item",
+      icon: <MoreOutlined />,
+      children: [
+        {
+          key: 1,
+          icon: <CheckCircleOutlined />,
+          label: "Accept",
+          disabled: true,
+        },
+        {
+          key: 2,
+          icon: <CloseCircleOutlined />,
+          label: "Reject",
+          disabled: true,
+        },
+      ],
+    },
+  ];
   return (
     <List>
-      <Table {...tableProps} rowKey="id" >
+      <Table {...tableProps} rowKey="id">
         <Table.Column
           key="orderNumber"
           dataIndex={"orderNumber"}
@@ -81,6 +108,12 @@ export default function UsersList() {
           key="user.fullName"
           title={"Name"}
           dataIndex={["user", "fullName"]}
+        />
+        <Table.Column
+          key="actions"
+          render={() => {
+            return <Menu items={menuitems} />;
+          }}
         />
       </Table>
     </List>
