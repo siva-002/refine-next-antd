@@ -11,6 +11,7 @@ import OrderMenuButton from "@app/components/OrderMenuButton";
 import OrderStatus from "@app/components/OrderStatus";
 import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
 import Status from "@app/components/status";
+import { IOrder } from "@app/interfaces";
 // import UserStatus from "@components/userstatus/page";
 import {
   DateField,
@@ -89,11 +90,11 @@ export default function UsersList() {
           title={"Name"}
           dataIndex={["user", "fullName"]}
         />
-        <Table.Column
+        <Table.Column<IOrder>
           key="status"
           title="Actions"
           dataIndex={"status"}
-          render={(record) => {
+          render={(_value, record) => {
             return <OrderMenuButton record={record} />;
           }}
         />
