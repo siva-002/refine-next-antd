@@ -35,7 +35,7 @@ const OrderMenuButton = () => {
   return (
     <>
       <Button onClick={(col) => setcollapse(!col)} icon={<MoreOutlined />} />
-      <Menu items={menuitems} inlineCollapsed={collapses} />
+      {collapses && <Menu items={menuitems} />}
     </>
   );
 };
