@@ -33,6 +33,7 @@ import {
   useNavigation,
   getDefaultFilter,
   useSelect,
+  BaseOption,
 } from "@refinedev/core";
 import { Input, MenuProps, Select, theme } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
@@ -50,23 +51,17 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  type IProps = {
-    selectProps: IOrderStatus;
-  };
-  const { selectProps }: any = useSelect({
-    resource: "orderStatuses",
-    optionLabel: "text",
-    optionValue: "text",
-    defaultValue: getDefaultFilter("status.text", filters, "in"),
-  });
-  console.log(selectProps);
-  // const { options, defaultValueQuery, onSearch, query } =
-  //   useSelect<IOrderStatus>({
-  //     resource: "orderStatuses",
-  //     optionLabel: "text",
-  //     optionValue: "text",
-  //     defaultValue: getDefaultFilter("status.text", filters, "in"),
-  //   });
+  const { options, defaultValueQuery, onSearch, query } =
+    useSelect<IOrderStatus>({
+      resource: "orderStatuses",
+      optionLabel: "text",
+      optionValue: "text",
+      defaultValue: getDefaultFilter("status.text", filters, "in"),
+    });
+  console.log(options);
+  console.log(defaultValueQuery);
+  console.log(onSearch);
+  console.log(query);
 
   return (
     <List>
@@ -87,13 +82,13 @@ export default function UsersList() {
           dataIndex={"status"}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
-              <Select {...selectProps} ></Select>
-              {/* <Select
+              {/* <Select {...selectProps}></Select> */}
+              <Select
                 options={options}
                 onSearch={onSearch}
                 placeholder="Select status to search"
                 value={query}
-              ></Select> */}
+              ></Select>
             </FilterDropdown>
           )}
           render={(status) => {
