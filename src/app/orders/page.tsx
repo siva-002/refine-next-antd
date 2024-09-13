@@ -34,13 +34,14 @@ import {
   getDefaultFilter,
   useSelect,
   BaseOption,
+  getDefaultSortOrder,
 } from "@refinedev/core";
 import { Input, MenuProps, Select, theme } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
 import { Children, PropsWithChildren, useState } from "react";
 
 export default function UsersList() {
-  const { tableProps, filters } = useTable({
+  const { tableProps, filters, sorters } = useTable({
     syncWithLocation: true, //TableProps<BaseRecord>
   });
   const { token } = theme.useToken();
@@ -51,17 +52,20 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  const { options, defaultValueQuery, onSearch, query } =
-    useSelect<IOrderStatus>({
-      resource: "orderStatuses",
-      optionLabel: "text",
-      optionValue: "text",
-      defaultValue: getDefaultFilter("status.text", filters, "in"),
-    });
-  console.log(options);
-  console.log(defaultValueQuery);
-  console.log(onSearch);
-  console.log(query);
+  // const { options, defaultValueQuery, onSearch, query } =
+  //   useSelect<IOrderStatus>({
+  //     resource: "orderStatuses",
+  //     optionLabel: "text",
+  //     optionValue: "text",
+  //     defaultValue: getDefaultFilter("status.text", filters, "in"),
+  //   });
+
+  const { selectProps }: any = useSelect<IOrderStatus>({
+    resource: "orderStatuses",
+    optionLabel: "text",
+    optionValue: "text",
+    defaultValue: getDefaultFilter("status.text", filters, "in"),
+  });
 
   return (
     <List>
@@ -80,15 +84,19 @@ export default function UsersList() {
           key="status"
           title={"Status"}
           dataIndex={"status"}
+          sorter
+          // defaultSortOrder={getDefaultSortOrder("status.text", sorters)}
+          // defaultSortOrder={getDefaultSortOrder("status.text", sorters)}
+          defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
-              {/* <Select {...selectProps}></Select> */}
-              <Select
+              <Select {...selectProps}></Select>
+              {/* <Select
                 options={options}
                 onSearch={onSearch}
                 placeholder="Select status to search"
                 value={query}
-              ></Select>
+              ></Select> */}
             </FilterDropdown>
           )}
           render={(status) => {
