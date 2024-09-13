@@ -34,6 +34,7 @@ import {
   getDefaultFilter,
   useSelect,
   BaseOption,
+  BaseKey,
 } from "@refinedev/core";
 import { Input, MenuProps, Select, theme } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
@@ -45,11 +46,11 @@ export default function UsersList() {
   });
   const { token } = theme.useToken();
 
-  // const go = useGo();
+  const go = useGo();
 
   // console.log(tableProps);
 
-  // const { showUrl } = useNavigation();
+  const { show } = useNavigation();
 
   console.log(filters);
   const { options, onSearch } = useSelect<IOrderStatus>({
@@ -61,7 +62,15 @@ export default function UsersList() {
 
   return (
     <List>
-      <Table {...tableProps} rowKey="id">
+      <Table
+        {...tableProps}
+        rowKey="id"
+        onRow={(_, record: any) => {
+          return {
+            onClick: () => show("orders", parseInt(record?.id)),
+          };
+        }}
+      >
         <Table.Column
           key="orderNumber"
           dataIndex={"orderNumber"}
