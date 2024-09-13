@@ -79,6 +79,7 @@ export default function UsersList() {
                 options={options}
                 onSearch={onSearch}
                 placeholder="Select status to search"
+                defaultValue={defaultValueQuery}
               ></Select>
             </FilterDropdown>
           )}
