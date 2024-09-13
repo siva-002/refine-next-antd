@@ -5,6 +5,7 @@ import {
   CloseCircleOutlined,
   EyeOutlined,
   MoreOutlined,
+  SearchOutlined,
 } from "@ant-design/icons";
 import CalculatePrice from "@app/components/CalculatePrice";
 import OrderMenuButton from "@app/components/OrderMenuButton";
@@ -17,6 +18,7 @@ import {
   DateField,
   DeleteButton,
   EditButton,
+  FilterDropdown,
   List,
   ListButton,
   MarkdownField,
@@ -28,15 +30,17 @@ import {
   useMany,
   useGo,
   useNavigation,
+  getDefaultFilter,
 } from "@refinedev/core";
-import type { MenuProps } from "antd";
+import { Input, MenuProps, theme } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
 import { Children, PropsWithChildren, useState } from "react";
 
 export default function UsersList() {
-  const { tableProps } = useTable({
+  const { tableProps, filters } = useTable({
     syncWithLocation: true, //TableProps<BaseRecord>
   });
+  const { token } = theme.useToken();
 
   // const go = useGo();
 
@@ -51,7 +55,7 @@ export default function UsersList() {
           key="orderNumber"
           dataIndex={"orderNumber"}
           title={"Order Id"}
-          
+          sorter
           render={(orderid) => {
             return `#${orderid}`;
           }}
@@ -82,6 +86,7 @@ export default function UsersList() {
           key="products"
           title={"Amount"}
           dataIndex={"products"}
+          sorter
           render={(products) => {
             return <CalculatePrice product={products} />;
           }}
@@ -90,6 +95,23 @@ export default function UsersList() {
           key="user.fullName"
           title={"Name"}
           dataIndex={["user", "fullName"]}
+          filterIcon={(filtered) => (
+            <SearchOutlined
+              style={{
+                color: filtered ? token.colorPrimary : undefined,
+              }}
+            />
+          )}
+          defaultFilteredValue={getDefaultFilter(
+            "user.fullName",
+            filters,
+            "contains"
+          )}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Input placeholder={"Enter Customer Name"} />
+            </FilterDropdown>
+          )}
         />
         <Table.Column<IOrder>
           key="status"
