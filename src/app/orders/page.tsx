@@ -34,14 +34,13 @@ import {
   getDefaultFilter,
   useSelect,
   BaseOption,
-  getDefaultSortOrder,
 } from "@refinedev/core";
 import { Input, MenuProps, Select, theme } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
 import { Children, PropsWithChildren, useState } from "react";
 
 export default function UsersList() {
-  const { tableProps, filters, sorters } = useTable({
+  const { tableProps, filters } = useTable({
     syncWithLocation: true, //TableProps<BaseRecord>
   });
   const { token } = theme.useToken();
@@ -52,20 +51,22 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  // const { options, defaultValueQuery, onSearch, query } =
-  //   useSelect<IOrderStatus>({
-  //     resource: "orderStatuses",
-  //     optionLabel: "text",
-  //     optionValue: "text",
-  //     defaultValue: getDefaultFilter("status.text", filters, "in"),
-  //   });
+  const [selectedStatus, setSelectedStatus] = useState<string | undefined>(
+    getDefaultFilter("status.text", filters, "in")
+  );
 
-  const { selectProps }: any = useSelect<IOrderStatus>({
-    resource: "orderStatuses",
-    optionLabel: "text",
-    optionValue: "text",
-    defaultValue: getDefaultFilter("status.text", filters, "in"),
-  });
+  const { options, defaultValueQuery, onSearch, query } =
+    useSelect<IOrderStatus>({
+      resource: "orderStatuses",
+      optionLabel: "text",
+      optionValue: "text",
+      defaultValue: selectedStatus,
+    });
+  const handleStatusChange = (value: string) => {
+    setSelectedStatus(value);
+    // You might need to update the filter or perform some action here
+    console.log("Selected status:", value);
+  };
 
   return (
     <List>
@@ -84,19 +85,16 @@ export default function UsersList() {
           key="status"
           title={"Status"}
           dataIndex={"status"}
-          sorter
-          // defaultSortOrder={getDefaultSortOrder("status.text", sorters)}
-          // defaultSortOrder={getDefaultSortOrder("status.text", sorters)}
-          defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
-              <Select {...selectProps}></Select>
-              {/* <Select
+              {/* <Select {...selectProps}></Select> */}
+              <Select
                 options={options}
                 onSearch={onSearch}
                 placeholder="Select status to search"
-                value={query}
-              ></Select> */}
+                value={selectedStatus} // Use selected status from state
+                onChange={handleStatusChange}
+              ></Select>
             </FilterDropdown>
           )}
           render={(status) => {
