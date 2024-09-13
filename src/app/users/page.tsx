@@ -1,12 +1,13 @@
 "use client";
 
-import { EyeOutlined } from "@ant-design/icons";
+import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import Status from "@app/components/status";
 // import UserStatus from "@components/userstatus/page";
 import {
   DateField,
   DeleteButton,
   EditButton,
+  FilterDropdown,
   List,
   ListButton,
   MarkdownField,
@@ -18,18 +19,21 @@ import {
   useMany,
   useGo,
   useNavigation,
+  getDefaultFilter,
 } from "@refinedev/core";
-import { Avatar, Button, Space, Table } from "antd";
+import { Avatar, Button, Input, Space, Table, theme } from "antd";
 import { Children, PropsWithChildren } from "react";
 
 export default function UsersList() {
-  const { tableProps } = useTable({
+  const { tableProps, filters } = useTable({
     syncWithLocation: true,
   });
 
   const go = useGo();
 
   const { showUrl } = useNavigation();
+
+  const { token } = theme.useToken();
 
   return (
     <List>
@@ -49,7 +53,25 @@ export default function UsersList() {
             />
           )}
         />
-        <Table.Column title={"Name"} dataIndex={"fullName"} />
+        <Table.Column
+          title={"Name"}
+          dataIndex={"fullName"}
+          filterIcon={(filtered) => (
+            <SearchOutlined
+              style={{ color: filtered ? token.colorPrimary : undefined }}
+            />
+          )}
+          defaultFilteredValue={getDefaultFilter(
+            "fullName",
+            filters,
+            "contains"
+          )}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Input placeholder={"Enter Customer Name"} />
+            </FilterDropdown>
+          )}
+        />
         <Table.Column title={"Ph.no"} dataIndex={"gsm"} />
         <Table.Column
           key="createdAt"
@@ -62,6 +84,7 @@ export default function UsersList() {
           dataIndex={"isActive"}
           title={"Status"}
           render={(value) => <Status value={value} />}
+          sorter
         />
         <Table.Column
           // fixed="right"
