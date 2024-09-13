@@ -5,21 +5,18 @@ import {
   CloseCircleOutlined,
   EyeOutlined,
   MoreOutlined,
-  SearchOutlined,
 } from "@ant-design/icons";
 import CalculatePrice from "@app/components/CalculatePrice";
 import OrderMenuButton from "@app/components/OrderMenuButton";
 import OrderStatus from "@app/components/OrderStatus";
 import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
 import Status from "@app/components/status";
-import { IOrder, IOrderStatus } from "@app/interfaces";
-import type HttpError from "@refinedev/core";
+import { IOrder } from "@app/interfaces";
 // import UserStatus from "@components/userstatus/page";
 import {
   DateField,
   DeleteButton,
   EditButton,
-  FilterDropdown,
   List,
   ListButton,
   MarkdownField,
@@ -31,42 +28,21 @@ import {
   useMany,
   useGo,
   useNavigation,
-  getDefaultFilter,
-  useSelect,
 } from "@refinedev/core";
-import { Input, MenuProps, Select, theme } from "antd";
+import type { MenuProps } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
 import { Children, PropsWithChildren, useState } from "react";
 
 export default function UsersList() {
-  const { tableProps, filters } = useTable({
+  const { tableProps } = useTable({
     syncWithLocation: true, //TableProps<BaseRecord>
   });
-  const { token } = theme.useToken();
 
   // const go = useGo();
 
-  // console.log(tableProps);
+  console.log(tableProps);
 
   // const { showUrl } = useNavigation();
-
-  type IProps = {
-    selectProps: IOrderStatus;
-  };
-  const { selectProps }: any = useSelect({
-    resource: "orderStatuses",
-    optionLabel: "text",
-    optionValue: "text",
-    defaultValue: getDefaultFilter("status.text", filters, "in"),
-  });
-  console.log(selectProps);
-  // const { options, defaultValueQuery, onSearch, query } =
-  //   useSelect<IOrderStatus>({
-  //     resource: "orderStatuses",
-  //     optionLabel: "text",
-  //     optionValue: "text",
-  //     defaultValue: getDefaultFilter("status.text", filters, "in"),
-  //   });
 
   return (
     <List>
@@ -75,7 +51,6 @@ export default function UsersList() {
           key="orderNumber"
           dataIndex={"orderNumber"}
           title={"Order Id"}
-          sorter
           render={(orderid) => {
             return `#${orderid}`;
           }}
@@ -85,17 +60,6 @@ export default function UsersList() {
           key="status"
           title={"Status"}
           dataIndex={"status"}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Select {...selectProps} ></Select>
-              {/* <Select
-                options={options}
-                onSearch={onSearch}
-                placeholder="Select status to search"
-                value={query}
-              ></Select> */}
-            </FilterDropdown>
-          )}
           render={(status) => {
             return <OrderStatus id={status.id} text={status.text} />;
           }}
@@ -117,7 +81,6 @@ export default function UsersList() {
           key="products"
           title={"Amount"}
           dataIndex={"products"}
-          sorter
           render={(products) => {
             return <CalculatePrice product={products} />;
           }}
@@ -126,29 +89,12 @@ export default function UsersList() {
           key="user.fullName"
           title={"Name"}
           dataIndex={["user", "fullName"]}
-          filterIcon={(filtered) => (
-            <SearchOutlined
-              style={{
-                color: filtered ? token.colorPrimary : undefined,
-              }}
-            />
-          )}
-          defaultFilteredValue={getDefaultFilter(
-            "user.fullName",
-            filters,
-            "contains"
-          )}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder={"Enter Customer Name"} />
-            </FilterDropdown>
-          )}
         />
         <Table.Column<IOrder>
           key="status"
           title="Actions"
           dataIndex={"status"}
-          render={(_, record) => {
+          render={(_value, record) => {
             return <OrderMenuButton record={record} />;
           }}
         />

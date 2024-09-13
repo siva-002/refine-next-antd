@@ -16,6 +16,7 @@ import i18nProvider from "@components/i18n/i18nProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "../../style/global.css";
+import { ShoppingOutlined } from "@ant-design/icons";
 
 export const metadata: Metadata = {
   title: "Refine",
@@ -59,6 +60,9 @@ export default function RootLayout({
                       name: "orders",
                       list: "/orders",
                       // show: "/users/show/:id",
+                      meta: {
+                        icon: <ShoppingOutlined />,
+                      },
                     },
                   ]}
                   options={{
