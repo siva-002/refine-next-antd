@@ -31,7 +31,7 @@ const OrderMenuButton = ({ status }: Istatus) => {
           text == "Delivered" ||
           text == "Cancelled" ||
           text == "Ready"
-            ? "rgba(0,0,0,0.1)"
+            ? "rgba(0,0,0,0.03)"
             : "none",
       },
     },
@@ -45,8 +45,9 @@ const OrderMenuButton = ({ status }: Istatus) => {
         color: "red",
         backgroundColor:
           text == "Cancelled" || text == "On The Way" || text == "Delivered"
-            ? "rgba(0,0,0,0.1)"
+            ? "rgba(0,0,0,0.03)"
             : "none",
+        marginTop: "2px",
       },
     },
   ];
