@@ -4,20 +4,17 @@ import {
   CloseCircleOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
-import { Button, Menu } from "antd";
-import React, { useState } from "react";
-import type { MenuProps } from "antd";
+import { Button, Dropdown, Menu } from "antd";
+import React from "react";
+import type { MenuProps, DropDownProps } from "antd";
 
-type MenuItem = Required<MenuProps>["items"][number];
 const OrderMenuButton = () => {
-  const [collapses, setcollapse] = useState(false);
-
-  const menuitems: MenuItem[] = [
+  const items: MenuProps["items"] = [
     {
       key: 1,
       icon: <CheckCircleOutlined />,
       label: "Accept",
-      disabled: true,
+      //   disabled: true,
       style: {
         color: "green",
       },
@@ -26,24 +23,17 @@ const OrderMenuButton = () => {
       key: 2,
       icon: <CloseCircleOutlined />,
       label: "Reject",
-      disabled: true,
+      //   disabled: true,
       style: {
         color: "red",
       },
     },
   ];
 
-  const change = () => {
-    console.log("click");
-    setcollapse(!collapses);
-  };
-
-  console.log(collapses);
   return (
-    <>
-      <Button onClick={change} icon={<MoreOutlined />} />
-      {collapses && <Menu items={menuitems} />}
-    </>
+    <Dropdown menu={{ items }} arrow={false}>
+      <Button icon={<MoreOutlined />}></Button>
+    </Dropdown>
   );
 };
 

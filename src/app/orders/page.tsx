@@ -43,7 +43,6 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-
   return (
     <List>
       <Table {...tableProps} rowKey="id">
