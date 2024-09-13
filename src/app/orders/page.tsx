@@ -51,6 +51,7 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
+  console.log(filters);
   const { options, defaultValueQuery, onSearch, query } =
     useSelect<IOrderStatus>({
       resource: "orderStatuses",
