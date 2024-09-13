@@ -58,7 +58,7 @@ export default function RootLayout({
                     {
                       name: "orders",
                       list: "/orders",
-                      show: "/users/show/:id",
+                      show: "/orders/show/:id",
                     },
                   ]}
                   options={{
