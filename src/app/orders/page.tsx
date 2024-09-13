@@ -74,9 +74,9 @@ export default function UsersList() {
         />
 
         <Table.Column
-          key="status"
+          key="status.text"
           title={"Status"}
-          dataIndex={"status"}
+          dataIndex={["status", "text"]}
           defaultFilteredValue={getDefaultFilter("status.text", filters, "in")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
