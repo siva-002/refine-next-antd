@@ -55,13 +55,12 @@ export default function UsersList() {
     getDefaultFilter("status.text", filters, "in")
   );
 
-  const { options, defaultValueQuery, onSearch, query } =
-    useSelect<IOrderStatus>({
-      resource: "orderStatuses",
-      optionLabel: "text",
-      optionValue: "text",
-      defaultValue: selectedStatus,
-    });
+  const { options, defaultValueQuery, query } = useSelect<IOrderStatus>({
+    resource: "orderStatuses",
+    optionLabel: "text",
+    optionValue: "text",
+    defaultValue: selectedStatus,
+  });
   const handleStatusChange = (value: string) => {
     setSelectedStatus(value);
     // You might need to update the filter or perform some action here
@@ -90,7 +89,6 @@ export default function UsersList() {
               {/* <Select {...selectProps}></Select> */}
               <Select
                 options={options}
-                onSearch={onSearch}
                 placeholder="Select status to search"
                 value={selectedStatus} // Use selected status from state
                 onChange={handleStatusChange}
