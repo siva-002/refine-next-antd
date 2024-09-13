@@ -28,8 +28,12 @@ import {
   useMany,
   useGo,
   useNavigation,
+<<<<<<< HEAD
+=======
   getDefaultFilter,
   useSelect,
+  BaseOption,
+>>>>>>> 2e147746f5f6a362444f59c37b7fdf8ff67d4673
 } from "@refinedev/core";
 import type { MenuProps } from "antd";
 import { Avatar, Button, Menu, Space, Table } from "antd";
@@ -46,24 +50,17 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  type IProps = {
-    selectProps: IOrderStatus;
-  };
-  const { selectProps }: any = useSelect({
+<<<<<<< HEAD
+=======
+  console.log(filters);
+  const { options, onSearch } = useSelect<IOrderStatus>({
     resource: "orderStatuses",
     optionLabel: "text",
     optionValue: "text",
     defaultValue: getDefaultFilter("status.text", filters, "in"),
   });
-  console.log(selectProps);
-  // const { options, defaultValueQuery, onSearch, query } =
-  //   useSelect<IOrderStatus>({
-  //     resource: "orderStatuses",
-  //     optionLabel: "text",
-  //     optionValue: "text",
-  //     defaultValue: getDefaultFilter("status.text", filters, "in"),
-  //   });
 
+>>>>>>> 2e147746f5f6a362444f59c37b7fdf8ff67d4673
   return (
     <List>
       <Table {...tableProps} rowKey="id">
@@ -78,20 +75,27 @@ export default function UsersList() {
         <Table.Column<IOrder>
           key="status.text"
           title={"Status"}
+<<<<<<< HEAD
           dataIndex={"status"}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Select {...selectProps} ></Select>
-              {/* <Select
-                options={options}
-                onSearch={onSearch}
-                placeholder="Select status to search"
-                value={query}
-              ></Select> */}
-            </FilterDropdown>
-          )}
           render={(status) => {
             return <OrderStatus id={status.id} text={status.text} />;
+=======
+          dataIndex={["status", "text"]}
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Select
+                options={options}
+                onChange={onSearch}
+                placeholder="Select status to search"
+                style={{ width: "200px" }}
+                allowClear
+                mode="tags"
+              ></Select>
+            </FilterDropdown>
+          )}
+          render={(_, record) => {
+            return <OrderStatus record={record} />;
+>>>>>>> 2e147746f5f6a362444f59c37b7fdf8ff67d4673
           }}
         />
         <Table.Column
