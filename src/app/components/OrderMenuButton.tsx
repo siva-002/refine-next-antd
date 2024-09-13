@@ -7,14 +7,19 @@ import {
 import { Button, Dropdown, Menu } from "antd";
 import React from "react";
 import type { MenuProps, DropDownProps } from "antd";
+import type { IOrderStatus } from "@app/interfaces";
 
-const OrderMenuButton = () => {
+type Istatus = {
+  status: IOrderStatus;
+};
+const OrderMenuButton = ({ status }: Istatus) => {
+  const { id, text } = status;
   const items: MenuProps["items"] = [
     {
       key: 1,
       icon: <CheckCircleOutlined />,
       label: "Accept",
-      //   disabled: true,
+      disabled: text == "Delivered" || text == "Cancelled" || text == "Ready",
       style: {
         color: "green",
       },
@@ -23,7 +28,8 @@ const OrderMenuButton = () => {
       key: 2,
       icon: <CloseCircleOutlined />,
       label: "Reject",
-      //   disabled: true,
+      disabled:
+        text == "Cancelled" || text == "On The Way" || text == "Delivered",
       style: {
         color: "red",
       },

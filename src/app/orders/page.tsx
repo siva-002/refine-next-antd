@@ -90,9 +90,11 @@ export default function UsersList() {
           dataIndex={["user", "fullName"]}
         />
         <Table.Column
-          key="actions"
-          render={() => {
-            return <OrderMenuButton />;
+          key="status"
+          title="Actions"
+          dataIndex={"status"}
+          render={(status) => {
+            return <OrderMenuButton status={status} />;
           }}
         />
       </Table>
