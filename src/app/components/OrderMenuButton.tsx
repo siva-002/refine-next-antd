@@ -33,13 +33,15 @@ const OrderMenuButton = () => {
     },
   ];
 
+  const change = () => {
+    console.log("click");
+    setcollapse(!collapses);
+  };
+
   console.log(collapses);
   return (
     <>
-      <Button
-        onClick={(collapses) => setcollapse(!collapses)}
-        icon={<MoreOutlined />}
-      />
+      <Button onClick={change} icon={<MoreOutlined />} />
       {collapses && <Menu items={menuitems} />}
     </>
   );
