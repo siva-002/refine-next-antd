@@ -49,12 +49,13 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  const { options, defaultValueQuery, onSearch } = useSelect<IOrderStatus>({
-    resource: "orderStatuses",
-    optionLabel: "text",
-    optionValue: "text",
-    defaultValue: getDefaultFilter("status.text", filters, "in"),
-  });
+  const { options, defaultValueQuery, onSearch, query } =
+    useSelect<IOrderStatus>({
+      resource: "orderStatuses",
+      optionLabel: "text",
+      optionValue: "text",
+      defaultValue: getDefaultFilter("status.text", filters, "in"),
+    });
 
   return (
     <List>
@@ -79,7 +80,7 @@ export default function UsersList() {
                 options={options}
                 onSearch={onSearch}
                 placeholder="Select status to search"
-                defaultValue={defaultValueQuery}
+                value={query}
               ></Select>
             </FilterDropdown>
           )}
