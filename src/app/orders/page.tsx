@@ -112,15 +112,15 @@ export default function UsersList() {
         <Table.Column
           key="actions"
           render={() => {
-            const [collapse, setcollapse] = useState(false);
-            
+            const [collapses, setcollapse] = useState(false);
+
             return (
               <>
                 <Button
                   onClick={(col) => setcollapse(!col)}
                   icon={<MoreOutlined />}
                 />
-                <Menu items={menuitems} inlineCollapsed={collapse} />
+                <Menu items={menuitems} inlineCollapsed={collapses} />
               </>
             );
           }}
