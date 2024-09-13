@@ -13,6 +13,7 @@ import OrderStatus from "@app/components/OrderStatus";
 import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
 import Status from "@app/components/status";
 import { IOrder, IOrderStatus } from "@app/interfaces";
+import type HttpError from "@refinedev/core";
 // import UserStatus from "@components/userstatus/page";
 import {
   DateField,
@@ -49,13 +50,23 @@ export default function UsersList() {
 
   // const { showUrl } = useNavigation();
 
-  const { options, defaultValueQuery, onSearch, query } =
-    useSelect<IOrderStatus>({
-      resource: "orderStatuses",
-      optionLabel: "text",
-      optionValue: "text",
-      defaultValue: getDefaultFilter("status.text", filters, "in"),
-    });
+  type IProps = {
+    selectProps: IOrderStatus;
+  };
+  const { selectProps }: any = useSelect({
+    resource: "orderStatuses",
+    optionLabel: "text",
+    optionValue: "text",
+    defaultValue: getDefaultFilter("status.text", filters, "in"),
+  });
+  console.log(selectProps);
+  // const { options, defaultValueQuery, onSearch, query } =
+  //   useSelect<IOrderStatus>({
+  //     resource: "orderStatuses",
+  //     optionLabel: "text",
+  //     optionValue: "text",
+  //     defaultValue: getDefaultFilter("status.text", filters, "in"),
+  //   });
 
   return (
     <List>
@@ -76,12 +87,13 @@ export default function UsersList() {
           dataIndex={"status"}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
-              <Select
+              <Select {...selectProps} ></Select>
+              {/* <Select
                 options={options}
                 onSearch={onSearch}
                 placeholder="Select status to search"
                 value={query}
-              ></Select>
+              ></Select> */}
             </FilterDropdown>
           )}
           render={(status) => {
