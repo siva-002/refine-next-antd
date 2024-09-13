@@ -82,6 +82,8 @@ export default function UsersList() {
                 onChange={onSearch}
                 placeholder="Select status to search"
                 style={{ width: "200px" }}
+                allowClear
+                mode="tags"
               ></Select>
             </FilterDropdown>
           )}
