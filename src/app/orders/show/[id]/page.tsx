@@ -17,12 +17,12 @@ export default function OrdersShow() {
       <Flex
         gap={"middle"}
         justify="space-around"
-        className="d-flex flex-sm-row flex-md-column"
+        className="d-flex flex-column w-100"
       >
-        <Card className="w-sm-100 w-lg-25">
+        <Card className="w-100 orderCard1">
           <ShowSteps data={data} status={status} />
         </Card>
-        <Card className="w-sm-100 w-lg-50">
+        <Card className="w-100 orderCard2">
           <OrderDetails record={query?.data?.data} />
         </Card>
       </Flex>

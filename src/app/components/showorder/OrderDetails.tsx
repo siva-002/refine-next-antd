@@ -1,3 +1,5 @@
+// "use client";
+
 import {
   ClockCircleOutlined,
   HistoryOutlined,
@@ -14,7 +16,7 @@ import React, { useMemo } from "react";
 const OrderDetails = ({ record }: { record: any }) => {
   const t = useTranslate();
   const { token } = theme.useToken();
-  console.log(record);
+  // console.log("r", record);
   const details = useMemo(() => {
     const list: {
       icon: React.ReactNode;
@@ -24,40 +26,40 @@ const OrderDetails = ({ record }: { record: any }) => {
       {
         icon: <ClockCircleOutlined />,
         title: t("orders.fields.deliveryTime"),
-        // description: dayjs(record.events[0]?.date)
-        //   .add(60, "minutes")
-        //   .format("hh:mm A"),
-        description: "sdfa",
+        description: dayjs(record?.events[0]?.date)
+          .add(60, "minutes")
+          .format("h:mm A"),
+        // description: "sdfa",
       },
       {
         icon: <ShopOutlined />,
         title: t("orders.fields.store"),
-        // description: record.store.title,
-        description: "sdfa",
+        description: record?.store.title,
+        // description: "sdfa",
       },
       {
         icon: <TruckOutlined />,
         title: t("orders.fields.courier"),
-        // description: record.courier?.name,
-        description: "sdfa",
+        description: record?.courier?.name,
+        // description: "sdfa",
       },
       {
         icon: <PhoneOutlined />,
         title: t("orders.fields.phone"),
-        // description: record.courier?.gsm,
-        description: "sdfa",
+        description: record?.courier?.gsm,
+        // description: "sdfa",
       },
       {
         icon: <UserOutlined />,
         title: t("orders.fields.customer"),
-        // description: `${record.user.firstName} ${record.user.lastName}`,
-        description: "sdfa",
+        description: record?.user.fullName,
+        // description: "sdfa",
       },
       {
         icon: <HistoryOutlined />,
         title: t("orders.fields.createdAt"),
-        // description: record.createdAt,
-        description: "sdfa",
+        description: dayjs(record?.createdAt).format("D-MMMM-YYYY h:mm A"),
+        // description: "sdfa",
       },
     ];
 
@@ -67,9 +69,7 @@ const OrderDetails = ({ record }: { record: any }) => {
     <List
       size="large"
       dataSource={details}
-      style={{
-        borderTop: `1px solid ${token.colorBorderSecondary}`,
-      }}
+      header={<div>Delivery Details</div>}
       renderItem={(item) => (
         <List.Item>
           <Flex gap={8}>
