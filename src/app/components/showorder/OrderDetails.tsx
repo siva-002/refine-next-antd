@@ -16,7 +16,7 @@ import React, { useMemo } from "react";
 const OrderDetails = ({ record }: { record: any }) => {
   const t = useTranslate();
   const { token } = theme.useToken();
-  // console.log("r", record);
+  console.log("r", record);
   const details = useMemo(() => {
     const list: {
       icon: React.ReactNode;
@@ -26,9 +26,12 @@ const OrderDetails = ({ record }: { record: any }) => {
       {
         icon: <ClockCircleOutlined />,
         title: t("orders.fields.deliveryTime"),
-        description: dayjs(record?.events[0]?.date)
-          .add(60, "minutes")
-          .format("h:mm A"),
+        description:
+          record?.status?.id == 4 ? (
+            dayjs(record?.events[3]?.date).format("h:mm A")
+          ) : (
+            <span>{record?.status.text}</span>
+          ),
         // description: "sdfa",
       },
       {

@@ -20,15 +20,15 @@ export default function ShowSteps({
       description: items.status,
     };
   });
-  console.log(Step);
-  console.log("atatus", status);
+  // console.log(Step);
+  // console.log("atatus", status);
   const currentStatus = Step?.filter((item, index) => {
     if (status === item.description) {
-      console.log(item, index);
+      // console.log(item, index);
       return index + 1;
     }
   });
-  console.log(currentStatus);
+  // console.log(currentStatus);
   const CS = Step?.indexOf(currentStatus[0]);
   const Currentstatus = () => {
     switch (status) {

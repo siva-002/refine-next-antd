@@ -52,7 +52,7 @@ export default function UsersList() {
 
   const { show } = useNavigation();
 
-  console.log(filters);
+  // console.log(filters);
   const { options, onSearch } = useSelect<IOrderStatus>({
     resource: "orderStatuses",
     optionLabel: "text",
