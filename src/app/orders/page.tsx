@@ -146,6 +146,7 @@ export default function UsersList() {
           )}
         />
         <Table.Column<IOrder>
+          fixed="right"
           key="status"
           title="Actions"
           dataIndex={"status"}
