@@ -13,7 +13,7 @@ import OrderStatus from "@app/components/OrderStatus";
 import { OrderTableColumnProducts } from "@app/components/OrderTableColumnProduct";
 import Status from "@app/components/status";
 import { IOrder, IOrderStatus } from "@app/interfaces";
-import type HttpError from "@refinedev/core";
+// import type HttpError from "@refinedev/core";
 // import UserStatus from "@components/userstatus/page";
 import {
   DateField,
@@ -141,7 +141,7 @@ export default function UsersList() {
           )}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
-              <Input placeholder={"Enter Customer Name"} />
+              <Input placeholder={"Enter Customer Name : "} />
             </FilterDropdown>
           )}
         />
