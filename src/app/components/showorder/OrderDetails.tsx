@@ -16,7 +16,7 @@ import React, { useMemo } from "react";
 const OrderDetails = ({ record }: { record: any }) => {
   const t = useTranslate();
   const { token } = theme.useToken();
-  console.log("r", record);
+  // console.log("r", record);
   const details = useMemo(() => {
     const list: {
       icon: React.ReactNode;
