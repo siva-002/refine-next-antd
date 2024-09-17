@@ -5,7 +5,8 @@ import "leaflet/dist/leaflet.css";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import L from "leaflet";
 import type { IOrder } from "@app/interfaces";
-const MapComponent = ({ data }: { data: IOrder }) => {
+import { BaseRecord } from "@refinedev/core";
+const MapComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
   const position = data?.courier?.store?.address?.coordinate;
   console.log("dt", data);
   console.log("ps", position);

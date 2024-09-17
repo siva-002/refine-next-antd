@@ -7,7 +7,7 @@ import { useShow } from "@refinedev/core";
 import { Flex } from "antd";
 import Card from "antd/es/card/Card";
 import React from "react";
-
+import type { BaseRecord } from "@refinedev/core";
 export default function OrdersShow() {
   const { query } = useShow();
   const data = query?.data?.data?.events;
@@ -24,7 +24,7 @@ export default function OrdersShow() {
           <ShowSteps data={data} status={status} />
         </Card>
         <Card className="w-100 orderCard2">
-          <MapComponent data={data} />
+          <MapComponent data={query?.data?.data} />
         </Card>
         <Card className="w-100 orderCard2">
           <OrderDetails record={query?.data?.data} />
