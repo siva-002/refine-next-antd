@@ -79,6 +79,11 @@ export default function RootLayout({
                         icon: <TagsOutlined />,
                       },
                     },
+                    {
+                      name: "products",
+                      list: "/products",
+                      show: "/products/show/:id",
+                    },
                   ]}
                   options={{
                     syncWithLocation: true,
