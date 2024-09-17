@@ -1,17 +1,30 @@
 "use client";
 
+import { EditOutlined } from "@ant-design/icons";
 import ProductDrawerShow from "@app/components/product/ProductDrawerShow";
 import ProductStatus from "@app/components/product/ProductStatus";
 import { ICategory } from "@app/interfaces";
-import { NumberField, Show } from "@refinedev/antd";
-import { useOne, useShow } from "@refinedev/core";
-import { Avatar, Badge, Divider, Flex, List, theme, Typography } from "antd";
+import { EditButton, NumberField, Show } from "@refinedev/antd";
+import { useGo, useNavigation, useOne, useShow } from "@refinedev/core";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Divider,
+  Flex,
+  List,
+  theme,
+  Typography,
+} from "antd";
 import React from "react";
 
 const ShowProduct = () => {
   const { query } = useShow();
-  const product = query?.data?.data;
+  const product: any = query?.data?.data;
   const { token } = theme.useToken();
+
+  const go = useGo();
+  const { editUrl } = useNavigation();
 
   const { data: categoryData } = useOne<ICategory>({
     resource: "categories",
@@ -22,7 +35,7 @@ const ShowProduct = () => {
   });
   const category = categoryData?.data;
   return (
-    <Show>
+    <Show isLoading={query?.isLoading}>
       <Flex
         align="center"
         justify="space-around"
@@ -117,15 +130,34 @@ const ShowProduct = () => {
                 padding: 0,
               }}
             />
-              <Typography.Text
-                type="secondary"
-                className="p-2"
-                style={{ textAlign: "justify" }}
-              >
-                Description : {product?.description}
-              </Typography.Text>
+            <Typography.Text
+              type="secondary"
+              className="p-2"
+              style={{ textAlign: "justify" }}
+            >
+              Description : {product?.description}
+            </Typography.Text>
           </Flex>
         </Flex>
+      </Flex>
+      <Flex align="center" justify="end" className="me-4 px-2">
+        <Button
+          icon={<EditOutlined />}
+          onClick={() => {
+            return go({
+              to: `${editUrl("products", product?.id)}`,
+              query: {
+                to: "products",
+              },
+              options: {
+                keepQuery: true,
+              },
+              type: "replace",
+            });
+          }}
+        >
+          Edit
+        </Button>
       </Flex>
     </Show>
   );

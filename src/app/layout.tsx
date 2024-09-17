@@ -83,6 +83,7 @@ export default function RootLayout({
                       name: "products",
                       list: "/products",
                       show: "/products/show/:id",
+                      edit: "/products/edit/:id",
                     },
                   ]}
                   options={{
