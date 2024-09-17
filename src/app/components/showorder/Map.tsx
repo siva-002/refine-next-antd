@@ -7,8 +7,8 @@ import L from "leaflet";
 import type { IOrder } from "@app/interfaces";
 const MapComponent = ({ data }: { data: IOrder }) => {
   const position = data?.courier?.store?.address?.coordinate;
-  console.log(data);
-  console.log(position);
+  console.log("dt", data);
+  console.log("ps", position);
   //   const customIcon = new L.Icon({
   //     iconUrl:
   //       "https://png.pngtree.com/png-clipart/20230123/original/pngtree-flat-red-location-sign-png-image_8927579.png", // Replace with the path to your custom image
