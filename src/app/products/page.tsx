@@ -90,7 +90,7 @@ const ProductListTable = () => {
               whiteSpace: "nowrap",
             }}
           >
-            ID #
+            {t("products.fields.id")}
           </Typography.Text>
         }
         dataIndex="id"
@@ -126,6 +126,7 @@ const ProductListTable = () => {
       <Table.Column
         title={t("products.fields.images.label")}
         dataIndex="images"
+        align="center"
         key="images"
         render={(images: IProduct["images"]) => {
           return (
@@ -170,7 +171,7 @@ const ProductListTable = () => {
         title={t("products.fields.description")}
         dataIndex="description"
         key="description"
-        width={432}
+        width={450}
         filterIcon={(filtered) => (
           <SearchOutlined
             style={{
@@ -268,6 +269,7 @@ const ProductListTable = () => {
         title={t("products.fields.isActive.label")}
         dataIndex="isActive"
         key="isActive"
+        width={50}
         sorter
         defaultSortOrder={getDefaultSortOrder("isActive", sorters)}
         defaultFilteredValue={getDefaultFilter("isActive", filters, "in")}
