@@ -66,6 +66,7 @@ export default function RootLayout({
                     {
                       name: "orders",
                       list: "/orders",
+                      show: "/orders/show/:id",
                       meta: {
                         icon: <ShoppingOutlined />,
                       },
