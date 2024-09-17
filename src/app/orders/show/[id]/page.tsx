@@ -13,8 +13,6 @@ export default function OrdersShow() {
   const data = query?.data?.data?.events;
   const status = query?.data?.data?.status.text;
 
-  
-
   return (
     <Show>
       <Flex
@@ -26,7 +24,7 @@ export default function OrdersShow() {
           <ShowSteps data={data} status={status} />
         </Card>
         <Card className="w-100 orderCard2">
-          <MapComponent />
+          <MapComponent data={data} />
         </Card>
         <Card className="w-100 orderCard2">
           <OrderDetails record={query?.data?.data} />
