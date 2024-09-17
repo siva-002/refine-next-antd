@@ -16,6 +16,18 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
     id: record?.id,
   });
   const { id, text } = record?.status;
+
+  const handleUpdate = (
+    e: React.KeyboardEvent | React.MouseEvent,
+    data: { id: number; text: string }
+  ) => {
+    e.stopPropagation();
+    mutate({
+      values: {
+        status: data,
+      },
+    });
+  };
   const items: MenuProps["items"] = [
     {
       key: 1,
@@ -36,14 +48,10 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
             ? "rgba(0,0,0,0.03)"
             : "none",
       },
-      onClick: () => {
-        mutate({
-          values: {
-            status: {
-              id: 2,
-              text: "Ready",
-            },
-          },
+      onClick: (e) => {
+        handleUpdate(e.domEvent, {
+          id: 2,
+          text: "Ready",
         });
       },
     },
@@ -61,14 +69,10 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
             : "none",
         marginTop: "2px",
       },
-      onClick: () => {
-        mutate({
-          values: {
-            status: {
-              id: 5,
-              text: "Cancelled",
-            },
-          },
+      onClick: (e) => {
+        handleUpdate(e.domEvent, {
+          id: 5,
+          text: "Cancelled",
         });
       },
     },
