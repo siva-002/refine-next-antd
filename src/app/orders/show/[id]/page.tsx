@@ -1,4 +1,5 @@
 "use client";
+import MapComponent from "@app/components/showorder/Map";
 import OrderDetails from "@app/components/showorder/OrderDetails";
 import ShowSteps from "@app/components/showorder/Steps";
 import { Show } from "@refinedev/antd";
@@ -21,6 +22,9 @@ export default function OrdersShow() {
       >
         <Card className="w-100 orderCard1">
           <ShowSteps data={data} status={status} />
+        </Card>
+        <Card className="w-100 orderCard2">
+          <MapComponent />
         </Card>
         <Card className="w-100 orderCard2">
           <OrderDetails record={query?.data?.data} />
