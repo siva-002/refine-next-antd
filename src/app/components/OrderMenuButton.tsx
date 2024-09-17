@@ -2,7 +2,6 @@
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
-  ExclamationCircleFilled,
   MoreOutlined,
 } from "@ant-design/icons";
 import { Button, Dropdown, Menu, Modal } from "antd";
@@ -104,12 +103,8 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
   return (
     <>
       <Modal
-        title={`${(
-          <ExclamationCircleFilled style={{ color: "orangered" }} />
-        )} Are you sure want to ${
-          updateData?.id == 2
-            ? "<b style='color:green'>Accept</b>"
-            : "<b style='color:red'>Accept</b>"
+        title={` Are you sure want to ${
+          updateData?.id == 2 ? "Accept" : "Reject"
         } the order`}
         centered
         open={modalOpen}
