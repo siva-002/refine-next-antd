@@ -45,7 +45,7 @@ const MapComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
           />
           <Marker
             position={[Number(position[0]), Number(position[1])]}
-            icon={BikeIcon}
+            // icon={BikeIcon}
           >
             <Popup>{data?.courier?.store?.address?.text}</Popup>
           </Marker>
