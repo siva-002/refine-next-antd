@@ -39,13 +39,15 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
   const handleUpdate = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.stopPropagation();
     mutate({
-      values: updateData,
+      values: {
+        status: updateData,
+      },
     });
-    console.log(updateData);
     setModalOpen(false);
   };
   const handleCancel = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.stopPropagation();
+    setUpdateData(undefined);
     setModalOpen(false);
   };
   const items: MenuProps["items"] = [
@@ -108,7 +110,7 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
         open={modalOpen}
         onOk={handleUpdate}
         onCancel={handleCancel}
-        okText="Update Order"
+        okText={`${updateData?.id == 2 ? "Update Order" : "Cancel Order"}`}
         okType={`${updateData?.id == 2 ? "primary" : "danger"}`}
       ></Modal>
       <Dropdown menu={{ items }} arrow={false}>
