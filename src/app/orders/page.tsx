@@ -66,8 +66,8 @@ export default function UsersList() {
         {...tableProps}
         rowKey="id"
         onRow={(record: any) => {
-          console.log(record.id);
-          console.log(record);
+          // console.log(record.id);
+          // console.log(record);
           return {
             onClick: () => show("orders", record?.id),
           };
