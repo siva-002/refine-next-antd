@@ -178,7 +178,6 @@ const ProductDrawerShow = (props: Props) => {
           />
         </Flex>
       </Flex>
-      <span>Add new Edit and Delect button</span>
     </Drawer>
   );
 };
