@@ -36,7 +36,7 @@ const ProductListTable = () => {
   const go = useGo();
   const { showUrl } = useNavigation();
 
-  const { tableProps, sorters, filters } = useTable<IProduct, HttpError>({
+  const { tableProps, filters } = useTable<IProduct, HttpError>({
     filters: {
       initial: [
         {
@@ -61,6 +61,7 @@ const ProductListTable = () => {
         },
       ],
     },
+    syncWithLocation: true,
   });
 
   const { selectProps: categorySelectProps, query: queryResult } =
