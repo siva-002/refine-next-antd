@@ -2,6 +2,7 @@
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
+  ExclamationCircleFilled,
   MoreOutlined,
 } from "@ant-design/icons";
 import { Button, Dropdown, Menu, Modal } from "antd";
@@ -9,6 +10,7 @@ import React, { useState } from "react";
 import type { MenuProps, DropDownProps } from "antd";
 import type { IOrder } from "@app/interfaces";
 import { useUpdate } from "@refinedev/core";
+import { color } from "framer-motion";
 
 interface IupdateData {
   id: number;
@@ -103,9 +105,18 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
   return (
     <>
       <Modal
-        title={` Are you sure want to ${
-          updateData?.id == 2 ? "Accept" : "Reject"
-        } the order`}
+        title={
+          <span>
+            <ExclamationCircleFilled style={{ color: "orangered" }} />
+            Are you sure want to $
+            {updateData?.id == 2 ? (
+              <b style={{ color: "green" }}>Accept</b>
+            ) : (
+              <b style={{ color: "red" }}>Reject</b>
+            )}{" "}
+            the order
+          </span>
+        }
         centered
         open={modalOpen}
         onOk={handleUpdate}
