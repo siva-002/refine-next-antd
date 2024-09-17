@@ -4,29 +4,43 @@ import {
   CloseCircleOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
-import { Button, Dropdown, Menu } from "antd";
-import React from "react";
+import { Button, Dropdown, Menu, Modal } from "antd";
+import React, { useState } from "react";
 import type { MenuProps, DropDownProps } from "antd";
 import type { IOrder } from "@app/interfaces";
 import { useUpdate } from "@refinedev/core";
 
+interface IupdateData {
+  id: number;
+  text: string;
+}
 const OrderMenuButton = ({ record }: { record: IOrder }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [updateData, setUpdateData] = useState<IupdateData | undefined>(
+    undefined
+  );
   const { mutate } = useUpdate({
     resource: "orders",
     id: record?.id,
   });
   const { id, text } = record?.status;
 
-  const handleUpdate = (
+  // handling click on menu item
+  const handleClick = (
     e: React.KeyboardEvent | React.MouseEvent,
     data: { id: number; text: string }
   ) => {
     e.stopPropagation();
+    setModalOpen(true);
+    setUpdateData(data);
+  };
+
+  // handling update
+  const handleUpdate = () => {
     mutate({
-      values: {
-        status: data,
-      },
+      values: updateData,
     });
+    setModalOpen(false);
   };
   const items: MenuProps["items"] = [
     {
@@ -49,7 +63,7 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
             : "none",
       },
       onClick: (e) => {
-        handleUpdate(e.domEvent, {
+        handleClick(e.domEvent, {
           id: 2,
           text: "Ready",
         });
@@ -70,7 +84,7 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
         marginTop: "2px",
       },
       onClick: (e) => {
-        handleUpdate(e.domEvent, {
+        handleClick(e.domEvent, {
           id: 5,
           text: "Cancelled",
         });
@@ -79,9 +93,20 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
   ];
 
   return (
-    <Dropdown menu={{ items }} arrow={false}>
-      <Button icon={<MoreOutlined />} onClick={(e) => e.stopPropagation()} />
-    </Dropdown>
+    <>
+      <Modal
+        title={`Are you sure want to ${
+          updateData?.id == 2 ? "Accept" : "Reject"
+        } the order`}
+        centered
+        open={modalOpen}
+        onOk={() => handleUpdate}
+        onCancel={() => setModalOpen(false)}
+      ></Modal>
+      <Dropdown menu={{ items }} arrow={false}>
+        <Button icon={<MoreOutlined />} onClick={(e) => e.stopPropagation()} />
+      </Dropdown>
+    </>
   );
 };
 
