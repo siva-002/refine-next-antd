@@ -10,7 +10,6 @@ import React, { useState } from "react";
 import type { MenuProps, DropDownProps } from "antd";
 import type { IOrder } from "@app/interfaces";
 import { useUpdate } from "@refinedev/core";
-import { color } from "framer-motion";
 
 interface IupdateData {
   id: number;
