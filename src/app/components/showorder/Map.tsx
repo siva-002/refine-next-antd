@@ -29,21 +29,23 @@ const MapComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
     //   popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
   });
   return (
-    <MapContainer
-      center={position}
-      zoom={13}
-      scrollWheelZoom={false}
-      className="col-md-12"
-      style={{ height: "50vh" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={BikeIcon}>
-        <Popup>{data?.courier?.store?.address?.text}</Popup>
-      </Marker>
-    </MapContainer>
+    position !== undefined && (
+      <MapContainer
+        center={position}
+        zoom={13}
+        scrollWheelZoom={false}
+        className="col-md-12"
+        style={{ height: "50vh" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position} icon={BikeIcon}>
+          <Popup>{data?.courier?.store?.address?.text}</Popup>
+        </Marker>
+      </MapContainer>
+    )
   );
 };
 
