@@ -12,3 +12,11 @@
     width: 100% !important;
   }
 } */
+
+.ant-ribbon.ant-ribbon-placement-end {
+  height: 30px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 85%;
+}
