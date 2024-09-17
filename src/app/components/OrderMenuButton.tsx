@@ -106,13 +106,16 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
       <Modal
         title={
           <span>
-            <ExclamationCircleFilled
-              style={{
-                color: "orangered",
-                fontSize: "1.2em",
-                marginRight: "5px",
-              }}
-            />
+            <span>
+              <ExclamationCircleFilled
+                style={{
+                  color: "orangered",
+                  fontSize: "1.2em",
+                  marginRight: "5px",
+                  marginTop: "5px",
+                }}
+              />
+            </span>
             Are you sure want to
             {updateData?.id == 2 ? (
               <b style={{ color: "green" }}> Accept</b>
