@@ -7,7 +7,8 @@ import L from "leaflet";
 import type { IOrder } from "@app/interfaces";
 const MapComponent = ({ data }: { data: IOrder }) => {
   const position = data?.courier?.store?.address?.coordinate;
-
+  console.log(data);
+  console.log(position);
   //   const customIcon = new L.Icon({
   //     iconUrl:
   //       "https://png.pngtree.com/png-clipart/20230123/original/pngtree-flat-red-location-sign-png-image_8927579.png", // Replace with the path to your custom image
@@ -34,10 +35,8 @@ const MapComponent = ({ data }: { data: IOrder }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[51.505, -0.09]} icon={BikeIcon}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+      <Marker position={position} icon={BikeIcon}>
+        <Popup>{data?.courier?.store?.address?.text}</Popup>
       </Marker>
     </MapContainer>
   );
