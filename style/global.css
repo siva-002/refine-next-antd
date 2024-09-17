@@ -12,9 +12,9 @@
     width: 100% !important;
   }
 } */
-a{
+a {
   text-decoration: none !important;
-  color: red !important;
+  /* color: red !important; */
 }
 
 .ant-ribbon.ant-ribbon-placement-end {
