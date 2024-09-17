@@ -105,19 +105,19 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
     <>
       <Modal
         title={
-          <span style={{ fontSize: "1.2rem" }}>
+          <span>
             <ExclamationCircleFilled
               style={{
                 color: "orangered",
-                fontSize: "1.3rem",
+                fontSize: "1.2em",
                 marginRight: "5px",
               }}
             />
             Are you sure want to
             {updateData?.id == 2 ? (
-              <b style={{ color: "green" }}>Accept</b>
+              <b style={{ color: "green" }}> Accept</b>
             ) : (
-              <b style={{ color: "red" }}>Reject</b>
+              <b style={{ color: "red" }}> Reject</b>
             )}{" "}
             the order
           </span>
