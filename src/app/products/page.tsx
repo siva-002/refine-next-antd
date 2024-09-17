@@ -61,7 +61,7 @@ const ProductListTable = () => {
         },
       ],
     },
-    syncWithLocation: true,
+    syncWithLocation: false,
   });
 
   const { selectProps: categorySelectProps, query: queryResult } =
