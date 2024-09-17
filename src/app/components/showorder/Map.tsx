@@ -10,8 +10,8 @@ const MapComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
   const position = data?.courier?.store?.address?.coordinate;
   console.log("dt", data);
   console.log("ps", position);
-  console.log(Number(position[0]));
-  console.log(Number(position[1]));
+  console.log(Number(position[0]) || "");
+  console.log(Number(position[1]) || "");
   //   const customIcon = new L.Icon({
   //     iconUrl:
   //       "https://png.pngtree.com/png-clipart/20230123/original/pngtree-flat-red-location-sign-png-image_8927579.png", // Replace with the path to your custom image
