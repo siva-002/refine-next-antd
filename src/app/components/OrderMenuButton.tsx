@@ -105,9 +105,15 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
     <>
       <Modal
         title={
-          <span>
-            <ExclamationCircleFilled style={{ color: "orangered" }} />
-            Are you sure want to $
+          <span style={{ fontSize: "1.2rem" }}>
+            <ExclamationCircleFilled
+              style={{
+                color: "orangered",
+                fontSize: "1.3rem",
+                marginRight: "5px",
+              }}
+            />
+            Are you sure want to
             {updateData?.id == 2 ? (
               <b style={{ color: "green" }}>Accept</b>
             ) : (
