@@ -2,6 +2,7 @@
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
+  ExclamationCircleFilled,
   MoreOutlined,
 } from "@ant-design/icons";
 import { Button, Dropdown, Menu, Modal } from "antd";
@@ -103,14 +104,18 @@ const OrderMenuButton = ({ record }: { record: IOrder }) => {
   return (
     <>
       <Modal
-        title={`Are you sure want to ${
-          updateData?.id == 2 ? "Accept" : "Reject"
+        title={`${(
+          <ExclamationCircleFilled style={{ color: "orangered" }} />
+        )} Are you sure want to ${
+          updateData?.id == 2
+            ? "<b style='color:green'>Accept</b>"
+            : "<b style='color:red'>Accept</b>"
         } the order`}
         centered
         open={modalOpen}
         onOk={handleUpdate}
         onCancel={handleCancel}
-        okText={`${updateData?.id == 2 ? "Update Order" : "Cancel Order"}`}
+        okText={`${updateData?.id == 2 ? "Accept Order" : "Cancel Order"}`}
         okType={`${updateData?.id == 2 ? "primary" : "danger"}`}
       ></Modal>
       <Dropdown menu={{ items }} arrow={false}>
