@@ -80,6 +80,30 @@ const ShowProduct = () => {
   //     </div>
   //   );
 
+  // const getValueFromEvent = (e: any) => {
+  //   console.log(e);
+  //   // if (Array.isArray(e)) {
+  //   //   return e;
+  //   // }
+  //   return e && e.fileList
+  //     ? e.fileList
+  //         .map((file: any) => {
+  //           if (file.status === "done") {
+  //             return {
+  //               uid: file.uid,
+  //               name: file.name,
+  //               type: file.type,
+  //               size: file.size,
+  //               lastModified: file.lastModified,
+  //               lastModifiedDate: file.lastModifiedDate,
+  //               url: file.response.url, // Extract URL from response
+  //             };
+  //           }
+  //           return null; // Skip if not done
+  //         })
+  //         .filter(Boolean)
+  //     : [];
+  // };
   const images = Form.useWatch("images", formProps.form);
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
@@ -115,7 +139,7 @@ const ShowProduct = () => {
               justify="center"
               style={{
                 position: "relative",
-                height: "100%",
+                // height: "100%",
               }}
             >
               <Avatar
@@ -123,10 +147,10 @@ const ShowProduct = () => {
                 style={{
                   aspectRatio: 1,
                   objectFit: "contain",
-                  width: previewImageURL ? "200px" : "48px",
-                  height: previewImageURL ? "200px" : "48px",
-                  marginTop: previewImageURL ? undefined : "auto",
-                  transform: previewImageURL ? undefined : "translateY(50%)",
+                  width: "200px",
+                  height: "200px",
+                  marginTop: "auto",
+                  // transform: "translateY(25%)",
                 }}
                 src={previewImageURL || "/images/product-default-img.png"}
                 alt="Product Image"

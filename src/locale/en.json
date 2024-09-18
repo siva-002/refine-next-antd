@@ -55,5 +55,10 @@
       },
       "isActive": { "placeholder": "Select status" }
     }
+  },
+  "stores": {
+    "fields": {
+      "id": "ID"
+    }
   }
 }
