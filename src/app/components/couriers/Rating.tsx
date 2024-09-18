@@ -1,14 +1,21 @@
 import { ICourier } from "@app/interfaces";
-import { useList, useShow } from "@refinedev/core";
+import { useList } from "@refinedev/core";
 import React from "react";
-
+import type { BaseRecord } from "@refinedev/core";
 const Rating = ({ record }: { record: ICourier }) => {
-  const { query } = useShow({
+  const { data } = useList({
     resource: "reviews",
-    id: record?.id,
+    filters: [
+      {
+        field: "id",
+        operator: "eq",
+        value: record?.id,
+      },
+    ],
   });
-  console.log(query.data?.data);
-  return <div>{query.data?.data?.star}</div>;
+  console.log(data?.data);
+  //   return <div>{data?.data?.data?.star}</div>;
+  return <h3></h3>;
 };
 
 export default Rating;
