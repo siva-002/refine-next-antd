@@ -5,6 +5,7 @@ import type { BaseRecord } from "@refinedev/core";
 import { StarFilled, StarOutlined } from "@ant-design/icons";
 import { Flex } from "antd";
 import { RiStarFill, RiStarLine } from "react-icons/ri";
+import { PiStarThin, PiStarFill } from "react-icons/pi";
 const Rating = ({ record }: { record: ICourier }) => {
   const { data } = useList({
     resource: "reviews",
@@ -31,11 +32,11 @@ const Rating = ({ record }: { record: ICourier }) => {
   let stars = [];
   for (let i = 0; i < review; i++) {
     stars.push(
-      <RiStarFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
+      <PiStarFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
     );
   }
   for (let i = review; i < 5; i++) {
-    stars.push(<RiStarLine style={{ fontSize: "1.2rem" }} />);
+    stars.push(<PiStarThin style={{ fontSize: "1.2rem" }} />);
   }
 
   //   return <div>{data?.data?.data?.star}</div>;
