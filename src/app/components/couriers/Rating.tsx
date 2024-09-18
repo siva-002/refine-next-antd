@@ -7,7 +7,7 @@ const Rating = ({ record }: { record: ICourier }) => {
     resource: "reviews",
     filters: [
       {
-        field: "courier.id",
+        field: "order.courier.id",
         operator: "eq",
         value: record?.id,
       },
