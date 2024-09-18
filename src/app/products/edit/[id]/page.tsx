@@ -2,7 +2,13 @@
 
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { ICategory, IProduct } from "@app/interfaces";
-import { Edit, NumberField, SaveButton, useForm } from "@refinedev/antd";
+import {
+  Edit,
+  NumberField,
+  SaveButton,
+  getValueFromEvent,
+  useForm,
+} from "@refinedev/antd";
 import {
   HttpError,
   useApiUrl,
@@ -25,11 +31,11 @@ import {
 } from "antd";
 import React, { useState } from "react";
 
-interface refineCoreProps {
-  resource: string;
-  action: string;
-  id: any;
-}
+// interface refineCoreProps {
+//   resource: string;
+//   action: string;
+//   id: any;
+// }
 
 const ShowProduct = () => {
   const apiUrl = useApiUrl();
@@ -50,34 +56,29 @@ const ShowProduct = () => {
     resource: "categories",
   });
 
-  console.log("casdffsds", categorySelectProps);
+  // const [fileList, setFileList] = useState([]);
 
-  console.log("fffff", formProps);
-  console.log("sssss", saveButtonProps);
+  // const handleChange = (info: any) => {
+  //   setFileList(info.fileList);
 
-  const [fileList, setFileList] = useState([]);
+  //   if (info.file.status === "done") {
+  //     message.success(`${info.file.name} file uploaded successfully`);
+  //   } else if (info.file.status === "error") {
+  //     message.error(`${info.file.name} file upload failed.`);
+  //   }
+  // };
 
-  const handleChange = (info: any) => {
-    setFileList(info.fileList);
-
-    if (info.file.status === "done") {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  };
-
-  const uploadButton =
-    fileList.length > 0 ? (
-      <div>
-        <div style={{ marginTop: 8 }}>Change</div>
-      </div>
-    ) : (
-      <div>
-        <PlusOutlined />
-        <div style={{ marginTop: 8 }}>Upload</div>
-      </div>
-    );
+  // const uploadButton =
+  //   fileList.length > 0 ? (
+  //     <div>
+  //       <div style={{ marginTop: 8 }}>Change</div>
+  //     </div>
+  //   ) : (
+  //     <div>
+  //       <PlusOutlined />
+  //       <div style={{ marginTop: 8 }}>Upload</div>
+  //     </div>
+  //   );
 
   const images = Form.useWatch("images", formProps.form);
   const image = images?.[0] || null;
@@ -89,10 +90,18 @@ const ShowProduct = () => {
         <Form.Item
           label={t("products.fields.images.label")}
           name="images"
-          className="w-100"
-          rules={[{ required: true }]}
+          valuePropName="fileList"
+          getValueFromEvent={getValueFromEvent}
+          style={{
+            margin: 0,
+          }}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
         >
-          <Upload
+          <Upload.Dragger
             name="file"
             action={`${apiUrl}/media/upload`}
             maxCount={1}
@@ -114,8 +123,8 @@ const ShowProduct = () => {
                 style={{
                   aspectRatio: 1,
                   objectFit: "contain",
-                  width: "200px",
-                  height: "200px",
+                  width: previewImageURL ? "200px" : "48px",
+                  height: previewImageURL ? "200px" : "48px",
                   marginTop: previewImageURL ? undefined : "auto",
                   transform: previewImageURL ? undefined : "translateY(50%)",
                 }}
@@ -126,7 +135,7 @@ const ShowProduct = () => {
                 icon={<UploadOutlined />}
                 style={{
                   marginTop: "auto",
-                  marginBottom: "5px",
+                  marginBottom: "16px",
                   backgroundColor: token.colorBgContainer,
                   ...(!!previewImageURL && {
                     position: "absolute",
@@ -137,7 +146,7 @@ const ShowProduct = () => {
                 {t("products.fields.images.description")}
               </Button>
             </Flex>
-          </Upload>
+          </Upload.Dragger>
         </Form.Item>
         <Form.Item
           label={t("products.fields.name")}
