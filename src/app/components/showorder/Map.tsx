@@ -133,7 +133,7 @@ const MapComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
             item={[
               data?.courier?.store?.address?.text,
               data?.store?.address?.text,
-              data?.store?.address?.text,
+              data?.adress?.text,
             ]}
             waypoints={[
               [CourierPosition[0], CourierPosition[1]],
