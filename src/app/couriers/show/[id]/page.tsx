@@ -119,10 +119,11 @@ export default function ShowCourier() {
               Couriers
             </Button>
           </div>
-          <Flex vertical={false} gap={"10px"}>
+          <Flex vertical={false} gap={"10px"} style={{ marginTop: "20px" }}>
             <Avatar
               src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
               size={"large"}
+              style={{ width: "200px" }}
             />
             <Typography.Title level={2}>
               {query?.data?.data?.name}
