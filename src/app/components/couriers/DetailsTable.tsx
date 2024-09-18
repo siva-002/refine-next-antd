@@ -33,6 +33,13 @@ const DetailsTable = ({ id }: any) => {
     },
   ];
   const tabledata: any[] = [];
+  data?.data?.map((item) => {
+    tabledata.push({
+      review: item?.comment[0],
+      rating: item?.star,
+      order: `# ${item?.order?.id}`,
+    });
+  });
   return <Table columns={columns} dataSource={tabledata}></Table>;
 };
 

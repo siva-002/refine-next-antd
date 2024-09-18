@@ -29,7 +29,7 @@ import DetailsTable from "@app/components/couriers/DetailsTable";
 export default function ShowCourier() {
   const { query } = useShow();
   const courier = query?.data?.data;
-  console.log(courier);
+  // console.log(courier);
   const userData = [
     {
       label: "Status",
