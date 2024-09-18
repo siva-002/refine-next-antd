@@ -24,6 +24,7 @@ import {
 import CourierStatus from "@app/components/couriers/CourierStatus";
 import { Show, Title } from "@refinedev/antd";
 import { RiMotorbikeLine } from "react-icons/ri";
+import DetailsTable from "@app/components/couriers/DetailsTable";
 
 export default function ShowCourier() {
   const { query } = useShow();
@@ -72,6 +73,7 @@ export default function ShowCourier() {
     },
   ];
   const { token } = theme.useToken();
+
   return (
     // <Show
     //   headerButtons={null}
@@ -117,11 +119,7 @@ export default function ShowCourier() {
             </List.Item>
           )}
         />
-        <Table>
-          <Table.Column title={"Reviews"} />
-          <Table.Column title={"Rating"} />
-          <Table.Column title={"Order"} />
-        </Table>
+        <DetailsTable id={query?.data?.data?.id} />
       </Flex>
     </Card>
     // </Show>
