@@ -4,6 +4,7 @@ import React from "react";
 import type { BaseRecord } from "@refinedev/core";
 import { StarFilled, StarOutlined } from "@ant-design/icons";
 import { Flex } from "antd";
+import { RiStarFill, RiStarLine } from "react-icons/ri";
 const Rating = ({ record }: { record: ICourier }) => {
   const { data } = useList({
     resource: "reviews",
@@ -27,18 +28,14 @@ const Rating = ({ record }: { record: ICourier }) => {
     currentStar > 0
       ? Math.floor(((currentStar / totalStar) * 100) / 20)
       : currentStar;
-
-  //   console.log("total", totalStar);
-  //   console.log("current", currentStar);
-  //   console.log("review", review);
   let stars = [];
   for (let i = 0; i < review; i++) {
     stars.push(
-      <StarFilled style={{ color: "goldenrod", fontSize: "1.2rem" }} />
+      <RiStarFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
     );
   }
   for (let i = review; i < 5; i++) {
-    stars.push(<StarOutlined style={{ fontSize: "1.2rem" }} />);
+    stars.push(<RiStarLine style={{ fontSize: "1.2rem" }} />);
   }
 
   //   return <div>{data?.data?.data?.star}</div>;
