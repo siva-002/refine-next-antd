@@ -1,6 +1,15 @@
 "use client";
 import { useShow } from "@refinedev/core";
-import { Avatar, Flex, List, Space, Typography, theme } from "antd";
+import {
+  Avatar,
+  Card,
+  Flex,
+  List,
+  Space,
+  Table,
+  Typography,
+  theme,
+} from "antd";
 import React from "react";
 // import CourierStatus fro../../../components/couriers/CourierStatustus";
 import {
@@ -64,48 +73,57 @@ export default function ShowCourier() {
   ];
   const { token } = theme.useToken();
   return (
-    <Show
-      headerButtons={null}
-      title=""
-      breadcrumb={null}
-      goBack={null}
-      canEdit={false}
-      canDelete={false}
-    >
+    // <Show
+    //   headerButtons={null}
+    //   title=""
+    //   breadcrumb={null}
+    //   goBack={null}
+    //   canEdit={false}
+    //   canDelete={false}
+    // >
+    <Card>
       <Flex vertical={false} gap={"10px"}>
         <Avatar
           src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
           size={"large"}
         />
-
         <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
       </Flex>
-
-      <List
-        bordered
-        dataSource={userData}
-        renderItem={(item) => (
-          <List.Item>
-            <Flex gap={8}>
-              <Space
-                style={{
-                  width: "120px",
-                }}
-              >
-                <div
+      <Flex vertical={false}>
+        <List
+          bordered
+          dataSource={userData}
+          renderItem={(item) => (
+            <List.Item>
+              <Flex gap={8}>
+                <Space
                   style={{
-                    color: token.colorPrimary,
+                    width: "120px",
                   }}
                 >
-                  {item.icon}
-                </div>
-                <Typography.Text type="secondary">{item.label}</Typography.Text>
-              </Space>
-              <Typography.Text>{item.value}</Typography.Text>
-            </Flex>
-          </List.Item>
-        )}
-      />
-    </Show>
+                  <div
+                    style={{
+                      color: token.colorPrimary,
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <Typography.Text type="secondary">
+                    {item.label}
+                  </Typography.Text>
+                </Space>
+                <Typography.Text>{item.value}</Typography.Text>
+              </Flex>
+            </List.Item>
+          )}
+        />
+        <Table>
+          <Table.Column title={"Reviews"} />
+          <Table.Column title={"Rating"} />
+          <Table.Column title={"Order"} />
+        </Table>
+      </Flex>
+    </Card>
+    // </Show>
   );
 }
