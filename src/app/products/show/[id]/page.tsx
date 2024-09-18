@@ -23,6 +23,7 @@ const ShowProduct = () => {
   const screen = Grid.useBreakpoint();
   // console.log(screen);
   const { query } = useShow();
+  console.log(query);
   const product: any = query?.data?.data;
   const { token } = theme.useToken();
 

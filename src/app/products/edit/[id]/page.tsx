@@ -22,22 +22,46 @@ import {
   Flex,
   Form,
   Input,
+  Upload,
   InputNumber,
   Segmented,
   Select,
-  Upload,
   message,
   theme,
 } from "antd";
 import React, { useState } from "react";
+
+import type { GetProp, UploadFile, UploadProps } from "antd";
 
 // interface refineCoreProps {
 //   resource: string;
 //   action: string;
 //   id: any;
 // }
+type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
 const ShowProduct = () => {
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+  const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+
+  const onPreview = async (file: UploadFile) => {
+    let src = file.url as string;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj as FileType);
+        reader.onload = () => resolve(reader.result as string);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow?.document.write(image.outerHTML);
+  };
+
   const apiUrl = useApiUrl();
   const { query: data } = useShow();
 
@@ -105,6 +129,7 @@ const ShowProduct = () => {
   //     : [];
   // };
   const images = Form.useWatch("images", formProps.form);
+  // console.log(images)
   // const image = images?.[0]?.file?.response || null;
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
@@ -115,7 +140,7 @@ const ShowProduct = () => {
         <Form.Item
           label={t("products.fields.images.label")}
           name="images"
-          valuePropName="fileList"
+          // valuePropName="fileList"
           getValueFromEvent={getValueFromEvent}
           style={{
             margin: 0,
@@ -126,15 +151,16 @@ const ShowProduct = () => {
             },
           ]}
         >
-          <Upload.Dragger
+          {/* <Upload
             name="file"
             action={`${apiUrl}/media/upload`}
             maxCount={1}
             accept=".png,.jpg,.jpeg"
             // className={styles.uploadDragger}
             showUploadList={false}
+            listType="picture-card"
           >
-            <Flex
+            {/* <Flex
               vertical
               align="center"
               justify="center"
@@ -169,9 +195,55 @@ const ShowProduct = () => {
                 }}
               >
                 {t("products.fields.images.description")}
-              </Button> */}
+              </Button> 
+            </Flex> 
+            + Upload
+          </Upload> */}
+          <Upload
+            action={`${apiUrl}/media/upload`}
+            // listType="picture-card"
+            // onChange={onChange}
+            // onPreview={onPreview}
+            maxCount={1}
+          >
+            <Flex
+              vertical
+              align="center"
+              justify="center"
+              style={{
+                position: "relative",
+                height: "100%",
+              }}
+            >
+              <Avatar
+                shape="square"
+                style={{
+                  aspectRatio: 1,
+                  objectFit: "contain",
+                  width: "200px",
+                  height: "200px",
+                  marginTop: "auto",
+                  // transform: "translateY(25%)",
+                }}
+                src={previewImageURL || "/images/product-default-img.png"}
+                alt="Product Image"
+              />
+              <Button
+                icon={<UploadOutlined />}
+                style={{
+                  marginTop: "auto",
+                  marginBottom: "16px",
+                  backgroundColor: token.colorBgContainer,
+                  ...(!!previewImageURL && {
+                    position: "absolute",
+                    bottom: 0,
+                  }),
+                }}
+              >
+                {t("products.fields.images.description")}
+              </Button>
             </Flex>
-          </Upload.Dragger>
+          </Upload>
         </Form.Item>
         <Form.Item
           label={t("products.fields.name")}
