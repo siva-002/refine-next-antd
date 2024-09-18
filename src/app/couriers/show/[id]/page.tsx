@@ -104,13 +104,21 @@ export default function ShowCourier() {
         </div>
       ) : (
         <>
-          <Button
-            icon={<LeftOutlined />}
-            onClick={() => list("couriers")}
-            style={{ marginBottom: "20px" }}
+          <div
+            style={{
+              borderBottom: "1px solid lightgray",
+            }}
           >
-            Couriers
-          </Button>
+            <Button
+              icon={<LeftOutlined />}
+              onClick={() => list("couriers")}
+              style={{
+                marginBottom: "20px",
+              }}
+            >
+              Couriers
+            </Button>
+          </div>
           <Flex vertical={false} gap={"10px"}>
             <Avatar
               src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
