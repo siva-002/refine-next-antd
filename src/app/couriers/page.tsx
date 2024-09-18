@@ -120,7 +120,7 @@ export default function ShowCouriers() {
             <ShowButton
               icon={<EyeOutlined />}
               hideText
-              recordItemId={record.id}
+              recordItemId={record?.id}
             />
           )}
         />

@@ -3,7 +3,7 @@ import { useShow } from "@refinedev/core";
 import { Avatar, Flex, List, Space, Typography, theme } from "antd";
 import React from "react";
 // import CourierStatus fro../../../components/couriers/CourierStatustus";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { ArrowRightOutlined, MobileOutlined } from "@ant-design/icons";
 import CourierStatus from "@app/components/couriers/CourierStatus";
 
 export default function ShowCourier() {
@@ -15,6 +15,11 @@ export default function ShowCourier() {
       icon: <ArrowRightOutlined />,
       value: <CourierStatus status={courier?.status} />,
     },
+    {
+      label: "Gsm",
+      icon: <MobileOutlined />,
+      value: courier?.gsm,
+    },
   ];
   const { token } = theme.useToken();
   return (
@@ -25,8 +30,6 @@ export default function ShowCourier() {
       </Flex>
 
       <List
-        header={<div>Header</div>}
-        footer={<div>Footer</div>}
         bordered
         dataSource={userData}
         renderItem={(item) => (
