@@ -1,3 +1,4 @@
+"use client";
 import { useShow } from "@refinedev/core";
 import { Avatar, Flex, List, Space, Typography, theme } from "antd";
 import React from "react";
