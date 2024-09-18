@@ -5,7 +5,7 @@ import type { BaseRecord } from "@refinedev/core";
 import { StarFilled, StarOutlined } from "@ant-design/icons";
 import { Flex } from "antd";
 import { RiStarFill, RiStarLine } from "react-icons/ri";
-import { PiStarThin, PiStarFill } from "react-icons/pi";
+import { PiStarThin, PiStarFill, PiStarHalfFill } from "react-icons/pi";
 const Rating = ({ record }: { record: ICourier }) => {
   const { data } = useList({
     resource: "reviews",
@@ -20,22 +20,25 @@ const Rating = ({ record }: { record: ICourier }) => {
   //   console.log(data?.data);
 
   const totalStar = data?.data ? data?.data?.length * 5 : 5;
-  let currentStar = 0;
-  data?.data?.map((item) => {
-    currentStar += item.star;
-  });
+  const currentStar =
+    data?.data?.reduce((acc, item) => acc + item.star, 0) || 0;
 
-  const review =
-    currentStar > 0
-      ? Math.floor(((currentStar / totalStar) * 100) / 20)
-      : currentStar;
+  const review = currentStar > 0 ? (currentStar / totalStar) * 5 : currentStar;
+
+  const decimal = review.toFixed(1).toString()[2];
+  const roundedValue = Math.floor(review);
   let stars = [];
-  for (let i = 0; i < review; i++) {
+  for (let i = 0; i < roundedValue; i++) {
     stars.push(
       <PiStarFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
     );
   }
-  for (let i = review; i < 5; i++) {
+  if (Number(decimal) >= 5) {
+    stars.push(
+      <PiStarHalfFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
+    );
+  }
+  for (let i = roundedValue; i < 5; i++) {
     stars.push(<PiStarThin style={{ fontSize: "1.2rem" }} />);
   }
 
