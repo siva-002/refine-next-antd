@@ -32,15 +32,15 @@ const Rating = ({ record }: { record: ICourier }) => {
   //   console.log("current", currentStar);
   //   console.log("review", review);
   let stars = [];
-  if (review == 0) {
-    for (let i = 0; i < review; i++) {
-      stars.push(<StarOutlined />);
-    }
-  } else {
-    for (let i = 0; i < review; i++) {
-      stars.push(<StarFilled color="gold" />);
-    }
+  for (let i = review; i < review; i++) {
+    stars.push(
+      <StarFilled style={{ color: "goldenrod", fontSize: "1.2rem" }} />
+    );
   }
+  for (let i = review; i < 5; i++) {
+    stars.push(<StarOutlined style={{ fontSize: "1.2rem" }} />);
+  }
+
   //   return <div>{data?.data?.data?.star}</div>;
   return <Flex gap={"5px"}>{stars.map((item) => item)}</Flex>;
 };
