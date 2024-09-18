@@ -32,7 +32,7 @@ const Rating = ({ record }: { record: ICourier }) => {
   //   console.log("current", currentStar);
   //   console.log("review", review);
   let stars = [];
-  for (let i = review; i < review; i++) {
+  for (let i = 0; i < review; i++) {
     stars.push(
       <StarFilled style={{ color: "goldenrod", fontSize: "1.2rem" }} />
     );
