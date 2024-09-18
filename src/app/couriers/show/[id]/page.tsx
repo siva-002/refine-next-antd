@@ -123,50 +123,50 @@ export default function ShowCourier() {
             <Avatar
               src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
               size={"large"}
-              style={{ width: "200px" }}
+              style={{ width: "150px", height: "150px" }}
             />
             <Typography.Title level={2}>
               {query?.data?.data?.name}
             </Typography.Title>
           </Flex>
-          <Card>
-            <Row>
-              <Flex vertical={false} wrap gap={"10px"}>
-                <Col xs={24} sm={12} md={10}>
-                  <List
-                    bordered
-                    dataSource={userData}
-                    renderItem={(item) => (
-                      <List.Item>
-                        <Flex gap={8}>
-                          <Space
+          {/* <Card> */}
+          <Row>
+            <Flex vertical={false} wrap gap={"10px"}>
+              <Col xs={24} sm={12} md={10}>
+                <List
+                  bordered
+                  dataSource={userData}
+                  renderItem={(item) => (
+                    <List.Item>
+                      <Flex gap={8}>
+                        <Space
+                          style={{
+                            width: "120px",
+                          }}
+                        >
+                          <div
                             style={{
-                              width: "120px",
+                              color: token.colorPrimary,
                             }}
                           >
-                            <div
-                              style={{
-                                color: token.colorPrimary,
-                              }}
-                            >
-                              {item.icon}
-                            </div>
-                            <Typography.Text type="secondary">
-                              {item.label}
-                            </Typography.Text>
-                          </Space>
-                          <Typography.Text>{item.value}</Typography.Text>
-                        </Flex>
-                      </List.Item>
-                    )}
-                  />
-                </Col>
-                <Col xs={24} sm={12} md={12}>
-                  <DetailsTable id={query?.data?.data?.id} />
-                </Col>
-              </Flex>
-            </Row>
-          </Card>
+                            {item.icon}
+                          </div>
+                          <Typography.Text type="secondary">
+                            {item.label}
+                          </Typography.Text>
+                        </Space>
+                        <Typography.Text>{item.value}</Typography.Text>
+                      </Flex>
+                    </List.Item>
+                  )}
+                />
+              </Col>
+              <Col xs={24} sm={12} md={12}>
+                <DetailsTable id={query?.data?.data?.id} />
+              </Col>
+            </Flex>
+          </Row>
+          {/* </Card> */}
         </>
       )}
     </>
