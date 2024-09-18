@@ -136,8 +136,13 @@ const ProductListTable = () => {
             return (
               <Avatar
                 shape="square"
-                src={images?.[0]?.thumbnailUrl || images?.[0]?.url}
-                alt={images?.[0].name}
+                src={
+                  images?.[0]?.thumbnailUrl ||
+                  images?.[0]?.url ||
+                  images?.file?.response?.url
+                }
+                // alt={images?.[0].name || images?.file?.name}
+                alt={"asdf"}
               />
             );
           }}

@@ -50,10 +50,10 @@ const ShowProduct = () => {
     resource: "categories",
   });
 
-  console.log("casdffsds", categorySelectProps);
+  // console.log("casdffsds", categorySelectProps);
 
-  console.log("fffff", formProps);
-  console.log("sssss", saveButtonProps);
+  // console.log("fffff", formProps);
+  // console.log("sssss", saveButtonProps);
 
   const [fileList, setFileList] = useState([]);
 
@@ -89,16 +89,23 @@ const ShowProduct = () => {
         <Form.Item
           label={t("products.fields.images.label")}
           name="images"
-          className="w-100"
+          // className="w-100"
           rules={[{ required: true }]}
         >
           <Upload
-            name="file"
+            name="images"
             action={`${apiUrl}/media/upload`}
             maxCount={1}
             accept=".png,.jpg,.jpeg"
             // className={styles.uploadDragger}
             showUploadList={false}
+            fileList={images.map((image) => ({
+              uid: image.uid,
+              name: image.name,
+              status: image.status,
+              response: { url: image.url }, // Ensure response contains the URL for Ant Design Upload
+              url: image.url, // Provide url for the upload component if needed
+            }))}
           >
             <Flex
               vertical
@@ -114,12 +121,15 @@ const ShowProduct = () => {
                 style={{
                   aspectRatio: 1,
                   objectFit: "contain",
-                  width: "200px",
-                  height: "200px",
+                  width: previewImageURL ? "100%" : "200px",
+                  height: previewImageURL ? "100%" : "200px",
                   marginTop: previewImageURL ? undefined : "auto",
-                  transform: previewImageURL ? undefined : "translateY(50%)",
+                  transform: previewImageURL ? undefined : "",
                 }}
-                src={previewImageURL || "/images/product-default-img.png"}
+                src={
+                  previewImageURL ||
+                  "https://img.icons8.com/?size=100&id=3uVK4oBG53ja&format=png&color=000000"
+                }
                 alt="Product Image"
               />
               <Button
