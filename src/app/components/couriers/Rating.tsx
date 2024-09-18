@@ -33,12 +33,14 @@ const Rating = ({ record }: { record: ICourier }) => {
       <PiStarFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
     );
   }
+  let remainingstar = roundedValue;
   if (Number(decimal) >= 5) {
+    remainingstar -= 1;
     stars.push(
       <PiStarHalfFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
     );
   }
-  for (let i = roundedValue; i < 5; i++) {
+  for (let i = remainingstar; i < 5; i++) {
     stars.push(<PiStarThin style={{ fontSize: "1.2rem" }} />);
   }
 

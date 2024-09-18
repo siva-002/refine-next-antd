@@ -9,6 +9,7 @@ import {
   List,
   Row,
   Space,
+  Spin,
   Table,
   Typography,
   theme,
@@ -32,6 +33,7 @@ import DetailsTable from "@app/components/couriers/DetailsTable";
 
 export default function ShowCourier() {
   const { query } = useShow();
+  const { isLoading } = query;
   const courier = query?.data?.data;
   // console.log(courier);
   const userData = [
@@ -89,58 +91,75 @@ export default function ShowCourier() {
     //   canDelete={false}
     // >
     <>
-      <Button
-        icon={<LeftOutlined />}
-        onClick={() => list("couriers")}
-        style={{ marginBottom: "20px" }}
-      >
-        Couriers
-      </Button>
-      <Flex vertical={false} gap={"10px"}>
-        <Avatar
-          src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
-          size={"large"}
-        />
-        <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
-      </Flex>
-      <Card>
-        <Row>
-          <Flex vertical={false} wrap gap={"10px"}>
-            <Col xs={24} sm={12} md={12}>
-              <List
-                bordered
-                dataSource={userData}
-                renderItem={(item) => (
-                  <List.Item>
-                    <Flex gap={8}>
-                      <Space
-                        style={{
-                          width: "120px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            color: token.colorPrimary,
-                          }}
-                        >
-                          {item.icon}
-                        </div>
-                        <Typography.Text type="secondary">
-                          {item.label}
-                        </Typography.Text>
-                      </Space>
-                      <Typography.Text>{item.value}</Typography.Text>
-                    </Flex>
-                  </List.Item>
-                )}
-              />
-            </Col>
-            <Col xs={24} sm={12} md={12}>
-              <DetailsTable id={query?.data?.data?.id} />
-            </Col>
+      {isLoading ? (
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+          }}
+        >
+          <Spin />
+        </div>
+      ) : (
+        <>
+          <Button
+            icon={<LeftOutlined />}
+            onClick={() => list("couriers")}
+            style={{ marginBottom: "20px" }}
+          >
+            Couriers
+          </Button>
+          <Flex vertical={false} gap={"10px"}>
+            <Avatar
+              src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+              size={"large"}
+            />
+            <Typography.Title level={2}>
+              {query?.data?.data?.name}
+            </Typography.Title>
           </Flex>
-        </Row>
-      </Card>
+          <Card>
+            <Row>
+              <Flex vertical={false} wrap gap={"10px"}>
+                <Col xs={24} sm={12} md={10}>
+                  <List
+                    bordered
+                    dataSource={userData}
+                    renderItem={(item) => (
+                      <List.Item>
+                        <Flex gap={8}>
+                          <Space
+                            style={{
+                              width: "120px",
+                            }}
+                          >
+                            <div
+                              style={{
+                                color: token.colorPrimary,
+                              }}
+                            >
+                              {item.icon}
+                            </div>
+                            <Typography.Text type="secondary">
+                              {item.label}
+                            </Typography.Text>
+                          </Space>
+                          <Typography.Text>{item.value}</Typography.Text>
+                        </Flex>
+                      </List.Item>
+                    )}
+                  />
+                </Col>
+                <Col xs={24} sm={12} md={12}>
+                  <DetailsTable id={query?.data?.data?.id} />
+                </Col>
+              </Flex>
+            </Row>
+          </Card>
+        </>
+      )}
     </>
     // </Show>
   );
