@@ -1,6 +1,7 @@
 import { useList } from "@refinedev/core";
 import { Table } from "antd";
 import React from "react";
+import Star from "./Star";
 
 const DetailsTable = ({ id }: any) => {
   const { data } = useList({
@@ -41,11 +42,13 @@ const DetailsTable = ({ id }: any) => {
     tabledata.push({
       key: item?.order?.id,
       review: item?.comment[0],
-      rating: item?.star,
+      rating: <Star value={item?.star} />,
       order: `# ${item?.order?.id}`,
     });
   });
-  return <Table columns={columns} dataSource={tabledata}></Table>;
+  return (
+    <Table columns={columns} dataSource={tabledata} pagination={false}></Table>
+  );
 };
 
 export default DetailsTable;
