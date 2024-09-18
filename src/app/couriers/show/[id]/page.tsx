@@ -91,7 +91,7 @@ export default function ShowCourier() {
         />
         <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
       </Flex>
-      <div className="row">
+      <div className="row d-flex flex-wrap">
         <div className="col-md-4">
           <List
             bordered
