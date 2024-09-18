@@ -24,21 +24,22 @@ const DetailsTable = ({ id }: any) => {
     {
       title: "Rating",
       dataIndex: "rating",
-      key: "review",
+      key: "rating",
     },
     {
       title: "Order",
       dataindex: "order",
-      key: "review",
+      key: "order",
     },
   ];
   const tabledata: any[] = [];
   data?.data?.map((item) => {
-    console.log("item", item);
-    console.log("comment", item.comment);
-    console.log("star", item.star);
-    console.log("oredrid", item.order.id);
+    // console.log("item", item);
+    // console.log("comment", item.comment);
+    // console.log("star", item.star);
+    // console.log("oredrid", item.order.id);
     tabledata.push({
+      key: item?.order?.id,
       review: item?.comment[0],
       rating: item?.star,
       order: `# ${item?.order?.id}`,
