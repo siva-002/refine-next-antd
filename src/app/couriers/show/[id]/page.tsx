@@ -5,6 +5,7 @@ import React from "react";
 // import CourierStatus fro../../../components/couriers/CourierStatustus";
 import { ArrowRightOutlined, MobileOutlined } from "@ant-design/icons";
 import CourierStatus from "@app/components/couriers/CourierStatus";
+import { Show, Title } from "@refinedev/antd";
 
 export default function ShowCourier() {
   const { query } = useShow();
@@ -24,10 +25,14 @@ export default function ShowCourier() {
   ];
   const { token } = theme.useToken();
   return (
-    <>
-      <Flex vertical={false}>
-        <Avatar src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" />
-        <Typography>{query?.data?.data?.name}</Typography>
+    <Show>
+      <Flex vertical={false} gap={"10px"}>
+        <Avatar
+          src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+          size={"large"}
+        />
+
+        <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
       </Flex>
 
       <List
@@ -55,6 +60,6 @@ export default function ShowCourier() {
           </List.Item>
         )}
       />
-    </>
+    </Show>
   );
 }
