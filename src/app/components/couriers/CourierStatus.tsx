@@ -14,7 +14,7 @@ const CourierStatus = ({ status }: { status: ICourierStatus }) => {
     case 3:
       return (
         <Tag
-          icon={<RiMotorbikeLine style={{ marginRight: "2px" }} />}
+          icon={<RiMotorbikeLine style={{ marginRight: "5px" }} />}
           color="blue"
         >
           On delivery

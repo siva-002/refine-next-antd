@@ -1,6 +1,8 @@
 "use client";
 import { EyeOutlined } from "@ant-design/icons";
 import CourierStatus from "@app/components/couriers/CourierStatus";
+import Rating from "@app/components/couriers/Rating";
+import { ICourier } from "@app/interfaces";
 import { List, ShowButton, useTable } from "@refinedev/antd";
 import { Avatar, Table } from "antd";
 import React from "react";
@@ -32,7 +34,13 @@ export default function ShowCouriers() {
           dataIndex={["store", "title"]}
           title={"Store"}
         />
-        <Table.Column dataIndex={""} title={"Rating"} />
+        <Table.Column<ICourier>
+          dataIndex={""}
+          title={"Rating"}
+          render={(_, record) => {
+            return <Rating record={record} />;
+          }}
+        />
         <Table.Column
           dataIndex={"status"}
           title={"Status"}
