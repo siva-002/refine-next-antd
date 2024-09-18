@@ -3,7 +3,6 @@ import { useList } from "@refinedev/core";
 import React from "react";
 import type { BaseRecord } from "@refinedev/core";
 import { StarFilled, StarOutlined } from "@ant-design/icons";
-import { color } from "framer-motion";
 import { Flex } from "antd";
 const Rating = ({ record }: { record: ICourier }) => {
   const { data } = useList({
@@ -33,12 +32,13 @@ const Rating = ({ record }: { record: ICourier }) => {
   //   console.log("current", currentStar);
   //   console.log("review", review);
   let stars = [];
-  for (let i = 0; i < review; i++) {
-    stars.push(<StarFilled color="gold" />);
-  }
   if (review == 0) {
     for (let i = 0; i < review; i++) {
       stars.push(<StarOutlined />);
+    }
+  } else {
+    for (let i = 0; i < review; i++) {
+      stars.push(<StarFilled color="gold" />);
     }
   }
   //   return <div>{data?.data?.data?.star}</div>;
