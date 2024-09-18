@@ -21,13 +21,14 @@ const Rating = ({ record }: { record: ICourier }) => {
     currentStar += item.star;
   });
 
-  const review = currentStar > 0 ? totalStar / currentStar : totalStar;
+  const review =
+    currentStar > 0 ? ((currentStar / totalStar) * 100) / 20 : currentStar;
 
   console.log("total", totalStar);
   console.log("current", currentStar);
   console.log("review", review);
   //   return <div>{data?.data?.data?.star}</div>;
-  return <h3></h3>;
+  return <h3> </h3>;
 };
 
 export default Rating;
