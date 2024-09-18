@@ -123,14 +123,14 @@ export default function ShowCourier() {
             <Avatar
               src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
               size={"large"}
-              style={{ width: "150px", height: "150px" }}
+              style={{ width: "80px", height: "80px" }}
             />
-            <Typography.Title level={2}>
+            <Typography.Title level={2} style={{ marginTop: "20px" }}>
               {query?.data?.data?.name}
             </Typography.Title>
           </Flex>
           {/* <Card> */}
-          <Row>
+          <Row style={{ marginTop: "20px" }}>
             <Flex vertical={false} wrap gap={"10px"}>
               <Col xs={24} sm={12} md={10}>
                 <List
