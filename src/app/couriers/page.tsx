@@ -17,7 +17,7 @@ export default function ShowCouriers() {
           dataIndex={"avatar"}
           title={"Avatar"}
           render={(value) => (
-            <Avatar
+            <Avatar //use value[0].url as the src
               src={
                 "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
               }
@@ -43,8 +43,9 @@ export default function ShowCouriers() {
         <Table.Column
           dataIndex={""}
           title={"Actions"}
+          fixed="right"
           render={() => {
-            return <ShowButton icon={<EyeOutlined />} />;
+            return <ShowButton icon={<EyeOutlined />} hideText />;
           }}
         />
       </Table>
