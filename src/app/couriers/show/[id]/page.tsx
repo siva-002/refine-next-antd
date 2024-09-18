@@ -4,8 +4,10 @@ import {
   Avatar,
   Button,
   Card,
+  Col,
   Flex,
   List,
+  Row,
   Space,
   Table,
   Typography,
@@ -90,7 +92,7 @@ export default function ShowCourier() {
       <Button
         icon={<LeftOutlined />}
         onClick={() => list("couriers")}
-        style={{marginBottom:"20px"}}
+        style={{ marginBottom: "20px" }}
       >
         Couriers
       </Button>
@@ -102,38 +104,42 @@ export default function ShowCourier() {
         <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
       </Flex>
       <Card>
-        <Flex vertical={false} wrap gap={"10px"}>
-          <List
-            className="col-md-4"
-            bordered
-            dataSource={userData}
-            renderItem={(item) => (
-              <List.Item>
-                <Flex gap={8}>
-                  <Space
-                    style={{
-                      width: "120px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: token.colorPrimary,
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-                    <Typography.Text type="secondary">
-                      {item.label}
-                    </Typography.Text>
-                  </Space>
-                  <Typography.Text>{item.value}</Typography.Text>
-                </Flex>
-              </List.Item>
-            )}
-          />
-
-          <DetailsTable id={query?.data?.data?.id} className="col-md-6" />
-        </Flex>
+        <Row>
+          <Flex vertical={false} wrap gap={"10px"}>
+            <Col xs={24} sm={12} md={8}>
+              <List
+                bordered
+                dataSource={userData}
+                renderItem={(item) => (
+                  <List.Item>
+                    <Flex gap={8}>
+                      <Space
+                        style={{
+                          width: "120px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            color: token.colorPrimary,
+                          }}
+                        >
+                          {item.icon}
+                        </div>
+                        <Typography.Text type="secondary">
+                          {item.label}
+                        </Typography.Text>
+                      </Space>
+                      <Typography.Text>{item.value}</Typography.Text>
+                    </Flex>
+                  </List.Item>
+                )}
+              />
+            </Col>
+            <Col xs={24} sm={12} md={14}>
+              <DetailsTable id={query?.data?.data?.id} />
+            </Col>
+          </Flex>
+        </Row>
       </Card>
     </>
     // </Show>
