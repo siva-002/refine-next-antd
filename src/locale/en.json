@@ -27,7 +27,8 @@
     "fields": {
       "id": "ID",
       "images": {
-        "label": "Images"
+        "label": "Images",
+        "description": "Upload Image"
       },
       "name": "Name",
       "description": "Description",
@@ -53,6 +54,11 @@
         "placeholder": "Select Category"
       },
       "isActive": { "placeholder": "Select status" }
+    }
+  },
+  "stores": {
+    "fields": {
+      "id": "ID"
     }
   }
 }

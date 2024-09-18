@@ -17,6 +17,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "../../style/global.css";
 import {
+  ShopFilled,
+  ShopOutlined,
   ShoppingOutlined,
   TagsOutlined,
   UserOutlined,
@@ -84,6 +86,13 @@ export default function RootLayout({
                       list: "/products",
                       show: "/products/show/:id",
                       edit: "/products/edit/:id",
+                    },
+                    {
+                      name: "stores",
+                      list: "/stores",
+                      meta: {
+                        icon: <ShopOutlined />,
+                      },
                     },
                   ]}
                   options={{
