@@ -25,7 +25,7 @@ export default function ShowCourier() {
   ];
   const { token } = theme.useToken();
   return (
-    <Show>
+    <Show headerButtons={false} title="">
       <Flex vertical={false} gap={"10px"}>
         <Avatar
           src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
