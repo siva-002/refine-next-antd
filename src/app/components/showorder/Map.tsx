@@ -61,18 +61,20 @@ const RoutingMachine: React.FC<RoutingMachineProps> = ({ waypoints, item }) => {
       createMarker: () => null, // Hide default markers
     } as any).addTo(map);
 
-    L.marker(waypoints[0], {
-      icon: BikeIcon,
-      title: item[0],
-    }).addTo(map);
-    L.marker(waypoints[1], { icon: StoreIcon, title: item[1] }).addTo(map);
-    L.marker(waypoints[2], { icon: CustomerIcon, title: item[2] }).addTo(map);
+    // L.marker(waypoints[0], {
+    //   icon: BikeIcon,
+    //   title: item[0],
+    // }).addTo(map);
+    // L.marker(waypoints[1], { icon: StoreIcon, title: item[1] }).addTo(map);
+    // L.marker(waypoints[2], { icon: CustomerIcon, title: item[2] }).addTo(map);
 
-    item.map((msg, index) => {
-      const popup = L.popup() // Create a Leaflet popup
-        .setLatLng(waypoints[index]) // Set its position
-        .setContent(msg); // Set the message/content
-      map.openPopup(popup); // Open the popup on the map
+    const icons = [BikeIcon, StoreIcon, CustomerIcon];
+    waypoints?.map((position, index) => {
+      const marker = L.marker(position, {
+        icon: icons[index],
+        title: item[index],
+      }).addTo(map);
+      marker.bindPopup(item[index]);
     });
   }, [map, waypoints]);
 
