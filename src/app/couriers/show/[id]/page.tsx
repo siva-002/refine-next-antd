@@ -3,9 +3,18 @@ import { useShow } from "@refinedev/core";
 import { Avatar, Flex, List, Space, Typography, theme } from "antd";
 import React from "react";
 // import CourierStatus fro../../../components/couriers/CourierStatustus";
-import { ArrowRightOutlined, MobileOutlined } from "@ant-design/icons";
+import {
+  ArrowRightOutlined,
+  BankOutlined,
+  FileDoneOutlined,
+  HomeOutlined,
+  MailOutlined,
+  MobileOutlined,
+  ShopOutlined,
+} from "@ant-design/icons";
 import CourierStatus from "@app/components/couriers/CourierStatus";
 import { Show, Title } from "@refinedev/antd";
+import { RiMotorbikeLine } from "react-icons/ri";
 
 export default function ShowCourier() {
   const { query } = useShow();
@@ -21,6 +30,36 @@ export default function ShowCourier() {
       label: "Gsm",
       icon: <MobileOutlined />,
       value: courier?.gsm,
+    },
+    {
+      label: "Email",
+      icon: <MailOutlined />,
+      value: courier?.email,
+    },
+    {
+      label: "Address",
+      icon: <HomeOutlined />,
+      value: courier?.address,
+    },
+    {
+      label: "Account No",
+      icon: <BankOutlined />,
+      value: courier?.accountNumber,
+    },
+    {
+      label: "Store",
+      icon: <ShopOutlined />,
+      value: courier?.store.title,
+    },
+    {
+      label: "Vehicle",
+      icon: <RiMotorbikeLine />,
+      value: courier?.vehicle?.model,
+    },
+    {
+      label: "Vehicle Id",
+      icon: <FileDoneOutlined />,
+      value: courier?.licensePlate,
     },
   ];
   const { token } = theme.useToken();
