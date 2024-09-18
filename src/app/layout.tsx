@@ -12,6 +12,7 @@ import { authProvider } from "@providers/auth-provider";
 import { dataProvider } from "@providers/data-provider";
 import "@refinedev/antd/dist/reset.css";
 import i18nProvider from "@components/i18n/i18nProvider";
+import { RiMotorbikeLine } from "react-icons/ri";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -84,6 +85,15 @@ export default function RootLayout({
                       list: "/products",
                       show: "/products/show/:id",
                       edit: "/products/edit/:id",
+                    },
+                    {
+                      name: "couriers",
+                      list: "/couriers",
+                      show: "/couriers/show/:id",
+                      edit: "/couriers/edit/:id",
+                      meta: {
+                        icon: <RiMotorbikeLine />,
+                      }
                     },
                   ]}
                   options={{
