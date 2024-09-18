@@ -39,6 +39,7 @@ const ShowProduct = () => {
       <Flex
         align="center"
         justify="space-around"
+        wrap={true}
         className="position-relative w-100 rounded-2"
       >
         <Flex>
@@ -140,8 +141,8 @@ const ShowProduct = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Flex align="center" justify="end" className="me-4 px-2">
-        <Button
+      {/*<Flex align="center" justify="end">
+         <Button
           icon={<EditOutlined />}
           onClick={() => {
             return go({
@@ -158,7 +159,7 @@ const ShowProduct = () => {
         >
           Edit
         </Button>
-      </Flex>
+      </Flex> */}
     </Show>
   );
 };
