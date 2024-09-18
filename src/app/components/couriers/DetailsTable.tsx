@@ -1,5 +1,5 @@
 import { useList } from "@refinedev/core";
-import { Table } from "antd";
+import { Table, Tag } from "antd";
 import React from "react";
 import Star from "./Star";
 
@@ -43,7 +43,7 @@ const DetailsTable = ({ id }: any) => {
       key: item?.order?.id,
       review: item?.comment[0],
       rating: <Star value={item?.star} />,
-      order: `# ${item?.order?.id}`,
+      order: <Tag color={"default"}># {item?.order?.id}</Tag>,
     });
   });
   return (

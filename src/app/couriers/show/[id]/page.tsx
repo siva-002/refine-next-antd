@@ -91,38 +91,38 @@ export default function ShowCourier() {
         />
         <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
       </Flex>
-      <div className="row d-flex flex-wrap">
-        <div className="col-md-4">
-          <List
-            bordered
-            dataSource={userData}
-            renderItem={(item) => (
-              <List.Item>
-                <Flex gap={8}>
-                  <Space
+      <Flex vertical={false} wrap>
+        <List
+          className="col-md-4"
+          bordered
+          dataSource={userData}
+          renderItem={(item) => (
+            <List.Item>
+              <Flex gap={8}>
+                <Space
+                  style={{
+                    width: "120px",
+                  }}
+                >
+                  <div
                     style={{
-                      width: "120px",
+                      color: token.colorPrimary,
                     }}
                   >
-                    <div
-                      style={{
-                        color: token.colorPrimary,
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-                    <Typography.Text type="secondary">
-                      {item.label}
-                    </Typography.Text>
-                  </Space>
-                  <Typography.Text>{item.value}</Typography.Text>
-                </Flex>
-              </List.Item>
-            )}
-          />
-        </div>
+                    {item.icon}
+                  </div>
+                  <Typography.Text type="secondary">
+                    {item.label}
+                  </Typography.Text>
+                </Space>
+                <Typography.Text>{item.value}</Typography.Text>
+              </Flex>
+            </List.Item>
+          )}
+        />
+
         <DetailsTable id={query?.data?.data?.id} className="col-md-6" />
-      </div>
+      </Flex>
     </Card>
     // </Show>
   );
