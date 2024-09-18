@@ -1,8 +1,9 @@
 import { useShow } from "@refinedev/core";
 import { Avatar, Flex, List, Space, Typography, theme } from "antd";
 import React from "react";
-import CourierStatus from "../../CourierStatus";
+// import CourierStatus fro../../../components/couriers/CourierStatustus";
 import { ArrowRightOutlined } from "@ant-design/icons";
+import CourierStatus from "@app/components/couriers/CourierStatus";
 
 export default function ShowCourier() {
   const { query } = useShow();
