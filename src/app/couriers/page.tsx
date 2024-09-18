@@ -11,6 +11,7 @@ import React from "react";
 export default function ShowCouriers() {
   const { tableProps, filters } = useTable();
   const { token } = theme.useToken();
+
   return (
     <List>
       <Table {...tableProps}>
@@ -115,15 +116,13 @@ export default function ShowCouriers() {
           dataIndex={""}
           title={"Actions"}
           fixed="right"
-          render={(_, record) => {
-            return (
-              <ShowButton
-                icon={<EyeOutlined />}
-                hideText
-                recordItemId={record?.id}
-              />
-            );
-          }}
+          render={(_, record) => (
+            <ShowButton
+              icon={<EyeOutlined />}
+              hideText
+              recordItemId={record.id}
+            />
+          )}
         />
       </Table>
     </List>
