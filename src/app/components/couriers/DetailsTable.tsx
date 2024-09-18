@@ -18,7 +18,7 @@ const DetailsTable = ({ id }: any) => {
   const columns = [
     {
       title: "Reviews",
-      dataindex: "review",
+      dataIndex: "review",
       key: "review",
     },
     {
@@ -28,7 +28,7 @@ const DetailsTable = ({ id }: any) => {
     },
     {
       title: "Order",
-      dataindex: "order",
+      dataIndex: "order",
       key: "order",
     },
   ];
