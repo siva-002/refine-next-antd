@@ -2,6 +2,9 @@ import { ICourier } from "@app/interfaces";
 import { useList } from "@refinedev/core";
 import React from "react";
 import type { BaseRecord } from "@refinedev/core";
+import { StarFilled, StarOutlined } from "@ant-design/icons";
+import { color } from "framer-motion";
+import { Flex } from "antd";
 const Rating = ({ record }: { record: ICourier }) => {
   const { data } = useList({
     resource: "reviews",
@@ -22,13 +25,24 @@ const Rating = ({ record }: { record: ICourier }) => {
   });
 
   const review =
-    currentStar > 0 ? ((currentStar / totalStar) * 100) / 20 : currentStar;
+    currentStar > 0
+      ? Math.floor(((currentStar / totalStar) * 100) / 20)
+      : currentStar;
 
-  console.log("total", totalStar);
-  console.log("current", currentStar);
-  console.log("review", review);
+  //   console.log("total", totalStar);
+  //   console.log("current", currentStar);
+  //   console.log("review", review);
+  let stars = [];
+  for (let i = 0; i < review; i++) {
+    stars.push(<StarFilled color="gold" />);
+  }
+  if (review == 0) {
+    for (let i = 0; i < review; i++) {
+      stars.push(<StarOutlined />);
+    }
+  }
   //   return <div>{data?.data?.data?.star}</div>;
-  return <h3> </h3>;
+  return <Flex gap={"5px"}>{stars.map((item) => item)}</Flex>;
 };
 
 export default Rating;
