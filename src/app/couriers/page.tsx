@@ -1,3 +1,4 @@
+"use client";
 import { EyeOutlined } from "@ant-design/icons";
 import CourierStatus from "@app/components/couriers/CourierStatus";
 import { List, ShowButton, useTable } from "@refinedev/antd";
