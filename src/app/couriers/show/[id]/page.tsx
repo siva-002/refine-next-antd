@@ -135,6 +135,7 @@ export default function ShowCourier() {
               <Col xs={24} sm={12} md={10}>
                 <Card>
                   <List
+                    style={{ border: "none" }}
                     bordered
                     dataSource={userData}
                     renderItem={(item) => (
