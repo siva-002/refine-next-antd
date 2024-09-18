@@ -106,7 +106,7 @@ export default function ShowCourier() {
       <Card>
         <Row>
           <Flex vertical={false} wrap gap={"10px"}>
-            <Col xs={24} sm={12} md={8}>
+            <Col xs={24} sm={12} md={12}>
               <List
                 bordered
                 dataSource={userData}
@@ -135,7 +135,7 @@ export default function ShowCourier() {
                 )}
               />
             </Col>
-            <Col xs={24} sm={12} md={14}>
+            <Col xs={24} sm={12} md={12}>
               <DetailsTable id={query?.data?.data?.id} />
             </Col>
           </Flex>
