@@ -115,8 +115,14 @@ export default function ShowCouriers() {
           dataIndex={""}
           title={"Actions"}
           fixed="right"
-          render={() => {
-            return <ShowButton icon={<EyeOutlined />} hideText />;
+          render={(_, record) => {
+            return (
+              <ShowButton
+                icon={<EyeOutlined />}
+                hideText
+                recordItemId={record?.id}
+              />
+            );
           }}
         />
       </Table>
