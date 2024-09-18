@@ -12,6 +12,7 @@ import {
   Button,
   Divider,
   Flex,
+  Grid,
   List,
   theme,
   Typography,
@@ -19,6 +20,8 @@ import {
 import React from "react";
 
 const ShowProduct = () => {
+  const screen = Grid.useBreakpoint();
+  // console.log(screen);
   const { query } = useShow();
   const product: any = query?.data?.data;
   const { token } = theme.useToken();
@@ -65,7 +68,13 @@ const ShowProduct = () => {
         </Flex>
         <Flex
           vertical={true}
-          className="rounded-2 w-75"
+          className={
+            screen.sm || screen.md
+              ? screen.lg
+                ? "rounded-2 w-75"
+                : "rounded-2 w-100"
+              : ""
+          }
           style={{
             backgroundColor: token.colorBgContainerDisabled,
           }}

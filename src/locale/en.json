@@ -27,7 +27,8 @@
     "fields": {
       "id": "ID",
       "images": {
-        "label": "Images"
+        "label": "Images",
+        "description": "Upload Image"
       },
       "name": "Name",
       "description": "Description",
