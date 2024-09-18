@@ -105,6 +105,7 @@ const ShowProduct = () => {
   //     : [];
   // };
   const images = Form.useWatch("images", formProps.form);
+  // const image = images?.[0]?.file?.response || null;
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
 
@@ -155,7 +156,7 @@ const ShowProduct = () => {
                 src={previewImageURL || "/images/product-default-img.png"}
                 alt="Product Image"
               />
-              <Button
+              {/* <Button
                 icon={<UploadOutlined />}
                 style={{
                   marginTop: "auto",
@@ -168,7 +169,7 @@ const ShowProduct = () => {
                 }}
               >
                 {t("products.fields.images.description")}
-              </Button>
+              </Button> */}
             </Flex>
           </Upload.Dragger>
         </Form.Item>

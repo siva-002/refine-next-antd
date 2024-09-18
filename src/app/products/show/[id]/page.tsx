@@ -61,7 +61,10 @@ const ShowProduct = () => {
                 margin: "16px auto",
                 borderRadius: "8px",
               }}
-              src={product?.images?.[0].url}
+              src={
+                product?.images?.[0].url
+                // product?.images?.[0]?.file?.response.url
+              }
               alt={product?.images?.[0].name}
             />
           </Badge.Ribbon>
