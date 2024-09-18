@@ -34,6 +34,10 @@ const DetailsTable = ({ id }: any) => {
   ];
   const tabledata: any[] = [];
   data?.data?.map((item) => {
+    console.log("item", item);
+    console.log("comment", item.comment);
+    console.log("star", item.star);
+    console.log("oredrid", item.order.id);
     tabledata.push({
       review: item?.comment[0],
       rating: item?.star,

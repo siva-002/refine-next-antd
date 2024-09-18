@@ -91,7 +91,7 @@ export default function ShowCourier() {
         />
         <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
       </Flex>
-      <Flex vertical={false}>
+      <Flex vertical={false} gap={"20px"}>
         <List
           bordered
           dataSource={userData}
