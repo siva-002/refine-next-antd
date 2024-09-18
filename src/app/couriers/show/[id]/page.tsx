@@ -9,6 +9,7 @@ import CourierStatus from "@app/components/couriers/CourierStatus";
 export default function ShowCourier() {
   const { query } = useShow();
   const courier = query?.data?.data;
+  console.log(courier);
   const userData = [
     {
       label: "Status",

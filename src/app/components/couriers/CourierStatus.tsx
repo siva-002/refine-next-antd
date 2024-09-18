@@ -4,7 +4,7 @@ import { Tag } from "antd";
 import React from "react";
 import { RiMotorbikeLine } from "react-icons/ri";
 const CourierStatus = ({ status }: { status: ICourierStatus }) => {
-  switch (status.id) {
+  switch (status?.id) {
     case 1:
       return (
         <Tag icon={<CheckCircleOutlined />} color="green">
