@@ -89,7 +89,8 @@ export default function ShowCourier() {
     <>
       <Button
         icon={<LeftOutlined />}
-        onClick={() => go({ to: `${list("couriers")}` })}
+        onClick={() => list("couriers")}
+        style={{marginBottom:"20px"}}
       >
         Couriers
       </Button>
@@ -101,7 +102,7 @@ export default function ShowCourier() {
         <Typography.Title level={2}>{query?.data?.data?.name}</Typography.Title>
       </Flex>
       <Card>
-        <Flex vertical={false} wrap>
+        <Flex vertical={false} wrap gap={"10px"}>
           <List
             className="col-md-4"
             bordered
