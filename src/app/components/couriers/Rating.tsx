@@ -13,7 +13,19 @@ const Rating = ({ record }: { record: ICourier }) => {
       },
     ],
   });
-  console.log(data?.data);
+  //   console.log(data?.data);
+
+  const totalStar = data?.data ? data?.data?.length * 5 : 5;
+  let currentStar = 0;
+  data?.data?.map((item) => {
+    currentStar += item.star;
+  });
+
+  const review = currentStar > 0 ? totalStar / currentStar : totalStar;
+
+  console.log("total", totalStar);
+  console.log("current", currentStar);
+  console.log("review", review);
   //   return <div>{data?.data?.data?.star}</div>;
   return <h3></h3>;
 };
