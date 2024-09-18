@@ -1,15 +1,16 @@
 "use client";
-import { EyeOutlined } from "@ant-design/icons";
+import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import CourierStatus from "@app/components/couriers/CourierStatus";
 import Rating from "@app/components/couriers/Rating";
 import { ICourier } from "@app/interfaces";
 import { FilterDropdown, List, ShowButton, useTable } from "@refinedev/antd";
 import { getDefaultFilter } from "@refinedev/core";
-import { Avatar, Input, Table } from "antd";
+import { Avatar, Input, Table, theme } from "antd";
 import React from "react";
 
 export default function ShowCouriers() {
   const { tableProps, filters } = useTable();
+  const { token } = theme.useToken();
   return (
     <List>
       <Table {...tableProps}>
@@ -18,6 +19,11 @@ export default function ShowCouriers() {
           dataIndex={"name"}
           title={"Name"}
           defaultFilteredValue={getDefaultFilter("name", filters, "contains")}
+          filterIcon={(filtered) => (
+            <SearchOutlined
+              style={{ color: filtered ? token.colorPrimary : undefined }}
+            />
+          )}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
               <Input placeholder="Enter Name to Search" />
@@ -40,6 +46,11 @@ export default function ShowCouriers() {
         <Table.Column
           dataIndex={"licensePlate"}
           title={"Vehicle id"}
+          filterIcon={(filtered) => (
+            <SearchOutlined
+              style={{ color: filtered ? token.colorPrimary : undefined }}
+            />
+          )}
           defaultFilteredValue={getDefaultFilter(
             "licensePlate",
             filters,
@@ -54,6 +65,11 @@ export default function ShowCouriers() {
         <Table.Column
           dataIndex={"gsm"}
           title={"Gsm"}
+          filterIcon={(filtered) => (
+            <SearchOutlined
+              style={{ color: filtered ? token.colorPrimary : undefined }}
+            />
+          )}
           defaultFilteredValue={getDefaultFilter("gsm", filters, "contains")}
           filterDropdown={(props) => (
             <FilterDropdown {...props}>
@@ -65,6 +81,11 @@ export default function ShowCouriers() {
           key={"store.title"}
           dataIndex={["store", "title"]}
           title={"Store"}
+          filterIcon={(filtered) => (
+            <SearchOutlined
+              style={{ color: filtered ? token.colorPrimary : undefined }}
+            />
+          )}
           defaultFilteredValue={getDefaultFilter(
             "store.title",
             filters,

@@ -3,11 +3,11 @@ import { useList } from "@refinedev/core";
 import React from "react";
 import type { BaseRecord } from "@refinedev/core";
 import { StarFilled, StarOutlined } from "@ant-design/icons";
-import { Flex } from "antd";
+import { Flex, Spin } from "antd";
 import { RiStarFill, RiStarLine } from "react-icons/ri";
 import { PiStarThin, PiStarFill, PiStarHalfFill } from "react-icons/pi";
 const Rating = ({ record }: { record: ICourier }) => {
-  const { data } = useList({
+  const { data, isLoading } = useList({
     resource: "reviews",
     filters: [
       {
@@ -43,7 +43,11 @@ const Rating = ({ record }: { record: ICourier }) => {
   }
 
   //   return <div>{data?.data?.data?.star}</div>;
-  return <Flex gap={"5px"}>{stars.map((item) => item)}</Flex>;
+  return isLoading ? (
+    <Spin />
+  ) : (
+    <Flex gap={"5px"}>{stars.map((item) => item)}</Flex>
+  );
 };
 
 export default Rating;
