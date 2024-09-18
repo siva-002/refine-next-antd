@@ -133,33 +133,35 @@ export default function ShowCourier() {
           <Row style={{ marginTop: "20px" }}>
             <Flex vertical={false} wrap gap={"10px"}>
               <Col xs={24} sm={12} md={10}>
-                <List
-                  bordered
-                  dataSource={userData}
-                  renderItem={(item) => (
-                    <List.Item>
-                      <Flex gap={8}>
-                        <Space
-                          style={{
-                            width: "120px",
-                          }}
-                        >
-                          <div
+                <Card>
+                  <List
+                    bordered
+                    dataSource={userData}
+                    renderItem={(item) => (
+                      <List.Item>
+                        <Flex gap={8}>
+                          <Space
                             style={{
-                              color: token.colorPrimary,
+                              width: "120px",
                             }}
                           >
-                            {item.icon}
-                          </div>
-                          <Typography.Text type="secondary">
-                            {item.label}
-                          </Typography.Text>
-                        </Space>
-                        <Typography.Text>{item.value}</Typography.Text>
-                      </Flex>
-                    </List.Item>
-                  )}
-                />
+                            <div
+                              style={{
+                                color: token.colorPrimary,
+                              }}
+                            >
+                              {item.icon}
+                            </div>
+                            <Typography.Text type="secondary">
+                              {item.label}
+                            </Typography.Text>
+                          </Space>
+                          <Typography.Text>{item.value}</Typography.Text>
+                        </Flex>
+                      </List.Item>
+                    )}
+                  />
+                </Card>
               </Col>
               <Col xs={24} sm={12} md={12}>
                 <DetailsTable id={query?.data?.data?.id} />
