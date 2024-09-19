@@ -49,6 +49,7 @@ export default function EditCourier() {
   const images = Form.useWatch("avatar", formProps.form);
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
+  console.log(previewImageURL);
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form
@@ -56,6 +57,7 @@ export default function EditCourier() {
         onFinish={handleSubmit}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 10 }}
+        labelAlign="left"
       >
         <Form.Item
           label={"Image"}
