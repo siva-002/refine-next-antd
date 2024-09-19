@@ -3,18 +3,34 @@
 import { CloudUploadOutlined } from "@ant-design/icons";
 import { IProduct } from "@app/interfaces";
 import { Create, getValueFromEvent, useForm } from "@refinedev/antd";
-import { useApiUrl, useTranslate } from "@refinedev/core";
-import { Avatar, Flex, Form, theme, Upload } from "antd";
+import { useApiUrl, useSelect, useTranslate } from "@refinedev/core";
+import {
+  Avatar,
+  Flex,
+  Form,
+  Input,
+  InputNumber,
+  Segmented,
+  Select,
+  theme,
+  Upload,
+} from "antd";
 import React from "react";
 
 const CreateProduct = () => {
-  const { formProps, saveButtonProps } = useForm<IProduct>();
+  const { formProps, saveButtonProps } = useForm<IProduct>({
+    redirect: "list",
+  });
   const t = useTranslate();
-  console.log(formProps);
+  // console.log(formProps);
   const apiUrl = useApiUrl();
   const { token } = theme.useToken();
 
   const images = Form.useWatch("images", formProps.form);
+
+  const selectCategory = useSelect({
+    resource: "categories",
+  });
   // console.log(images)
   // const image = images?.[0]?.file?.response || null;
   const image = images?.[0] || null;
@@ -26,6 +42,11 @@ const CreateProduct = () => {
           label={t("products.fields.images.label")}
           name="images"
           getValueFromEvent={getValueFromEvent}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
         >
           <Upload
             action={`${apiUrl}/media/upload`}
@@ -51,13 +72,9 @@ const CreateProduct = () => {
                 style={{
                   width: "200px",
                   height: "200px",
-                  borderColor: token.volcano,
-                  borderWidth: "1px",
-                  borderTopStyle: "dashed",
-                  borderRightStyle: "dashed",
-                  borderLeftStyle: "dashed",
+                  border: previewImageURL ? "" : "1px solid #44454770",
                 }}
-                className="position-relative d-flex align-items-center justify-content-center rounded-2"
+                className="position-relative d-flex align-items-center justify-content-center rounded-2 p-0 m-0"
               >
                 <Avatar
                   shape="square"
@@ -71,7 +88,7 @@ const CreateProduct = () => {
                   }}
                   src={
                     previewImageURL ||
-                    "https://img.icons8.com/?size=100&id=lNoX59pec7xI&format=png&color=000000"
+                    "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
                   }
                   alt="Product Image"
                 />
@@ -105,6 +122,61 @@ const CreateProduct = () => {
               </Button> */}
             </Flex>
           </Upload>
+        </Form.Item>
+        <Form.Item
+          label={t("products.fields.name")}
+          name="name"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={t("products.fields.description")}
+          name={"description"}
+          rules={[{ required: true }]}
+        >
+          <Input.TextArea
+            rows={1}
+            maxLength={200}
+            showCount
+            style={{ resize: "none" }}
+          />
+        </Form.Item>
+        <Form.Item
+          label={t("products.fields.price")}
+          name={"price"}
+          rules={[{ required: true }]}
+        >
+          <InputNumber min={0} style={{ width: "150px" }} />
+        </Form.Item>
+        <Form.Item
+          label={t("products.fields.category")}
+          rules={[{ required: true }]}
+          name={["category", "id"]}
+        >
+          <Select {...selectCategory} />
+        </Form.Item>
+        <Form.Item
+          label={t("products.fields.isActive.label")}
+          name={"isActive"}
+          rules={[{ required: true }]}
+        >
+          <Segmented
+            options={[
+              {
+                label: t("products.fields.isActive.true"),
+                value: true,
+              },
+              {
+                label: t("products.fields.isActive.false"),
+                value: false,
+              },
+            ]}
+          />
         </Form.Item>
       </Form>
     </Create>

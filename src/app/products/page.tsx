@@ -15,6 +15,7 @@ import {
   useSelect,
   useTable,
   ShowButton,
+  CreateButton,
 } from "@refinedev/antd";
 import {
   Avatar,
@@ -26,7 +27,11 @@ import {
   Typography,
   theme,
 } from "antd";
-import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  EyeOutlined,
+  PlusSquareOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { ICategory, IProduct } from "@app/interfaces";
 import ProductStatus from "@app/components/product/ProductStatus";
 
@@ -35,6 +40,7 @@ const ProductListTable = () => {
   const t = useTranslate();
   const go = useGo();
   const { showUrl } = useNavigation();
+  const { create } = useNavigation();
 
   const { tableProps, filters } = useTable<IProduct, HttpError>({
     filters: {
@@ -75,7 +81,20 @@ const ProductListTable = () => {
   const categories = queryResult?.data?.data || [];
 
   return (
-    <List canCreate>
+    <List
+      headerButtons={(props) => [
+        <CreateButton
+          {...props.createButtonProps}
+          key="create"
+          size="large"
+          icon={<PlusSquareOutlined />}
+          onClick={() => create("products")}
+        >
+          {t("products.create.button")}
+        </CreateButton>,
+      ]}
+    >
+      {/* <CreateButton>hi</CreateButton> */}
       <Table
         {...tableProps}
         rowKey="id"

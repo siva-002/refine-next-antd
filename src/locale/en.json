@@ -24,6 +24,9 @@
     }
   },
   "products": {
+    "create": {
+      "button": "Add New Product"
+    },
     "fields": {
       "id": "ID",
       "images": {

@@ -267,7 +267,7 @@ const ShowProduct = () => {
         >
           <Input.TextArea
             rows={1}
-            maxLength={100}
+            maxLength={200}
             showCount
             style={{ resize: "none" }}
           />
