@@ -9,7 +9,11 @@ const CourierLoading = () => {
           borderBottom: "1px solid lightgray",
         }}
       >
-        <Skeleton.Button size="default" active />
+        <Skeleton.Button
+          size="default"
+          active
+          style={{ marginBottom: "20px" }}
+        />
       </div>
 
       <Flex vertical={false} gap={"10px"} style={{ marginTop: "20px" }}>
@@ -21,18 +25,14 @@ const CourierLoading = () => {
         <Skeleton.Input style={{ marginTop: "20px" }} />
       </Flex>
 
-      <Row style={{ marginTop: "20px" }}>
-        <Flex vertical={false} wrap gap={"10px"}>
-          <Col xs={24} sm={12} md={10}>
-            <Card>
-              <Skeleton active paragraph={{ rows: 8 }} />
-            </Card>
-          </Col>
-          <Col xs={24} sm={12} md={12}>
-            <Skeleton active paragraph={{ rows: 4 }} />
-          </Col>
-        </Flex>
-      </Row>
+      <Flex vertical={false} wrap gap={"10px"}>
+        <Card style={{ width: "40%" }}>
+          <Skeleton active paragraph={{ rows: 8 }} />
+        </Card>
+        <Card style={{ width: "50%" }}>
+          <Skeleton active paragraph={{ rows: 4 }} />
+        </Card>
+      </Flex>
     </>
   );
 };
