@@ -199,11 +199,12 @@ const ShowProduct = () => {
             </Flex> 
             + Upload
           </Upload> */}
-          <Upload
+          <Upload.Dragger
             action={`${apiUrl}/media/upload`}
             // listType="picture-card"
             // onChange={onChange}
             // onPreview={onPreview}
+            showUploadList={false}
             maxCount={1}
           >
             <Flex
@@ -228,7 +229,7 @@ const ShowProduct = () => {
                 src={previewImageURL || "/images/product-default-img.png"}
                 alt="Product Image"
               />
-              <Button
+              {/* <Button
                 icon={<UploadOutlined />}
                 style={{
                   marginTop: "auto",
@@ -241,9 +242,9 @@ const ShowProduct = () => {
                 }}
               >
                 {t("products.fields.images.description")}
-              </Button>
+              </Button> */}
             </Flex>
-          </Upload>
+          </Upload.Dragger>
         </Form.Item>
         <Form.Item
           label={t("products.fields.name")}
