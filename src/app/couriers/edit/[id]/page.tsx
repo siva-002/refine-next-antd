@@ -15,34 +15,35 @@ export default function EditCourier() {
       action: "edit",
     });
 
+  const data = query?.data?.data;
   const vehicleProps = useSelect({
     resource: "vehicles",
+    defaultValue: data?.vehicle?.id,
     optionLabel: "model",
-    optionValue: "model",
+    optionValue: "id",
   });
 
-  const storeProps = useSelect({
+  const { options } = useSelect({
     resource: "stores",
-    optionLabel: "title",
-    optionValue: "title",
+    defaultValue: data?.store?.id,
   });
-  const data = query?.data?.data;
+  // console.log("store", storeProps);
 
   //   for manually change values before updating and add onfinish attribute to form with this function
   const handleSubmit = (values: any) => {
-    console.log(values);
+    console.log("1", values);
     const val = {
       ...data,
       store: {
         ...data?.store,
-        title: values?.store?.title,
+        id: values?.store?.id,
       },
       vehicle: {
         ...data?.vehicle,
         model: values.vehicle?.model,
       },
     };
-    console.log(val);
+    console.log("final", val);
     onFinish(val);
   };
   const { token } = theme.useToken();
@@ -54,7 +55,7 @@ export default function EditCourier() {
     <Edit saveButtonProps={saveButtonProps}>
       <Form
         {...formProps}
-        onFinish={handleSubmit}
+        // onFinish={handleSubmit}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 10 }}
       >
@@ -62,11 +63,11 @@ export default function EditCourier() {
           label={"Image"}
           name="images"
           getValueFromEvent={getValueFromEvent}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+          // rules={[
+          //   {
+          //     required: true,
+          //   },
+          // ]}
         >
           <Upload
             action={`${apiUrl}/media/upload`}
@@ -186,18 +187,18 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Store"}
-          name={["store", "title"]}
+          name={["store", "id"]}
           rules={[
             {
               required: true,
             },
           ]}
         >
-          <Select {...storeProps} />
+          <Select options={options} />
         </Form.Item>
         <Form.Item
           label={"Vehicle"}
-          name={["vehicle", "model"]}
+          name={["vehicle", "id"]}
           rules={[
             {
               required: true,
