@@ -18,6 +18,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "../../style/global.css";
 import {
+  ShopFilled,
+  ShopOutlined,
   ShoppingOutlined,
   TagsOutlined,
   UserOutlined,
@@ -93,7 +95,14 @@ export default function RootLayout({
                       edit: "/couriers/edit/:id",
                       meta: {
                         icon: <RiMotorbikeLine />,
-                      }
+                      },
+                    },
+                    {
+                      name: "stores",
+                      list: "/stores",
+                      meta: {
+                        icon: <ShopOutlined />,
+                      },
                     },
                   ]}
                   options={{

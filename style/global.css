@@ -28,3 +28,7 @@ a {
 .leaflet-routing-container {
   display: none !important;
 }
+
+.ant-segmented-group{
+  padding: 5px !important;
+}
