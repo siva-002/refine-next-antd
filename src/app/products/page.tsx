@@ -75,7 +75,7 @@ const ProductListTable = () => {
   const categories = queryResult?.data?.data || [];
 
   return (
-    <List>
+    <List canCreate>
       <Table
         {...tableProps}
         rowKey="id"

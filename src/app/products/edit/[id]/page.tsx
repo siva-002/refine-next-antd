@@ -73,7 +73,7 @@ const ShowProduct = () => {
     resource: "products",
     id: data?.data?.data.id, // when undefined, id will be read from the URL.
     action: "edit",
-    redirect: false,
+    redirect: "list",
   });
 
   const categorySelectProps = useSelect<ICategory>({
@@ -226,7 +226,10 @@ const ShowProduct = () => {
                   marginTop: "auto",
                   // transform: "translateY(25%)",
                 }}
-                src={previewImageURL || "/images/product-default-img.png"}
+                src={
+                  previewImageURL ||
+                  "https://img.icons8.com/?size=100&id=13917&format=png&color=000000"
+                }
                 alt="Product Image"
               />
               {/* <Button
