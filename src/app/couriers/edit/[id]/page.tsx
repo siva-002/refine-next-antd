@@ -1,9 +1,9 @@
 "use client";
 import { ICourier } from "@app/interfaces";
 import { Edit, useForm } from "@refinedev/antd";
-import { HttpError, useShow } from "@refinedev/core";
+import { HttpError, useSelect, useShow } from "@refinedev/core";
 import type { BaseRecord } from "@refinedev/core";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Select } from "antd";
 export default function EditCourier() {
   const { query } = useShow();
   const { formProps, saveButtonProps, formLoading, onFinish } =
@@ -13,22 +13,29 @@ export default function EditCourier() {
       action: "edit",
     });
 
+  const vehicleProps = useSelect({
+    resource: "vehicles",
+  });
+
+  const storeProps = useSelect({
+    resource: "stores",
+  });
   const data = query?.data?.data;
   const handleSubmit = (values: any) => {
     console.log(values);
-    const val = {
-      ...data,
-      store: {
-        ...data?.store,
-        title: values?.store?.title,
-      },
-      vehicle: {
-        ...data?.vehicle,
-        model: values.vehicle?.model,
-      },
-    };
-    console.log(val);
-    onFinish(val);
+    // const val = {
+    //   ...data,
+    //   store: {
+    //     ...data?.store,
+    //     title: values?.store?.title,
+    //   },
+    //   vehicle: {
+    //     ...data?.vehicle,
+    //     model: values.vehicle?.model,
+    //   },
+    // };
+    // console.log(val);
+    onFinish(values);
   };
   return (
     <Edit saveButtonProps={saveButtonProps}>
@@ -97,7 +104,7 @@ export default function EditCourier() {
             },
           ]}
         >
-          <Input />
+          <Select {...storeProps} />
         </Form.Item>
         <Form.Item
           label={"Vehicle"}
@@ -108,7 +115,7 @@ export default function EditCourier() {
             },
           ]}
         >
-          <Input />
+          <Select {...vehicleProps} />
         </Form.Item>
         <Form.Item
           label={"Vehicle Id"}
