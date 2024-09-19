@@ -163,9 +163,8 @@ export default function ShowCourier() {
                     <Button
                       icon={<EditFilled />}
                       type="primary"
-                      onClick={(record) => {
-                        console.log("edit record", record);
-                        console.log("edit id", query?.data?.data?.id);
+                      onClick={() => {
+                        edit("couriers", query?.data?.data?.id ?? "");
                       }}
                     >
                       Edit
