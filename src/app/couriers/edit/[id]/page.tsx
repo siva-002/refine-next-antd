@@ -13,17 +13,18 @@ export default function EditCourier() {
       action: "edit",
     });
 
+  const data = query?.data?.data;
   const handleSubmit = (values: any) => {
     console.log(values);
     const val = {
-      ...values,
+      ...data,
       store: {
-        ...values["store"],
-        title: values.store["title"],
+        ...data?.store,
+        title: values?.store?.title,
       },
       vehicle: {
-        ...values["vehicle"],
-        model: values.vehicle["model"],
+        ...data?.vehicle,
+        model: values.vehicle?.model,
       },
     };
     console.log(val);
