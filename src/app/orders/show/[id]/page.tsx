@@ -16,7 +16,7 @@ export default function OrdersShow() {
   return (
     <Show
       goBack={null}
-      title={`Order #${query?.data?.data?.orderNumber}`}
+      title={`Order #${query?.data?.data?.orderNumber ?? ""}`}
       breadcrumb={null}
     >
       <Flex

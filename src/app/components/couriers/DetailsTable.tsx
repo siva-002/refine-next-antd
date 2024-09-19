@@ -47,7 +47,16 @@ const DetailsTable = ({ id }: any) => {
     });
   });
   return (
-    <Table columns={columns} dataSource={tabledata} pagination={false}></Table>
+    <Table
+      columns={columns}
+      dataSource={tabledata}
+      pagination={false}
+      onRow={(record: any) => {
+        return {
+          onClick: () => show("orders", record?.order?.id),
+        };
+      }}
+    />
   );
 };
 
