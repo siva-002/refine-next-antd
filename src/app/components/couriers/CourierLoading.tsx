@@ -2,6 +2,8 @@ import { Card, Col, Flex, Row, Skeleton } from "antd";
 import React from "react";
 
 const CourierLoading = () => {
+  const leftList = [1, 2, 3, 4, 5, 6, 7, 8];
+  const rightList = [1, 2, 3, 4];
   return (
     <>
       <div
@@ -25,12 +27,25 @@ const CourierLoading = () => {
         <Skeleton.Input style={{ marginTop: "20px" }} />
       </Flex>
 
-      <Flex vertical={false} wrap gap={"10px"}>
+      <Flex vertical={false} wrap gap={"10px"} style={{ marginTop: "20px" }}>
         <Card style={{ width: "40%" }}>
-          <Skeleton active paragraph={{ rows: 8 }} />
+          {leftList.map(() => (
+            <Flex gap={"20px"}>
+              <Skeleton.Input active />
+              <Skeleton.Input active />
+            </Flex>
+          ))}
+          {/* <Skeleton active paragraph={{ rows: 8 }} /> */}
         </Card>
         <Card style={{ width: "50%" }}>
-          <Skeleton active paragraph={{ rows: 4 }} />
+          {/* <Skeleton active paragraph={{ rows: 4 }} /> */}
+          {rightList.map(() => (
+            <Flex gap={"20px"}>
+              <Skeleton.Input active />
+              <Skeleton.Input active />
+              <Skeleton.Input active />
+            </Flex>
+          ))}
         </Card>
       </Flex>
     </>
