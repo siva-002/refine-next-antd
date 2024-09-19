@@ -35,7 +35,7 @@ export default function EditCourier() {
     //   },
     // };
     // console.log(val);
-    onFinish(values);
+    // onFinish(values);
   };
   return (
     <Edit saveButtonProps={saveButtonProps}>
@@ -97,7 +97,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Store"}
-          name={["store", "title"]}
+          name={"title"}
           rules={[
             {
               required: true,
@@ -108,7 +108,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Vehicle"}
-          name={["vehicle", "model"]}
+          name={"model"}
           rules={[
             {
               required: true,
