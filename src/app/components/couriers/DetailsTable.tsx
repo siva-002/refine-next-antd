@@ -54,9 +54,9 @@ const DetailsTable = ({ id }: any) => {
       dataSource={tabledata}
       pagination={false}
       onRow={(record: any) => {
-        console.log("record", record);
+        // console.log("record", record);
         return {
-          onClick: () => show("orders", record?.order?.id),
+          onClick: () => show("orders", record?.key),
         };
       }}
     />
