@@ -3,7 +3,7 @@ import { ICourier } from "@app/interfaces";
 import { Edit, useForm } from "@refinedev/antd";
 import { HttpError, useShow } from "@refinedev/core";
 import type { BaseRecord } from "@refinedev/core";
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 export default function EditCourier() {
   const { query } = useShow();
   const { formProps, saveButtonProps, formLoading } = useForm<ICourier>({
@@ -12,7 +12,7 @@ export default function EditCourier() {
     action: "edit",
   });
   return (
-    <Edit>
+    <Edit saveButtonProps={saveButtonProps}>
       <Form {...formProps}>
         <Form.Item
           label={"Name"}
