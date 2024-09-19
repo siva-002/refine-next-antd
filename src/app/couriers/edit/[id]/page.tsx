@@ -30,27 +30,27 @@ export default function EditCourier() {
   // console.log("store", storeProps);
 
   //   for manually change values before updating and add onfinish attribute to form with this function
-//   const handleSubmit = (values: any) => {
-//     console.log("1", values);
-//     const val = {
-//       ...data,
-//       store: {
-//         ...data?.store,
-//         id: values?.store?.id,
-//       },
-//       vehicle: {
-//         ...data?.vehicle,
-//         model: values.vehicle?.model,
-//       },
-//     };
-//     console.log("final", val);
-//     onFinish(val);
-//   };
+  //   const handleSubmit = (values: any) => {
+  //     console.log("1", values);
+  //     const val = {
+  //       ...data,
+  //       store: {
+  //         ...data?.store,
+  //         id: values?.store?.id,
+  //       },
+  //       vehicle: {
+  //         ...data?.vehicle,
+  //         model: values.vehicle?.model,
+  //       },
+  //     };
+  //     console.log("final", val);
+  //     onFinish(val);
+  //   };
   const { token } = theme.useToken();
-  const images = Form.useWatch("images", formProps.form);
+  const images = Form.useWatch("avatar", formProps.form);
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
-  console.log(images);
+  // console.log(images);
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form
@@ -62,7 +62,7 @@ export default function EditCourier() {
       >
         <Form.Item
           label={"Image"}
-          name="images"
+          name="avatar"
           getValueFromEvent={getValueFromEvent}
           // rules={[
           //   {
