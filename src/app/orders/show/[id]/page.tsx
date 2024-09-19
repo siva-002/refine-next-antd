@@ -14,7 +14,11 @@ export default function OrdersShow() {
   const status = query?.data?.data?.status.text;
 
   return (
-    <Show>
+    <Show
+      goBack={null}
+      title={`Order #${query?.data?.data?.orderNumber ?? ""}`}
+      breadcrumb={null}
+    >
       <Flex
         gap={"middle"}
         justify="space-around"

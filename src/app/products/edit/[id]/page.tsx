@@ -2,7 +2,13 @@
 
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { ICategory, IProduct } from "@app/interfaces";
-import { Edit, NumberField, SaveButton, useForm } from "@refinedev/antd";
+import {
+  Edit,
+  NumberField,
+  SaveButton,
+  getValueFromEvent,
+  useForm,
+} from "@refinedev/antd";
 import {
   HttpError,
   useApiUrl,
@@ -16,22 +22,46 @@ import {
   Flex,
   Form,
   Input,
+  Upload,
   InputNumber,
   Segmented,
   Select,
-  Upload,
   message,
   theme,
 } from "antd";
 import React, { useState } from "react";
 
-interface refineCoreProps {
-  resource: string;
-  action: string;
-  id: any;
-}
+import type { GetProp, UploadFile, UploadProps } from "antd";
+
+// interface refineCoreProps {
+//   resource: string;
+//   action: string;
+//   id: any;
+// }
+type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
 const ShowProduct = () => {
+  // const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+  // const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
+  //   setFileList(newFileList);
+  // };
+
+  // const onPreview = async (file: UploadFile) => {
+  //   let src = file.url as string;
+  //   if (!src) {
+  //     src = await new Promise((resolve) => {
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL(file.originFileObj as FileType);
+  //       reader.onload = () => resolve(reader.result as string);
+  //     });
+  //   }
+  //   const image = new Image();
+  //   image.src = src;
+  //   const imgWindow = window.open(src);
+  //   imgWindow?.document.write(image.outerHTML);
+  // };
+
   const apiUrl = useApiUrl();
   const { query: data } = useShow();
 
@@ -43,43 +73,69 @@ const ShowProduct = () => {
     resource: "products",
     id: data?.data?.data.id, // when undefined, id will be read from the URL.
     action: "edit",
-    redirect: false,
+    redirect: "list",
   });
 
   const categorySelectProps = useSelect<ICategory>({
     resource: "categories",
   });
 
-  // console.log("casdffsds", categorySelectProps);
+  console.log("casdffsds", categorySelectProps);
 
-  // console.log("fffff", formProps);
-  // console.log("sssss", saveButtonProps);
+  console.log("fffff", formProps);
+  console.log("sssss", saveButtonProps);
 
   const [fileList, setFileList] = useState([]);
 
-  const handleChange = (info: any) => {
-    setFileList(info.fileList);
+  // const handleChange = (info: any) => {
+  //   setFileList(info.fileList);
 
-    if (info.file.status === "done") {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  };
+  //   if (info.file.status === "done") {
+  //     message.success(`${info.file.name} file uploaded successfully`);
+  //   } else if (info.file.status === "error") {
+  //     message.error(`${info.file.name} file upload failed.`);
+  //   }
+  // };
 
-  const uploadButton =
-    fileList.length > 0 ? (
-      <div>
-        <div style={{ marginTop: 8 }}>Change</div>
-      </div>
-    ) : (
-      <div>
-        <PlusOutlined />
-        <div style={{ marginTop: 8 }}>Upload</div>
-      </div>
-    );
+  // const uploadButton =
+  //   fileList.length > 0 ? (
+  //     <div>
+  //       <div style={{ marginTop: 8 }}>Change</div>
+  //     </div>
+  //   ) : (
+  //     <div>
+  //       <PlusOutlined />
+  //       <div style={{ marginTop: 8 }}>Upload</div>
+  //     </div>
+  //   );
 
+  // const getValueFromEvent = (e: any) => {
+  //   console.log(e);
+  //   // if (Array.isArray(e)) {
+  //   //   return e;
+  //   // }
+  //   return e && e.fileList
+  //     ? e.fileList
+  //         .map((file: any) => {
+  //           if (file.status === "done") {
+  //             return {
+  //               uid: file.uid,
+  //               name: file.name,
+  //               type: file.type,
+  //               size: file.size,
+  //               lastModified: file.lastModified,
+  //               lastModifiedDate: file.lastModifiedDate,
+  //               url: file.response.url, // Extract URL from response
+  //             };
+  //           }
+  //           return null; // Skip if not done
+  //         })
+  //         .filter(Boolean)
+  //     : [];
+  // };
   const images = Form.useWatch("images", formProps.form);
+  // console.log(images)
+  // const image = images?.[0]?.file?.response || null;
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
 
@@ -89,23 +145,16 @@ const ShowProduct = () => {
         <Form.Item
           label={t("products.fields.images.label")}
           name="images"
-          // className="w-100"
+          className="w-100"
           rules={[{ required: true }]}
         >
-          <Upload
-            name="images"
+          <Upload.Dragger
+            name="file"
             action={`${apiUrl}/media/upload`}
             maxCount={1}
             accept=".png,.jpg,.jpeg"
             // className={styles.uploadDragger}
             showUploadList={false}
-            fileList={images.map((image) => ({
-              uid: image.uid,
-              name: image.name,
-              status: image.status,
-              response: { url: image.url }, // Ensure response contains the URL for Ant Design Upload
-              url: image.url, // Provide url for the upload component if needed
-            }))}
           >
             <Flex
               vertical
@@ -121,22 +170,19 @@ const ShowProduct = () => {
                 style={{
                   aspectRatio: 1,
                   objectFit: "contain",
-                  width: previewImageURL ? "100%" : "200px",
-                  height: previewImageURL ? "100%" : "200px",
+                  width: "200px",
+                  height: "200px",
                   marginTop: previewImageURL ? undefined : "auto",
-                  transform: previewImageURL ? undefined : "",
+                  transform: previewImageURL ? undefined : "translateY(50%)",
                 }}
-                src={
-                  previewImageURL ||
-                  "https://img.icons8.com/?size=100&id=3uVK4oBG53ja&format=png&color=000000"
-                }
+                src={previewImageURL || "/images/product-default-img.png"}
                 alt="Product Image"
               />
-              <Button
+              {/* <Button
                 icon={<UploadOutlined />}
                 style={{
                   marginTop: "auto",
-                  marginBottom: "5px",
+                  marginBottom: "16px",
                   backgroundColor: token.colorBgContainer,
                   ...(!!previewImageURL && {
                     position: "absolute",
@@ -145,9 +191,9 @@ const ShowProduct = () => {
                 }}
               >
                 {t("products.fields.images.description")}
-              </Button>
+              </Button> */}
             </Flex>
-          </Upload>
+          </Upload.Dragger>
         </Form.Item>
         <Form.Item
           label={t("products.fields.name")}
@@ -167,7 +213,7 @@ const ShowProduct = () => {
         >
           <Input.TextArea
             rows={1}
-            maxLength={100}
+            maxLength={200}
             showCount
             style={{ resize: "none" }}
           />
