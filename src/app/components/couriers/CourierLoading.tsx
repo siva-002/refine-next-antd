@@ -30,9 +30,13 @@ const CourierLoading = () => {
       <Flex vertical={false} wrap gap={"10px"} style={{ marginTop: "20px" }}>
         <Card style={{ width: "40%" }}>
           {leftList.map((item) => (
-            <Flex gap={"20px"} key={`leftitem${item}`}>
+            <Flex
+              gap={"20px"}
+              key={`leftitem${item}`}
+              style={{ marginTop: "5px", borderBottom: "1px solid lightgrey" }}
+            >
               <Skeleton.Input active />
-              <Skeleton.Input active />
+              <Skeleton.Input active style={{ marginBottom: "5px" }} />
             </Flex>
           ))}
           {/* <Skeleton active paragraph={{ rows: 8 }} /> */}
@@ -40,10 +44,14 @@ const CourierLoading = () => {
         <Card style={{ width: "50%" }}>
           {/* <Skeleton active paragraph={{ rows: 4 }} /> */}
           {rightList.map((item) => (
-            <Flex gap={"20px"} key={`rightitem${item}`}>
+            <Flex
+              gap={"20px"}
+              key={`rightitem${item}`}
+              style={{ marginTop: "5px", borderBottom: "1px solid lightgrey" }}
+            >
               <Skeleton.Input active />
               <Skeleton.Input active />
-              <Skeleton.Input active />
+              <Skeleton.Input active style={{ marginBottom: "5px" }} />
             </Flex>
           ))}
         </Card>
