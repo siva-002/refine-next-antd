@@ -15,7 +15,19 @@ export default function EditCourier() {
 
   const handleSubmit = (values: any) => {
     console.log(values);
-    // const val={...values,store:values["store"]}
+    const val = {
+      ...values,
+      store: {
+        ...values["store"],
+        title: values.store["title"],
+      },
+      vehicle: {
+        ...values["vehicle"],
+        model: values.vehicle["model"],
+      },
+    };
+    console.log(val);
+    onFinish(val);
   };
   return (
     <Edit saveButtonProps={saveButtonProps}>
