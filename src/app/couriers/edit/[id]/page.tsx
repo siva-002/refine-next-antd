@@ -27,27 +27,27 @@ export default function EditCourier() {
   const data = query?.data?.data;
 
   //   for manually change values before updating and add onfinish attribute to form with this function
-  const handleSubmit = (values: any) => {
-    console.log(values);
-    const val = {
-      ...data,
-      store: {
-        ...data?.store,
-        title: values?.store?.title,
-      },
-      vehicle: {
-        ...data?.vehicle,
-        model: values.vehicle?.model,
-      },
-    };
-    console.log(val);
-    onFinish(val);
-  };
+  //   const handleSubmit = (values: any) => {
+  //     console.log(values);
+  //     const val = {
+  //       ...data,
+  //       store: {
+  //         ...data?.store,
+  //         title: values?.store?.title,
+  //       },
+  //       vehicle: {
+  //         ...data?.vehicle,
+  //         model: values.vehicle?.model,
+  //       },
+  //     };
+  //     console.log(val);
+  //     onFinish(val);
+  //   };
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form
         {...formProps}
-        onFinish={handleSubmit}
+        // onFinish={handleSubmit}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 10 }}
       >
