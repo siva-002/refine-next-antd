@@ -156,7 +156,7 @@ export default function ShowCourier() {
                       </List.Item>
                     )}
                   />
-                  <Flex>
+                  <Flex justify="space-between" style={{ marginTop: "20px" }}>
                     <Button icon={<DeleteFilled />} danger>
                       Delete
                     </Button>
