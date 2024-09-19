@@ -25,25 +25,27 @@ export default function EditCourier() {
     optionValue: "title",
   });
   const data = query?.data?.data;
-  const handleSubmit = (values: any) => {
-    console.log(values);
-    // const val = {
-    //   ...data,
-    //   store: {
-    //     ...data?.store,
-    //     title: values?.store?.title,
-    //   },
-    //   vehicle: {
-    //     ...data?.vehicle,
-    //     model: values.vehicle?.model,
-    //   },
-    // };
-    // console.log(val);
-    // onFinish(values);
-  };
+
+  //   for manually change values before updating and add onfinish attribute to form with this function
+  //   const handleSubmit = (values: any) => {
+  //     console.log(values);
+  //     const val = {
+  //       ...data,
+  //       store: {
+  //         ...data?.store,
+  //         title: values?.store?.title,
+  //       },
+  //       vehicle: {
+  //         ...data?.vehicle,
+  //         model: values.vehicle?.model,
+  //       },
+  //     };
+  //     console.log(val);
+  //     onFinish(values);
+  //   };
   return (
     <Edit saveButtonProps={saveButtonProps}>
-      <Form {...formProps} onFinish={handleSubmit}>
+      <Form {...formProps}>
         <Form.Item
           label={"Name"}
           name="name"
@@ -101,7 +103,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Store"}
-          name={"title"}
+          name={["store", "title"]}
           rules={[
             {
               required: true,
@@ -112,7 +114,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Vehicle"}
-          name={"model"}
+          name={["vehicle", "model"]}
           rules={[
             {
               required: true,
