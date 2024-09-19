@@ -71,7 +71,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Store"}
-          name="Store"
+          name="store.title"
           rules={[
             {
               required: true,
@@ -82,7 +82,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Vehicle"}
-          name="vehicle"
+          name="vehicle.model"
           rules={[
             {
               required: true,
