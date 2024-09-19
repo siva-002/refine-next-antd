@@ -73,7 +73,7 @@ const ShowProduct = () => {
     resource: "products",
     id: data?.data?.data.id, // when undefined, id will be read from the URL.
     action: "edit",
-    redirect: false,
+    redirect: "list",
   });
 
   const categorySelectProps = useSelect<ICategory>({
@@ -199,11 +199,12 @@ const ShowProduct = () => {
             </Flex> 
             + Upload
           </Upload> */}
-          <Upload
+          <Upload.Dragger
             action={`${apiUrl}/media/upload`}
             // listType="picture-card"
             // onChange={onChange}
             // onPreview={onPreview}
+            showUploadList={false}
             maxCount={1}
           >
             <Flex
@@ -225,10 +226,13 @@ const ShowProduct = () => {
                   marginTop: "auto",
                   // transform: "translateY(25%)",
                 }}
-                src={previewImageURL || "/images/product-default-img.png"}
+                src={
+                  previewImageURL ||
+                  "https://img.icons8.com/?size=100&id=13917&format=png&color=000000"
+                }
                 alt="Product Image"
               />
-              <Button
+              {/* <Button
                 icon={<UploadOutlined />}
                 style={{
                   marginTop: "auto",
@@ -241,9 +245,9 @@ const ShowProduct = () => {
                 }}
               >
                 {t("products.fields.images.description")}
-              </Button>
+              </Button> */}
             </Flex>
-          </Upload>
+          </Upload.Dragger>
         </Form.Item>
         <Form.Item
           label={t("products.fields.name")}
@@ -263,7 +267,7 @@ const ShowProduct = () => {
         >
           <Input.TextArea
             rows={1}
-            maxLength={100}
+            maxLength={200}
             showCount
             style={{ resize: "none" }}
           />
