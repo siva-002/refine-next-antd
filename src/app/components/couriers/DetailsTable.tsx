@@ -2,8 +2,10 @@ import { useList } from "@refinedev/core";
 import { Table, Tag } from "antd";
 import React from "react";
 import Star from "./Star";
+import { useNavigation } from "@refinedev/core";
 
 const DetailsTable = ({ id }: any) => {
+  const { show } = useNavigation();
   const { data } = useList({
     resource: "reviews",
     filters: [
