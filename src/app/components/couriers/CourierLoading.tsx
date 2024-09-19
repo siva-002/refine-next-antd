@@ -33,12 +33,19 @@ const CourierLoading = () => {
             <Flex
               gap={"20px"}
               key={`leftitem${item}`}
-              style={{ marginTop: "5px", borderBottom: "1px solid lightgrey" }}
+              style={{
+                marginTop: "5px",
+                borderBottom: "0.5px solid lightgrey",
+              }}
             >
               <Skeleton.Input active />
-              <Skeleton.Input active style={{ marginBottom: "5px" }} />
+              <Skeleton.Input active style={{ marginBottom: "10px" }} />
             </Flex>
           ))}
+          <Flex justify="space-between">
+            <Skeleton.Button size="default" />
+            <Skeleton.Button size="default" />
+          </Flex>
           {/* <Skeleton active paragraph={{ rows: 8 }} /> */}
         </Card>
         <Card style={{ width: "50%" }}>
@@ -47,11 +54,14 @@ const CourierLoading = () => {
             <Flex
               gap={"20px"}
               key={`rightitem${item}`}
-              style={{ marginTop: "5px", borderBottom: "1px solid lightgrey" }}
+              style={{
+                marginTop: "5px",
+                borderBottom: "0.5px solid lightgrey",
+              }}
             >
               <Skeleton.Input active />
               <Skeleton.Input active />
-              <Skeleton.Input active style={{ marginBottom: "5px" }} />
+              <Skeleton.Input active style={{ marginBottom: "10px" }} />
             </Flex>
           ))}
         </Card>
