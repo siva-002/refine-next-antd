@@ -68,7 +68,7 @@ export default function ShowCourier() {
     {
       label: "Store",
       icon: <ShopOutlined />,
-      value: courier?.store.title,
+      value: courier?.store?.title,
     },
     {
       label: "Vehicle",
