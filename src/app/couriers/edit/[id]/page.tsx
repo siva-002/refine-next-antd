@@ -28,7 +28,7 @@ export default function EditCourier() {
 
   //   for manually change values before updating and add onfinish attribute to form with this function
   const handleSubmit = (values: any) => {
-    // console.log(values);
+    console.log(values);
     const val = {
       ...data,
       store: {
@@ -40,7 +40,7 @@ export default function EditCourier() {
         model: values.vehicle?.model,
       },
     };
-    // console.log(val);
+    console.log(val);
     onFinish(val);
   };
   return (
