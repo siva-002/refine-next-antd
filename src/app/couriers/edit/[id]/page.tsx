@@ -47,6 +47,61 @@ export default function EditCourier() {
         >
           <Input />
         </Form.Item>
+        <Form.Item
+          label={"Address"}
+          name="address"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={"Account Number"}
+          name="accountNumber"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={"Store"}
+          name="Store"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={"Vehicle"}
+          name="vehicle"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={"Vehicle Id"}
+          name="licensePlate"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
       </Form>
     </Edit>
   );
