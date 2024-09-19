@@ -45,7 +45,12 @@ export default function EditCourier() {
   };
   return (
     <Edit saveButtonProps={saveButtonProps}>
-      <Form {...formProps} onFinish={handleSubmit}>
+      <Form
+        {...formProps}
+        onFinish={handleSubmit}
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+      >
         <Form.Item
           label={"Name"}
           name="name"
@@ -54,6 +59,7 @@ export default function EditCourier() {
               required: true,
             },
           ]}
+          className="w-50"
         >
           <Input />
         </Form.Item>
