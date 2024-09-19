@@ -108,7 +108,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Store"}
-          name={["store", "title"]}
+          name={["store", "id"]}
           rules={[
             {
               required: true,
@@ -119,7 +119,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Vehicle"}
-          name={["vehicle", "model"]}
+          name={["vehicle", "id"]}
           rules={[
             {
               required: true,
