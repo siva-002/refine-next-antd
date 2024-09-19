@@ -29,8 +29,8 @@ const CourierLoading = () => {
 
       <Flex vertical={false} wrap gap={"10px"} style={{ marginTop: "20px" }}>
         <Card style={{ width: "40%" }}>
-          {leftList.map(() => (
-            <Flex gap={"20px"}>
+          {leftList.map((item) => (
+            <Flex gap={"20px"} key={`leftitem${item}`}>
               <Skeleton.Input active />
               <Skeleton.Input active />
             </Flex>
@@ -39,8 +39,8 @@ const CourierLoading = () => {
         </Card>
         <Card style={{ width: "50%" }}>
           {/* <Skeleton active paragraph={{ rows: 4 }} /> */}
-          {rightList.map(() => (
-            <Flex gap={"20px"}>
+          {rightList.map((item) => (
+            <Flex gap={"20px"} key={`rightitem${item}`}>
               <Skeleton.Input active />
               <Skeleton.Input active />
               <Skeleton.Input active />
