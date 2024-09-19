@@ -1,20 +1,19 @@
 "use client";
-import { Edit } from "@refinedev/antd";
-import { useForm, useShow } from "@refinedev/core";
+import { ICourier } from "@app/interfaces";
+import { Edit, useForm } from "@refinedev/antd";
+import { HttpError, useShow } from "@refinedev/core";
 import type { BaseRecord } from "@refinedev/core";
 import { Form, Input } from "antd";
-import type { UseFormProps } from "@refinedev/core";
 export default function EditCourier() {
   const { query } = useShow();
-  //   const { formProps, saveButtonProps, formLoading } = useForm<UseFormProps>({
-  //     resource: "reviews",
-  //     id: query?.data?.data.id, // when undefined, id will be read from the URL.
-  //     action: "edit",
-  //     redirect: false,
-  //   });
+  const { formProps, saveButtonProps, formLoading } = useForm<ICourier>({
+    resource: "couriers",
+    id: query?.data?.data.id, // when undefined, id will be read from the URL.
+    action: "edit",
+  });
   return (
     <Edit>
-      <Form>
+      <Form {...formProps}>
         <Form.Item
           label={"Name"}
           name="name"
