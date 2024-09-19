@@ -86,6 +86,7 @@ export default function RootLayout({
                       list: "/products",
                       show: "/products/show/:id",
                       edit: "/products/edit/:id",
+                      create: "products/create",
                     },
                     {
                       name: "stores",
