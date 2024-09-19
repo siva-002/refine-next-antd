@@ -46,9 +46,10 @@ export default function EditCourier() {
     onFinish(val);
   };
   const { token } = theme.useToken();
-  const images = Form.useWatch("avatar", formProps.form);
+  const images = Form.useWatch("images", formProps.form);
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
+  console.log(images);
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form
