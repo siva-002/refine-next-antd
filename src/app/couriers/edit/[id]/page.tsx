@@ -1,10 +1,12 @@
 "use client";
+import { CloudUploadOutlined } from "@ant-design/icons";
 import { ICourier } from "@app/interfaces";
-import { Edit, useForm } from "@refinedev/antd";
-import { HttpError, useSelect, useShow } from "@refinedev/core";
+import { Edit, getValueFromEvent, useForm } from "@refinedev/antd";
+import { HttpError, useApiUrl, useSelect, useShow } from "@refinedev/core";
 import type { BaseRecord } from "@refinedev/core";
-import { Button, Form, Input, Select } from "antd";
+import { Avatar, Button, Flex, Form, Input, Select, Upload, theme } from "antd";
 export default function EditCourier() {
+  const apiUrl = useApiUrl();
   const { query } = useShow();
   const { formProps, saveButtonProps, formLoading, onFinish } =
     useForm<ICourier>({
@@ -15,42 +17,117 @@ export default function EditCourier() {
 
   const vehicleProps = useSelect({
     resource: "vehicles",
-    // optionLabel: "model",
-    // optionValue: "model",
+    optionLabel: "model",
+    optionValue: "model",
   });
 
   const storeProps = useSelect({
     resource: "stores",
-    // optionLabel: "title",
-    // optionValue: "title",
+    optionLabel: "title",
+    optionValue: "title",
   });
   const data = query?.data?.data;
 
   //   for manually change values before updating and add onfinish attribute to form with this function
-  //   const handleSubmit = (values: any) => {
-  //     console.log(values);
-  //     const val = {
-  //       ...data,
-  //       store: {
-  //         ...data?.store,
-  //         title: values?.store?.title,
-  //       },
-  //       vehicle: {
-  //         ...data?.vehicle,
-  //         model: values.vehicle?.model,
-  //       },
-  //     };
-  //     console.log(val);
-  //     onFinish(val);
-  //   };
+  const handleSubmit = (values: any) => {
+    console.log(values);
+    const val = {
+      ...data,
+      store: {
+        ...data?.store,
+        title: values?.store?.title,
+      },
+      vehicle: {
+        ...data?.vehicle,
+        model: values.vehicle?.model,
+      },
+    };
+    console.log(val);
+    onFinish(val);
+  };
+  const { token } = theme.useToken();
+  const images = Form.useWatch("avatar", formProps.form);
+  const image = images?.[0] || null;
+  const previewImageURL = image?.url || image?.response?.url;
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form
         {...formProps}
-        // onFinish={handleSubmit}
+        onFinish={handleSubmit}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 10 }}
       >
+        <Form.Item
+          label={"Image"}
+          name="images"
+          getValueFromEvent={getValueFromEvent}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Upload
+            action={`${apiUrl}/media/upload`}
+            // listType="picture-card"
+            // onChange={onChange}
+            // onPreview={onPreview}
+            showUploadList={false}
+            maxCount={1}
+          >
+            <Flex
+              vertical
+              align="center"
+              justify="center"
+              style={{
+                position: "relative",
+                height: "100%",
+              }}
+            >
+              <Flex
+                vertical
+                align="center"
+                justify="center"
+                style={{
+                  width: "200px",
+                  height: "200px",
+                  border: previewImageURL ? "" : "1px solid #44454770",
+                }}
+                className="position-relative d-flex align-items-center justify-content-center rounded-pill overflow-hidden p-0 m-0"
+              >
+                <Avatar
+                  shape="square"
+                  style={{
+                    aspectRatio: 1,
+                    objectFit: "contain",
+                    width: previewImageURL ? "200px" : "100px",
+                    height: previewImageURL ? "200px" : "100px",
+                    marginTop: "auto",
+                    transform: previewImageURL ? "" : "translateY(-50%)",
+                  }}
+                  src={
+                    previewImageURL ||
+                    "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
+                  }
+                  alt="Product Image"
+                />
+                <div
+                  className="position-absolute d-flex align-items-center justify-content-center rounded-bottom p-1 fs-6"
+                  style={{
+                    bottom: "0",
+                    width: "100%",
+                    backgroundColor: token.volcano,
+                    color: "#fff",
+                    cursor: "pointer",
+                  }}
+                >
+                  <CloudUploadOutlined className="fs-4 px-2" />{" "}
+                  <span>{!previewImageURL ? "Upload" : "Change"}</span>
+                </div>
+              </Flex>
+            </Flex>
+          </Upload>
+        </Form.Item>
         <Form.Item
           label={"Name"}
           name="name"
@@ -108,7 +185,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Store"}
-          name={["store", "id"]}
+          name={["store", "title"]}
           rules={[
             {
               required: true,
@@ -119,7 +196,7 @@ export default function EditCourier() {
         </Form.Item>
         <Form.Item
           label={"Vehicle"}
-          name={["vehicle", "id"]}
+          name={["vehicle", "model"]}
           rules={[
             {
               required: true,
