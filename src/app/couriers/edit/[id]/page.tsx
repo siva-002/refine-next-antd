@@ -48,8 +48,8 @@ export default function EditCourier() {
       <Form
         {...formProps}
         onFinish={handleSubmit}
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 10 }}
       >
         <Form.Item
           label={"Name"}
@@ -59,7 +59,6 @@ export default function EditCourier() {
               required: true,
             },
           ]}
-          className="w-50"
         >
           <Input />
         </Form.Item>
