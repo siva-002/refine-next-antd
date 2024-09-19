@@ -14,6 +14,7 @@ const StoreList = () => {
     <List>
       <Table {...tableProps} rowKey={"id"}>
         <Table.Column dataIndex={"id"} title={t("stores.fields.id")} />
+        <Table.Column dataIndex={"id"} title={t("stores.fields.id")} />
       </Table>
     </List>
   );
