@@ -6,14 +6,20 @@ import type { BaseRecord } from "@refinedev/core";
 import { Button, Form, Input } from "antd";
 export default function EditCourier() {
   const { query } = useShow();
-  const { formProps, saveButtonProps, formLoading } = useForm<ICourier>({
-    resource: "couriers",
-    id: query?.data?.data.id, // when undefined, id will be read from the URL.
-    action: "edit",
-  });
+  const { formProps, saveButtonProps, formLoading, onFinish } =
+    useForm<ICourier>({
+      resource: "couriers",
+      id: query?.data?.data.id, // when undefined, id will be read from the URL.
+      action: "edit",
+    });
+
+  const handleSubmit = (values: any) => {
+    console.log(values);
+    // const val={...values,store:values["store"]}
+  };
   return (
     <Edit saveButtonProps={saveButtonProps}>
-      <Form {...formProps}>
+      <Form {...formProps} onFinish={handleSubmit}>
         <Form.Item
           label={"Name"}
           name="name"
