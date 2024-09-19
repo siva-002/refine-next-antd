@@ -2,7 +2,7 @@ import { Card, Col, Flex, Row, Skeleton } from "antd";
 import React from "react";
 
 const CourierLoading = () => {
-  const leftList = [1, 2, 3, 4, 5, 6, 7, 8];
+  const leftList = [1, 2, 3, 4, 5, 6];
   const rightList = [1, 2, 3, 4];
   return (
     <>
@@ -35,16 +35,15 @@ const CourierLoading = () => {
               key={`leftitem${item}`}
               style={{
                 marginTop: "5px",
-                borderBottom: "0.5px solid lightgrey",
               }}
             >
               <Skeleton.Input active />
               <Skeleton.Input active style={{ marginBottom: "10px" }} />
             </Flex>
           ))}
-          <Flex justify="space-between">
-            <Skeleton.Button size="default" />
-            <Skeleton.Button size="default" />
+          <Flex justify="space-between" style={{ marginTop: "20px" }}>
+            <Skeleton.Button size="large" />
+            <Skeleton.Button size="large" />
           </Flex>
           {/* <Skeleton active paragraph={{ rows: 8 }} /> */}
         </Card>
@@ -56,7 +55,6 @@ const CourierLoading = () => {
               key={`rightitem${item}`}
               style={{
                 marginTop: "5px",
-                borderBottom: "0.5px solid lightgrey",
               }}
             >
               <Skeleton.Input active />

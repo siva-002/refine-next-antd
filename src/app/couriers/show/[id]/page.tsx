@@ -19,6 +19,8 @@ import React from "react";
 import {
   ArrowRightOutlined,
   BankOutlined,
+  DeleteFilled,
+  EditFilled,
   FileDoneOutlined,
   HomeOutlined,
   LeftOutlined,
@@ -154,6 +156,14 @@ export default function ShowCourier() {
                       </List.Item>
                     )}
                   />
+                  <Flex>
+                    <Button icon={<DeleteFilled />} danger>
+                      Delete
+                    </Button>
+                    <Button icon={<EditFilled />} type="primary">
+                      Edit
+                    </Button>
+                  </Flex>
                 </Card>
               </Col>
               <Col xs={24} sm={12} md={12}>
