@@ -30,6 +30,7 @@ import CourierStatus from "@app/components/couriers/CourierStatus";
 import { Show, Title } from "@refinedev/antd";
 import { RiMotorbikeLine } from "react-icons/ri";
 import DetailsTable from "@app/components/couriers/DetailsTable";
+import CourierLoading from "@app/components/couriers/CourierLoading";
 
 export default function ShowCourier() {
   const { query } = useShow();
@@ -92,16 +93,7 @@ export default function ShowCourier() {
     // >
     <>
       {isLoading ? (
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%,-50%)",
-          }}
-        >
-          <Spin />
-        </div>
+        <CourierLoading />
       ) : (
         <>
           <div
