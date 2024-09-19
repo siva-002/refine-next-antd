@@ -1,3 +1,4 @@
+"use client";
 import { Edit } from "@refinedev/antd";
 import { useForm, useShow } from "@refinedev/core";
 import type { BaseRecord } from "@refinedev/core";

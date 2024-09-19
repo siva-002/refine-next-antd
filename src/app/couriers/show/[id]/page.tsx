@@ -81,7 +81,7 @@ export default function ShowCourier() {
       value: courier?.licensePlate,
     },
   ];
-  const { list } = useNavigation();
+  const { list, edit } = useNavigation();
   const { token } = theme.useToken();
   const go = useGo();
   return (
@@ -160,7 +160,14 @@ export default function ShowCourier() {
                     <Button icon={<DeleteFilled />} danger>
                       Delete
                     </Button>
-                    <Button icon={<EditFilled />} type="primary">
+                    <Button
+                      icon={<EditFilled />}
+                      type="primary"
+                      onClick={(record) => {
+                        console.log("edit record", record);
+                        console.log("edit id", query?.data?.data?.id);
+                      }}
+                    >
                       Edit
                     </Button>
                   </Flex>

@@ -17,7 +17,7 @@ const DetailsTable = ({ id }: any) => {
     ],
   });
   // console.log("userid", id);
-  console.log("courierdata", data);
+  // console.log("courierdata", data);
   const columns = [
     {
       title: "Reviews",
