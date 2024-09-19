@@ -16,7 +16,7 @@ const DetailsTable = ({ id }: any) => {
       },
     ],
   });
-  console.log("userid", id);
+  // console.log("userid", id);
   console.log("courierdata", data);
   const columns = [
     {
@@ -54,6 +54,7 @@ const DetailsTable = ({ id }: any) => {
       dataSource={tabledata}
       pagination={false}
       onRow={(record: any) => {
+        console.log("record", record);
         return {
           onClick: () => show("orders", record?.order?.id),
         };
