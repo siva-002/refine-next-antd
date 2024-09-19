@@ -15,14 +15,14 @@ export default function EditCourier() {
 
   const vehicleProps = useSelect({
     resource: "vehicles",
-    optionLabel: "model",
-    optionValue: "model",
+    // optionLabel: "model",
+    // optionValue: "model",
   });
 
   const storeProps = useSelect({
     resource: "stores",
-    optionLabel: "title",
-    optionValue: "title",
+    // optionLabel: "title",
+    // optionValue: "title",
   });
   const data = query?.data?.data;
 
