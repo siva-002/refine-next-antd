@@ -56,7 +56,9 @@ const Rating = ({ record }: { record: ICourier }) => {
   return isLoading ? (
     <Spin />
   ) : (
-    <Flex gap={"5px"}>{stars.map((item) => item)}</Flex>
+    <Flex gap={"5px"}>
+      {stars.map((item) => item)}
+    </Flex>
   );
 };
 

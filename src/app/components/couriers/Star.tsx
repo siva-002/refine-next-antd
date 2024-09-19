@@ -7,7 +7,7 @@ const Star = ({ value }: { value: number }) => {
   for (let i = 0; i < value; i++) {
     stars.push(
       <PiStarFill
-        key={`{f${i}${value}}`}
+        key={`{f${i}${Math.floor(Math.random() * 10)}}`}
         style={{ color: "goldenrod", fontSize: "1.2rem" }}
       />
     );
