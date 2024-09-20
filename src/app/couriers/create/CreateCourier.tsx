@@ -22,6 +22,7 @@ import {
   Form,
   Input,
   Select,
+  Typography,
   Upload,
   theme,
 } from "antd";
@@ -95,73 +96,78 @@ const CreateCourier: React.FC<CourierProps> = ({
           <Form.Item
             name="images"
             getValueFromEvent={getValueFromEvent}
-            // rules={[
-            //   {
-            //     required: true,
-            //   },
-            // ]}
+            rules={[
+              {
+                required: true,
+              },
+            ]}
           >
-            <Upload
-              action={`${apiUrl}/media/upload`}
-              listType="picture-card"
-              // onChange={onChange}
-              // onPreview={onPreview}
-              showUploadList={false}
-              maxCount={1}
-            >
-              <Flex
-                vertical
-                align="center"
-                justify="center"
-                style={{
-                  position: "relative",
-                  height: "100%",
-                }}
+            <Flex vertical>
+              <Typography.Text className="mb-2">
+                <span className="text-danger">*</span> Image
+              </Typography.Text>
+              <Upload
+                action={`${apiUrl}/media/upload`}
+                // listType="picture-card"
+                // onChange={onChange}
+                // onPreview={onPreview}
+                showUploadList={false}
+                maxCount={1}
               >
                 <Flex
                   vertical
                   align="center"
                   justify="center"
                   style={{
-                    width: "100px",
-                    height: "100px",
-                    border: previewImageURL ? "" : "1px solid #44454770",
+                    position: "relative",
+                    height: "100%",
                   }}
-                  className="position-relative d-flex align-items-center justify-content-center rounded-2 overflow-hidden p-0 m-0"
                 >
-                  <Avatar
-                    shape="square"
+                  <Flex
+                    vertical
+                    align="center"
+                    justify="center"
                     style={{
-                      aspectRatio: 1,
-                      objectFit: "contain",
-                      width: previewImageURL ? "100px" : "50px",
-                      height: previewImageURL ? "100px" : "50px",
-                      marginTop: "auto",
-                      transform: previewImageURL ? "" : "translateY(-50%)",
+                      width: "100px",
+                      height: "100px",
+                      border: previewImageURL ? "" : "1px solid #44454770",
                     }}
-                    src={
-                      previewImageURL ||
-                      "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
-                    }
-                    alt="Product Image"
-                  />
-                  <div
-                    className="position-absolute d-flex align-items-center justify-content-center rounded-bottom p-1 fs-6"
-                    style={{
-                      bottom: "0",
-                      width: "100%",
-                      backgroundColor: token.volcano,
-                      color: "#fff",
-                      fontSize: "5px",
-                      cursor: "pointer",
-                      opacity: 0.5,
-                    }}
+                    className="position-relative d-flex align-items-center justify-content-center rounded-pill overflow-hidden p-0 m-0"
                   >
-                    <CloudUploadOutlined />
-                  </div>
+                    <Avatar
+                      shape="square"
+                      style={{
+                        aspectRatio: 1,
+                        objectFit: "contain",
+                        width: previewImageURL ? "100px" : "50px",
+                        height: previewImageURL ? "100px" : "50px",
+                        marginTop: "auto",
+                        transform: previewImageURL ? "" : "translateY(-50%)",
+                      }}
+                      src={
+                        previewImageURL ||
+                        "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
+                      }
+                      alt="Product Image"
+                    />
+                    <div
+                      className="position-absolute d-flex align-items-center justify-content-center rounded-bottom p-1 fs-6"
+                      style={{
+                        bottom: "0",
+                        width: "100%",
+                        backgroundColor: token.volcano,
+                        color: "#fff",
+                        fontSize: "5px",
+                        cursor: "pointer",
+                        opacity: 0.5,
+                      }}
+                    >
+                      <CloudUploadOutlined />
+                    </div>
+                  </Flex>
                 </Flex>
-              </Flex>
-            </Upload>
+              </Upload>
+            </Flex>
           </Form.Item>
 
           <Form.Item
