@@ -23,8 +23,8 @@ import {
 } from "antd";
 
 interface CourierProps {
-  setCreateCourier: any;
-  createCourier: any;
+  setCreateCourier: (value: any) => void;
+  createCourier: boolean;
 }
 export default function CreateCourier({
   setCreateCourier,
