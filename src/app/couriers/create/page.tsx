@@ -63,7 +63,7 @@ export default function CreateCourier() {
   const previewImageURL = image?.url || image?.response?.url;
 
   return (
-    <Drawer onClose={() => list("couriers")} open={true}>
+    <Drawer onClose={() => list("couriers")} open={true} size="large">
       <Create saveButtonProps={saveButtonProps}>
         <Form
           {...formProps}
