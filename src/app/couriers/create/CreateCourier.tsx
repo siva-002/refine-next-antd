@@ -103,134 +103,162 @@ const CreateCourier: React.FC<CourierProps> = ({
           >
             <Upload
               action={`${apiUrl}/media/upload`}
+              listType="picture-card"
+              // onChange={onChange}
+              // onPreview={onPreview}
               showUploadList={false}
               maxCount={1}
-              style={{
-                width: "100px",
-                height: "100px",
-              }}
             >
-              <Avatar
+              <Flex
+                vertical
+                align="center"
+                justify="center"
                 style={{
-                  width: previewImageURL ? "100px" : "50px",
-                  height: previewImageURL ? "100px" : "50px",
                   position: "relative",
+                  height: "100%",
                 }}
-                shape="circle"
-                src={previewImageURL}
-                alt="Product Image"
-              />
-              {previewImageURL ? (
-                <EditOutlined
+              >
+                <Flex
+                  vertical
+                  align="center"
+                  justify="center"
                   style={{
-                    position: "absolute",
-                    top: "0",
-                    right: "-20px",
-                    color: "blue",
+                    width: "100px",
+                    height: "100px",
+                    border: previewImageURL ? "" : "1px solid #44454770",
                   }}
-                />
-              ) : (
-                <UploadOutlined
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%,-50%)",
-                    fontSize: "1.3rem",
-                    color: "orange",
-                  }}
-                />
-              )}
+                  className="position-relative d-flex align-items-center justify-content-center rounded-2 overflow-hidden p-0 m-0"
+                >
+                  <Avatar
+                    shape="square"
+                    style={{
+                      aspectRatio: 1,
+                      objectFit: "contain",
+                      width: previewImageURL ? "100px" : "50px",
+                      height: previewImageURL ? "100px" : "50px",
+                      marginTop: "auto",
+                      transform: previewImageURL ? "" : "translateY(-50%)",
+                    }}
+                    src={
+                      previewImageURL ||
+                      "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
+                    }
+                    alt="Product Image"
+                  />
+                  <div
+                    className="position-absolute d-flex align-items-center justify-content-center rounded-bottom p-1 fs-6"
+                    style={{
+                      bottom: "0",
+                      width: "100%",
+                      backgroundColor: token.volcano,
+                      color: "#fff",
+                      fontSize: "5px",
+                      cursor: "pointer",
+                      opacity: 0.5,
+                    }}
+                  >
+                    <CloudUploadOutlined />
+                  </div>
+                </Flex>
+              </Flex>
             </Upload>
           </Form.Item>
-          <Form.Item
-            label={"Name"}
-            name="name"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label={"Gsm"}
-            name="gsm"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label={"Email"}
-            name="email"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label={"Address"}
-            name="address"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label={"Account Number"}
-            name="accountNumber"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label={"Store"}
-            name={["store", "id"]}
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Select options={options} />
-          </Form.Item>
-          <Form.Item
-            label={"Vehicle"}
-            name={["vehicle", "id"]}
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Select {...vehicleProps} />
-          </Form.Item>
-          <Form.Item
-            label={"Vehicle Id"}
-            name="licensePlate"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+          <Flex justify="space-around">
+            <Form.Item
+              label={"Name"}
+              name="name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label={"Gsm"}
+              name="gsm"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Flex>
+          <Flex justify="space-around">
+            <Form.Item
+              label={"Email"}
+              name="email"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label={"Address"}
+              name="address"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Flex>
+          <Flex justify="space-around">
+            <Form.Item
+              label={"Account Number"}
+              name="accountNumber"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label={"Store"}
+              name={["store", "id"]}
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Select options={options} />
+            </Form.Item>
+          </Flex>
+          <Flex justify="space-around">
+            <Form.Item
+              label={"Vehicle"}
+              name={["vehicle", "id"]}
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Select {...vehicleProps} />
+            </Form.Item>
+            <Form.Item
+              label={"Vehicle Id"}
+              name="licensePlate"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Flex>
         </Form>
       </Create>
     </Drawer>
