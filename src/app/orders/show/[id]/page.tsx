@@ -8,8 +8,10 @@ import { Flex } from "antd";
 import Card from "antd/es/card/Card";
 import React from "react";
 import type { BaseRecord } from "@refinedev/core";
+import OrderTabel from "@app/components/showorder/OrderTabel";
 export default function OrdersShow() {
   const { query } = useShow();
+  // console.log(query);
   const data = query?.data?.data?.events;
   const status = query?.data?.data?.status.text;
 
@@ -18,6 +20,7 @@ export default function OrdersShow() {
       goBack={null}
       title={`Order #${query?.data?.data?.orderNumber ?? ""}`}
       breadcrumb={null}
+      isLoading={query.isLoading}
     >
       <Flex
         gap={"middle"}
@@ -29,6 +32,9 @@ export default function OrdersShow() {
         </Card>
         <Card className="w-100 orderCard2">
           <MapComponent data={query?.data?.data} />
+        </Card>
+        <Card className="w-100 orderCard2">
+          <OrderTabel data={query?.data?.data?.products} />
         </Card>
         <Card className="w-100 orderCard2">
           <OrderDetails record={query?.data?.data} />
