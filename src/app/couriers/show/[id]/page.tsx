@@ -182,7 +182,7 @@ export default function ShowCourier() {
           {/* <Card> */}
           <Row style={{ marginTop: "20px" }}>
             <Flex vertical={false} wrap gap={"10px"}>
-              <Col xs={24} sm={12} md={10}>
+              <Col span={10}>
                 <Card>
                   <List
                     style={{ border: "none" }}
@@ -232,7 +232,7 @@ export default function ShowCourier() {
                   </Flex>
                 </Card>
               </Col>
-              <Col xs={24} sm={12} md={12}>
+              <Col span={12}>
                 <DetailsTable courier={query?.data?.data} />
               </Col>
             </Flex>
