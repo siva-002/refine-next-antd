@@ -94,6 +94,7 @@ export default function RootLayout({
                       list: "/couriers",
                       show: "/couriers/show/:id",
                       edit: "/couriers/edit/:id",
+                      create: "/couriers/create",
                       meta: {
                         icon: <RiMotorbikeLine />,
                       },
