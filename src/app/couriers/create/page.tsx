@@ -7,24 +7,19 @@ import type { BaseRecord } from "@refinedev/core";
 import { Avatar, Button, Flex, Form, Input, Select, Upload, theme } from "antd";
 export default function CreateCourier() {
   const apiUrl = useApiUrl();
-  const { query } = useShow();
   const { formProps, saveButtonProps, formLoading, onFinish } =
     useForm<ICourier>({
-      resource: "couriers",
-      id: query?.data?.data.id, // when undefined, id will be read from the URL.
+      resource: "couriers", // when undefined, id will be read from the URL.
       action: "create",
     });
-  const { isLoading } = query;
-  const data = query?.data?.data;
+
   const vehicleProps = useSelect({
     resource: "vehicles",
-    defaultValue: data?.vehicle?.id,
     optionLabel: "model",
     optionValue: "id",
   });
   const { options } = useSelect({
-    resource: "stores",
-    defaultValue: data?.store?.id,
+    resource: "stores"
   });
   // console.log("store", storeProps);
 
@@ -51,7 +46,7 @@ export default function CreateCourier() {
   const previewImageURL = image?.url || image?.response?.url;
 
   return (
-    <Create saveButtonProps={saveButtonProps} isLoading={isLoading}>
+    <Create saveButtonProps={saveButtonProps}>
       <Form
         {...formProps}
         // onFinish={handleSubmit}

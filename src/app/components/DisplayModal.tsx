@@ -42,7 +42,7 @@ const DisplayModal = ({
       break;
     case "DeleteIcon":
       CIcon = (
-        <DeleteFilled style={{ color: "orengered", fontSize: "larger" }} />
+        <DeleteFilled style={{ color: "orangered", fontSize: "larger" }} />
       );
       break;
     case "EditIcon":
