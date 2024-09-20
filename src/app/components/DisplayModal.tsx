@@ -21,6 +21,7 @@ const DisplayModal = ({
   type: OkType = "primary",
   Icon,
 }: ModalProps) => {
+  console.log(Icon);
   return (
     <Modal
       style={{ width: "fit-content !important" }}
