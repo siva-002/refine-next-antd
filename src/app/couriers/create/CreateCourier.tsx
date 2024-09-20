@@ -104,27 +104,20 @@ const CreateCourier: React.FC<CourierProps> = ({
               style={{
                 width: "100px",
                 height: "100px",
+                position: "relative",
               }}
-              iconRender={() => null}
             >
               <Avatar
-                size={100}
+                style={{
+                  width: previewImageURL ? "100px" : "50px",
+                  height: previewImageURL ? "100px" : "50px",
+                }}
                 shape="circle"
                 src={
                   previewImageURL ||
                   "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
                 }
                 alt="Product Image"
-              />
-              <UploadOutlined
-                style={{
-                  position: "absolute",
-                  bottom: 10,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  fontSize: "24px",
-                  color: "#1890ff",
-                }}
               />
             </Upload>
           </Form.Item>
