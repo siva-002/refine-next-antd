@@ -4,7 +4,7 @@ import React from "react";
 import Star from "./Star";
 import { useNavigation } from "@refinedev/core";
 
-const DetailsTable = ({ id }: any) => {
+const DetailsTable = ({ courier }: any) => {
   const { show } = useNavigation();
   const { data } = useList({
     resource: "reviews",
@@ -12,9 +12,12 @@ const DetailsTable = ({ id }: any) => {
       {
         field: "order.courier.id",
         operator: "eq",
-        value: id,
+        value: courier?.id,
       },
     ],
+    queryOptions: {
+      enabled: !!courier,
+    },
   });
   // console.log("userid", id);
   // console.log("courierdata", data);

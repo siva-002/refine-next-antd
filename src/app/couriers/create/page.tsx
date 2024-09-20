@@ -1,30 +1,25 @@
 "use client";
 import { CloudUploadOutlined } from "@ant-design/icons";
 import { ICourier } from "@app/interfaces";
-import { Edit, getValueFromEvent, useForm } from "@refinedev/antd";
+import { Create, Edit, getValueFromEvent, useForm } from "@refinedev/antd";
 import { HttpError, useApiUrl, useSelect, useShow } from "@refinedev/core";
 import type { BaseRecord } from "@refinedev/core";
 import { Avatar, Button, Flex, Form, Input, Select, Upload, theme } from "antd";
-export default function EditCourier() {
+export default function CreateCourier() {
   const apiUrl = useApiUrl();
-  const { query } = useShow();
   const { formProps, saveButtonProps, formLoading, onFinish } =
     useForm<ICourier>({
-      resource: "couriers",
-      id: query?.data?.data.id, // when undefined, id will be read from the URL.
-      action: "edit",
+      resource: "couriers", // when undefined, id will be read from the URL.
+      action: "create",
     });
-  const { isLoading } = query;
-  const data = query?.data?.data;
+
   const vehicleProps = useSelect({
     resource: "vehicles",
-    defaultValue: data?.vehicle?.id,
     optionLabel: "model",
     optionValue: "id",
   });
   const { options } = useSelect({
-    resource: "stores",
-    defaultValue: data?.store?.id,
+    resource: "stores"
   });
   // console.log("store", storeProps);
 
@@ -46,12 +41,12 @@ export default function EditCourier() {
   //     onFinish(val);
   //   };
   const { token } = theme.useToken();
-  const images = Form.useWatch("avatar", formProps.form);
+  const images = Form.useWatch("images", formProps.form);
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
-  // console.log(images);
+
   return (
-    <Edit saveButtonProps={saveButtonProps} isLoading={isLoading}>
+    <Create saveButtonProps={saveButtonProps}>
       <Form
         {...formProps}
         // onFinish={handleSubmit}
@@ -60,11 +55,8 @@ export default function EditCourier() {
         labelAlign="left"
       >
         <Form.Item
-          label={"Image"}
-          name="avatar"
-
+          name="images"
           getValueFromEvent={getValueFromEvent}
-          // className="bg-primary"
           // rules={[
           //   {
           //     required: true,
@@ -73,7 +65,7 @@ export default function EditCourier() {
         >
           <Upload
             action={`${apiUrl}/media/upload`}
-            listType="picture-card"
+            // listType="picture-card"
             // onChange={onChange}
             // onPreview={onPreview}
             showUploadList={false}
@@ -93,19 +85,19 @@ export default function EditCourier() {
                 align="center"
                 justify="center"
                 style={{
-                  width: "100px",
-                  height: "100px",
+                  width: "200px",
+                  height: "200px",
                   border: previewImageURL ? "" : "1px solid #44454770",
                 }}
-                className="position-relative d-flex align-items-center justify-content-center rounded-2 overflow-hidden p-0 m-0"
+                className="position-relative d-flex align-items-center justify-content-center rounded-pill overflow-hidden p-0 m-0"
               >
                 <Avatar
                   shape="square"
                   style={{
                     aspectRatio: 1,
                     objectFit: "contain",
-                    width: previewImageURL ? "100px" : "50px",
-                    height: previewImageURL ? "100px" : "50px",
+                    width: previewImageURL ? "200px" : "100px",
+                    height: previewImageURL ? "200px" : "100px",
                     marginTop: "auto",
                     transform: previewImageURL ? "" : "translateY(-50%)",
                   }}
@@ -122,12 +114,11 @@ export default function EditCourier() {
                     width: "100%",
                     backgroundColor: token.volcano,
                     color: "#fff",
-                    fontSize: "5px",
                     cursor: "pointer",
-                    opacity: 0.5,
                   }}
                 >
-                  <CloudUploadOutlined />
+                  <CloudUploadOutlined className="fs-4 px-2" />{" "}
+                  <span>{!previewImageURL ? "Upload" : "Change"}</span>
                 </div>
               </Flex>
             </Flex>
@@ -222,6 +213,6 @@ export default function EditCourier() {
           <Input />
         </Form.Item>
       </Form>
-    </Edit>
+    </Create>
   );
 }

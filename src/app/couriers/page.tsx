@@ -14,7 +14,7 @@ export default function ShowCouriers() {
   // console.log(tableProps.dataSource);
 
   return (
-    <List>
+    <List canCreate={true}>
       <Table {...tableProps}>
         <Table.Column dataIndex={"id"} title={"ID #"} />
         <Table.Column

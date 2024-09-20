@@ -1,5 +1,11 @@
 "use client";
-import { useGo, useNavigation, useShow } from "@refinedev/core";
+import {
+  BaseRecord,
+  useDelete,
+  useGo,
+  useNavigation,
+  useShow,
+} from "@refinedev/core";
 import {
   Avatar,
   Button,
@@ -12,9 +18,10 @@ import {
   Spin,
   Table,
   Typography,
+  notification,
   theme,
 } from "antd";
-import React from "react";
+import React, { useState } from "react";
 // import CourierStatus fro../../../components/couriers/CourierStatustus";
 import {
   ArrowRightOutlined,
@@ -33,12 +40,15 @@ import { Show, Title } from "@refinedev/antd";
 import { RiMotorbikeLine } from "react-icons/ri";
 import DetailsTable from "@app/components/couriers/DetailsTable";
 import CourierLoading from "@app/components/couriers/CourierLoading";
+import DisplayModal from "@app/components/DisplayModal";
 
 export default function ShowCourier() {
   const { query } = useShow();
   const { isLoading } = query;
+
   const courier = query?.data?.data;
   // console.log(courier);
+
   const userData = [
     {
       label: "Status",
@@ -84,6 +94,43 @@ export default function ShowCourier() {
   const { list, edit } = useNavigation();
   const { token } = theme.useToken();
   const go = useGo();
+
+  // for deletecourier
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  const { mutate: deleteCourierItem } = useDelete();
+
+  const deleteCourier = () => {
+    deleteCourierItem(
+      {
+        resource: "couriers",
+        id: courier?.id ?? "",
+      },
+      {
+        onSuccess: () => {
+          notification.success({
+            message: "Success",
+            description: `Courier ${
+              courier?.id ?? ""
+            } has been deleted successfully`,
+          });
+        },
+        onError: (error) => {
+          notification.error({
+            message: "Failure",
+            description: `Error in deleting Courier ${
+              error?.message || "Unknown Error"
+            } `,
+          });
+        },
+      }
+    );
+    setDeleteModal(false);
+    list("couriers");
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModal(false);
+  };
   return (
     // <Show
     //   headerButtons={null}
@@ -98,6 +145,21 @@ export default function ShowCourier() {
         <CourierLoading />
       ) : (
         <>
+          {deleteModal ? (
+            <DisplayModal
+              Icon="DeleteIcon"
+              text="Delete"
+              title={
+                <span style={{ fontWeight: "600" }}>
+                  Are you sure want to delete<b> courier {courier?.id ?? ""}</b>
+                </span>
+              }
+              type="danger"
+              ModalPopup={deleteModal}
+              ModalOkFunction={deleteCourier}
+              ModalCancelFunction={closeDeleteModal}
+            />
+          ) : null}
           <div
             style={{
               borderBottom: "1px solid lightgray",
@@ -124,9 +186,9 @@ export default function ShowCourier() {
             </Typography.Title>
           </Flex>
           {/* <Card> */}
-          <Row style={{ marginTop: "20px" }}>
+          <Row style={{ marginTop: "20px" }} gutter={16}>
             <Flex vertical={false} wrap gap={"10px"}>
-              <Col xs={24} sm={12} md={10}>
+              <Col sm={24} md={10}>
                 <Card>
                   <List
                     style={{ border: "none" }}
@@ -157,7 +219,11 @@ export default function ShowCourier() {
                     )}
                   />
                   <Flex justify="space-between" style={{ marginTop: "20px" }}>
-                    <Button icon={<DeleteFilled />} danger>
+                    <Button
+                      icon={<DeleteFilled />}
+                      danger
+                      onClick={() => setDeleteModal(true)}
+                    >
                       Delete
                     </Button>
                     <Button
@@ -172,8 +238,8 @@ export default function ShowCourier() {
                   </Flex>
                 </Card>
               </Col>
-              <Col xs={24} sm={12} md={12}>
-                <DetailsTable id={query?.data?.data?.id} />
+              <Col sm={24} md={12}>
+                <DetailsTable courier={query?.data?.data} />
               </Col>
             </Flex>
           </Row>
