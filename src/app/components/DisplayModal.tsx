@@ -9,18 +9,24 @@ interface ModalProps {
   ModalCancelFunction: any;
   title: React.ReactNode;
   type: "primary" | "danger";
+  text: "Update" | "Edit" | "Delete" | "Ok";
+  Icon: React.ReactNode;
 }
 const DisplayModal = ({
   ModalPopup,
   ModalOkFunction,
   ModalCancelFunction,
   title,
+  text,
   type: OkType = "primary",
+  Icon,
 }: ModalProps) => {
   return (
     <Modal
+      closable={false}
       okType={OkType}
-      title={title}
+      okText={text}
+      title={`${Icon} ${title}`}
       centered
       open={ModalPopup}
       onOk={ModalOkFunction}
