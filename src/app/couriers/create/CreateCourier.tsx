@@ -104,8 +104,16 @@ const CreateCourier: React.FC<CourierProps> = ({
               // onPreview={onPreview}
               showUploadList={false}
               maxCount={1}
+              style={{
+                width: "200px",
+                height: "200px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
               <Avatar
+                size={200}
                 shape="circle"
                 src={
                   previewImageURL ||
