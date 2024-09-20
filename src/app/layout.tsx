@@ -92,6 +92,7 @@ export default function RootLayout({
                     {
                       name: "stores",
                       list: "/stores",
+                      show: "/stores/show/:id",
                       meta: {
                         icon: <ShopOutlined />,
                       },
