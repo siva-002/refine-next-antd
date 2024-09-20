@@ -107,7 +107,7 @@ const StoreList = () => {
           dataIndex={"actions"}
           title={t("table.actions")}
           render={(_, record) => (
-            <ShowButton hideText size="middle" recordItemId={record.id} />
+            <ShowButton hideText size="middle"  recordItemId={record.id} />
           )}
         />
       </Table>
