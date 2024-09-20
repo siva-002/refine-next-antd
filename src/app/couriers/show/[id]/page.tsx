@@ -1,5 +1,11 @@
 "use client";
-import { useGo, useNavigation, useShow } from "@refinedev/core";
+import {
+  BaseRecord,
+  useDelete,
+  useGo,
+  useNavigation,
+  useShow,
+} from "@refinedev/core";
 import {
   Avatar,
   Button,
@@ -12,9 +18,10 @@ import {
   Spin,
   Table,
   Typography,
+  notification,
   theme,
 } from "antd";
-import React from "react";
+import React, { useState } from "react";
 // import CourierStatus fro../../../components/couriers/CourierStatustus";
 import {
   ArrowRightOutlined,
@@ -33,10 +40,12 @@ import { Show, Title } from "@refinedev/antd";
 import { RiMotorbikeLine } from "react-icons/ri";
 import DetailsTable from "@app/components/couriers/DetailsTable";
 import CourierLoading from "@app/components/couriers/CourierLoading";
+import DisplayModal from "@app/components/DisplayModal";
 
 export default function ShowCourier() {
   const { query } = useShow();
   const { isLoading } = query;
+
   const courier = query?.data?.data;
   // console.log(courier);
   const userData = [
@@ -84,6 +93,42 @@ export default function ShowCourier() {
   const { list, edit } = useNavigation();
   const { token } = theme.useToken();
   const go = useGo();
+
+  // for deletecourier
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  const { mutate: deleteCourierItem } = useDelete();
+
+  const deleteCourier = () => {
+    deleteCourierItem(
+      {
+        resource: "couriers",
+        id: courier?.id ?? "",
+      },
+      {
+        onSuccess: () => {
+          notification.success({
+            message: "Success",
+            description: `Courier ${
+              courier?.id ?? ""
+            } has been deleted successfully`,
+          });
+        },
+        onError: (error) => {
+          notification.error({
+            message: "Failure",
+            description: `Error in deleting Courier ${
+              error?.message || "Unknown"
+            } `,
+          });
+        },
+      }
+    );
+    setDeleteModal(false);
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModal(false);
+  };
   return (
     // <Show
     //   headerButtons={null}
@@ -98,6 +143,15 @@ export default function ShowCourier() {
         <CourierLoading />
       ) : (
         <>
+          {deleteModal ? (
+            <DisplayModal
+              title={`Are you sure want to delete courier ${courier?.id ?? ""}`}
+              type="danger"
+              ModalPopup={deleteModal}
+              ModalOkFunction={deleteCourier}
+              ModalCancelFunction={closeDeleteModal}
+            />
+          ) : null}
           <div
             style={{
               borderBottom: "1px solid lightgray",
@@ -157,7 +211,11 @@ export default function ShowCourier() {
                     )}
                   />
                   <Flex justify="space-between" style={{ marginTop: "20px" }}>
-                    <Button icon={<DeleteFilled />} danger>
+                    <Button
+                      icon={<DeleteFilled />}
+                      danger
+                      onClick={() => setDeleteModal(true)}
+                    >
                       Delete
                     </Button>
                     <Button

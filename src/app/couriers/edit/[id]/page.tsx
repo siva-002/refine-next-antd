@@ -14,7 +14,7 @@ export default function EditCourier() {
       id: query?.data?.data.id, // when undefined, id will be read from the URL.
       action: "edit",
     });
-
+  const { isLoading } = query;
   const data = query?.data?.data;
   const vehicleProps = useSelect({
     resource: "vehicles",
@@ -22,7 +22,6 @@ export default function EditCourier() {
     optionLabel: "model",
     optionValue: "id",
   });
-
   const { options } = useSelect({
     resource: "stores",
     defaultValue: data?.store?.id,
@@ -30,29 +29,29 @@ export default function EditCourier() {
   // console.log("store", storeProps);
 
   //   for manually change values before updating and add onfinish attribute to form with this function
-//   const handleSubmit = (values: any) => {
-//     console.log("1", values);
-//     const val = {
-//       ...data,
-//       store: {
-//         ...data?.store,
-//         id: values?.store?.id,
-//       },
-//       vehicle: {
-//         ...data?.vehicle,
-//         model: values.vehicle?.model,
-//       },
-//     };
-//     console.log("final", val);
-//     onFinish(val);
-//   };
+  //   const handleSubmit = (values: any) => {
+  //     console.log("1", values);
+  //     const val = {
+  //       ...data,
+  //       store: {
+  //         ...data?.store,
+  //         id: values?.store?.id,
+  //       },
+  //       vehicle: {
+  //         ...data?.vehicle,
+  //         model: values.vehicle?.model,
+  //       },
+  //     };
+  //     console.log("final", val);
+  //     onFinish(val);
+  //   };
   const { token } = theme.useToken();
   const images = Form.useWatch("images", formProps.form);
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
 
   return (
-    <Edit saveButtonProps={saveButtonProps}>
+    <Edit saveButtonProps={saveButtonProps} isLoading={isLoading}>
       <Form
         {...formProps}
         // onFinish={handleSubmit}
@@ -61,7 +60,6 @@ export default function EditCourier() {
         labelAlign="left"
       >
         <Form.Item
-          label={"Image"}
           name="images"
           getValueFromEvent={getValueFromEvent}
           // rules={[
