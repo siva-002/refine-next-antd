@@ -108,14 +108,13 @@ const CreateCourier: React.FC<CourierProps> = ({
               style={{
                 width: "100px",
                 height: "100px",
-                position: "relative",
               }}
-              iconRender={() => <UploadOutlined />}
             >
               <Avatar
                 style={{
                   width: previewImageURL ? "100px" : "50px",
                   height: previewImageURL ? "100px" : "50px",
+                  position: "relative",
                 }}
                 shape="circle"
                 src={previewImageURL}
@@ -125,12 +124,23 @@ const CreateCourier: React.FC<CourierProps> = ({
                 <EditOutlined
                   style={{
                     position: "absolute",
-                    top: "20px",
-                    right: "20px",
+                    top: "0",
+                    right: "-20px",
                     color: "blue",
                   }}
                 />
-              ) : null}
+              ) : (
+                <UploadOutlined
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%,-50%)",
+                    fontSize: "1.3rem",
+                    color: "orange",
+                  }}
+                />
+              )}
             </Upload>
           </Form.Item>
           <Form.Item
