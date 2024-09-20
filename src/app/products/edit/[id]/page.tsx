@@ -80,12 +80,12 @@ const ShowProduct = () => {
     resource: "categories",
   });
 
-  console.log("casdffsds", categorySelectProps);
+  // console.log("casdffsds", categorySelectProps);
 
-  console.log("fffff", formProps);
-  console.log("sssss", saveButtonProps);
+  // console.log("fffff", formProps);
+  // console.log("sssss", saveButtonProps);
 
-  const [fileList, setFileList] = useState([]);
+  // const [fileList, setFileList] = useState([]);
 
   // const handleChange = (info: any) => {
   //   setFileList(info.fileList);
