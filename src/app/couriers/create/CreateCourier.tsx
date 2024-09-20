@@ -99,9 +99,6 @@ const CreateCourier: React.FC<CourierProps> = ({
           >
             <Upload
               action={`${apiUrl}/media/upload`}
-              // listType="picture-card"
-              // onChange={onChange}
-              // onPreview={onPreview}
               showUploadList={false}
               maxCount={1}
               style={{
