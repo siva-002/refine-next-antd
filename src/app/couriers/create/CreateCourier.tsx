@@ -1,5 +1,5 @@
 "use client";
-import { CloudUploadOutlined } from "@ant-design/icons";
+import { CloudUploadOutlined, UploadOutlined } from "@ant-design/icons";
 import { ICourier } from "@app/interfaces";
 import { Create, Edit, getValueFromEvent, useForm } from "@refinedev/antd";
 import {
@@ -105,12 +105,10 @@ const CreateCourier: React.FC<CourierProps> = ({
               showUploadList={false}
               maxCount={1}
               style={{
-                width: "200px",
-                height: "200px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                width: "100px",
+                height: "100px",
               }}
+              iconRender={() => <UploadOutlined />}
             >
               <Avatar
                 size={200}
