@@ -48,6 +48,7 @@ export default function ShowCourier() {
 
   const courier = query?.data?.data;
   // console.log(courier);
+
   const userData = [
     {
       label: "Status",
@@ -117,13 +118,14 @@ export default function ShowCourier() {
           notification.error({
             message: "Failure",
             description: `Error in deleting Courier ${
-              error?.message || "Unknown"
+              error?.message || "Unknown Error"
             } `,
           });
         },
       }
     );
     setDeleteModal(false);
+    list("couriers");
   };
 
   const closeDeleteModal = () => {
