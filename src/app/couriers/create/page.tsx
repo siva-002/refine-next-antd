@@ -21,7 +21,13 @@ import {
   Upload,
   theme,
 } from "antd";
-export default function CreateCourier() {
+export default function CreateCourier({
+  setCreateCourier,
+  createCourier,
+}: {
+  setCreateCourier: any;
+  createCourier: boolean;
+}) {
   const apiUrl = useApiUrl();
   const { formProps, saveButtonProps, formLoading, onFinish } =
     useForm<ICourier>({
@@ -63,7 +69,14 @@ export default function CreateCourier() {
   const previewImageURL = image?.url || image?.response?.url;
 
   return (
-    <Drawer onClose={() => list("couriers")} open={true} size="large">
+    <Drawer
+      onClose={() => {
+        setCreateCourier(false);
+        list("couriers");
+      }}
+      open={createCourier}
+      size="large"
+    >
       <Create saveButtonProps={saveButtonProps}>
         <Form
           {...formProps}

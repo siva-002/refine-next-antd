@@ -5,16 +5,28 @@ import Rating from "@app/components/couriers/Rating";
 import { ICourier } from "@app/interfaces";
 import { FilterDropdown, List, ShowButton, useTable } from "@refinedev/antd";
 import { getDefaultFilter } from "@refinedev/core";
-import { Avatar, Input, Table, theme } from "antd";
-import React from "react";
+import { Avatar, Button, Input, Table, theme } from "antd";
+import React, { useState } from "react";
+import CreateCourier from "./create/page";
 
 export default function ShowCouriers() {
   const { tableProps, filters } = useTable();
   const { token } = theme.useToken();
+  const [createCourier, setCreateCourier] = useState<boolean>(false);
   // console.log(tableProps.dataSource);
 
   return (
-    <List canCreate={true}>
+    <List
+      headerButtons={() => (
+        <Button onClick={() => setCreateCourier(true)}>Create</Button>
+      )}
+    >
+      {createCourier ? (
+        <CreateCourier
+          setCreateCourier={setCreateCourier}
+          createCourier={createCourier}
+        />
+      ) : null}
       <Table {...tableProps}>
         <Table.Column dataIndex={"id"} title={"ID #"} />
         <Table.Column
