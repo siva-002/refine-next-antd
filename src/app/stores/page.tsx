@@ -44,6 +44,7 @@ const StoreList = () => {
         <Table.Column dataIndex={"id"} title={t("stores.fields.id")} />
         <Table.Column
           dataIndex={"title"}
+          
           title={t("stores.fields.title")}
           filterIcon={(filtered) => (
             <SearchOutlined
@@ -107,7 +108,7 @@ const StoreList = () => {
           dataIndex={"actions"}
           title={t("table.actions")}
           render={(_, record) => (
-            <ShowButton hideText size="middle"  recordItemId={record.id} />
+            <ShowButton hideText size="middle" recordItemId={record.id} />
           )}
         />
       </Table>
