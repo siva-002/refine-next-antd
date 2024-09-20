@@ -11,7 +11,7 @@ import React from "react";
 export default function ShowCouriers() {
   const { tableProps, filters } = useTable();
   const { token } = theme.useToken();
-  console.log(tableProps.dataSource);
+  // console.log(tableProps.dataSource);
 
   return (
     <List canCreate={true}>

@@ -30,25 +30,35 @@ const Rating = ({ record }: { record: ICourier }) => {
   let stars = [];
   for (let i = 0; i < roundedValue; i++) {
     stars.push(
-      <PiStarFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
+      <PiStarFill
+        key={`{f${i}${record?.id}}`}
+        style={{ color: "goldenrod", fontSize: "1.2rem" }}
+      />
     );
   }
   let remainingstar = roundedValue;
   if (Number(decimal) >= 5) {
     remainingstar += 1;
     stars.push(
-      <PiStarHalfFill style={{ color: "goldenrod", fontSize: "1.2rem" }} />
+      <PiStarHalfFill
+        key={`{H${record?.id}}`}
+        style={{ color: "goldenrod", fontSize: "1.2rem" }}
+      />
     );
   }
   for (let i = remainingstar; i < 5; i++) {
-    stars.push(<PiStarThin style={{ fontSize: "1.2rem" }} />);
+    stars.push(
+      <PiStarThin key={`{E${i}${record?.id}}`} style={{ fontSize: "1.2rem" }} />
+    );
   }
 
   //   return <div>{data?.data?.data?.star}</div>;
   return isLoading ? (
     <Spin />
   ) : (
-    <Flex gap={"5px"}>{stars.map((item) => item)}</Flex>
+    <Flex gap={"5px"}>
+      {stars.map((item) => item)}
+    </Flex>
   );
 };
 

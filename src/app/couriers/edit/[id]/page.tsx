@@ -46,10 +46,10 @@ export default function EditCourier() {
   //     onFinish(val);
   //   };
   const { token } = theme.useToken();
-  const images = Form.useWatch("images", formProps.form);
+  const images = Form.useWatch("avatar", formProps.form);
   const image = images?.[0] || null;
   const previewImageURL = image?.url || image?.response?.url;
-
+  // console.log(images);
   return (
     <Edit saveButtonProps={saveButtonProps} isLoading={isLoading}>
       <Form
@@ -60,8 +60,11 @@ export default function EditCourier() {
         labelAlign="left"
       >
         <Form.Item
-          name="images"
+          label={"Image"}
+          name="avatar"
+
           getValueFromEvent={getValueFromEvent}
+          // className="bg-primary"
           // rules={[
           //   {
           //     required: true,
@@ -70,7 +73,7 @@ export default function EditCourier() {
         >
           <Upload
             action={`${apiUrl}/media/upload`}
-            // listType="picture-card"
+            listType="picture-card"
             // onChange={onChange}
             // onPreview={onPreview}
             showUploadList={false}
@@ -90,19 +93,19 @@ export default function EditCourier() {
                 align="center"
                 justify="center"
                 style={{
-                  width: "200px",
-                  height: "200px",
+                  width: "100px",
+                  height: "100px",
                   border: previewImageURL ? "" : "1px solid #44454770",
                 }}
-                className="position-relative d-flex align-items-center justify-content-center rounded-pill overflow-hidden p-0 m-0"
+                className="position-relative d-flex align-items-center justify-content-center rounded-2 overflow-hidden p-0 m-0"
               >
                 <Avatar
                   shape="square"
                   style={{
                     aspectRatio: 1,
                     objectFit: "contain",
-                    width: previewImageURL ? "200px" : "100px",
-                    height: previewImageURL ? "200px" : "100px",
+                    width: previewImageURL ? "100px" : "50px",
+                    height: previewImageURL ? "100px" : "50px",
                     marginTop: "auto",
                     transform: previewImageURL ? "" : "translateY(-50%)",
                   }}
@@ -119,11 +122,12 @@ export default function EditCourier() {
                     width: "100%",
                     backgroundColor: token.volcano,
                     color: "#fff",
+                    fontSize: "5px",
                     cursor: "pointer",
+                    opacity: 0.5,
                   }}
                 >
-                  <CloudUploadOutlined className="fs-4 px-2" />{" "}
-                  <span>{!previewImageURL ? "Upload" : "Change"}</span>
+                  <CloudUploadOutlined />
                 </div>
               </Flex>
             </Flex>

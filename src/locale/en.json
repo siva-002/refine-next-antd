@@ -61,7 +61,25 @@
   },
   "stores": {
     "fields": {
-      "id": "ID"
+      "id": "ID",
+      "title": "Title",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "isActive": {
+        "label": "Status",
+        "true": "Open",
+        "false": "Closed",
+        "placeholder": "Select Status"
+      }
+    },
+    "filter": {
+      "title": {
+        "placeholder": "Enter title"
+      },
+      "email": {
+        "placeholder": "Enter Email"
+      }
     }
   },
   "notifications": {

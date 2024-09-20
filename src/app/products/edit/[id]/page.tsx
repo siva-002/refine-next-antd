@@ -41,26 +41,26 @@ import type { GetProp, UploadFile, UploadProps } from "antd";
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
 const ShowProduct = () => {
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
+  // const [fileList, setFileList] = useState<UploadFile[]>([]);
 
-  const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
-  };
+  // const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
+  //   setFileList(newFileList);
+  // };
 
-  const onPreview = async (file: UploadFile) => {
-    let src = file.url as string;
-    if (!src) {
-      src = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file.originFileObj as FileType);
-        reader.onload = () => resolve(reader.result as string);
-      });
-    }
-    const image = new Image();
-    image.src = src;
-    const imgWindow = window.open(src);
-    imgWindow?.document.write(image.outerHTML);
-  };
+  // const onPreview = async (file: UploadFile) => {
+  //   let src = file.url as string;
+  //   if (!src) {
+  //     src = await new Promise((resolve) => {
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL(file.originFileObj as FileType);
+  //       reader.onload = () => resolve(reader.result as string);
+  //     });
+  //   }
+  //   const image = new Image();
+  //   image.src = src;
+  //   const imgWindow = window.open(src);
+  //   imgWindow?.document.write(image.outerHTML);
+  // };
 
   const apiUrl = useApiUrl();
   const { query: data } = useShow();
@@ -80,7 +80,12 @@ const ShowProduct = () => {
     resource: "categories",
   });
 
-  // const [fileList, setFileList] = useState([]);
+  console.log("casdffsds", categorySelectProps);
+
+  console.log("fffff", formProps);
+  console.log("sssss", saveButtonProps);
+
+  const [fileList, setFileList] = useState([]);
 
   // const handleChange = (info: any) => {
   //   setFileList(info.fileList);
@@ -140,72 +145,16 @@ const ShowProduct = () => {
         <Form.Item
           label={t("products.fields.images.label")}
           name="images"
-          // valuePropName="fileList"
-          getValueFromEvent={getValueFromEvent}
-          style={{
-            margin: 0,
-          }}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+          className="w-100"
+          rules={[{ required: true }]}
         >
-          {/* <Upload
+          <Upload.Dragger
             name="file"
             action={`${apiUrl}/media/upload`}
             maxCount={1}
             accept=".png,.jpg,.jpeg"
             // className={styles.uploadDragger}
             showUploadList={false}
-            listType="picture-card"
-          >
-            {/* <Flex
-              vertical
-              align="center"
-              justify="center"
-              style={{
-                position: "relative",
-                // height: "100%",
-              }}
-            >
-              <Avatar
-                shape="square"
-                style={{
-                  aspectRatio: 1,
-                  objectFit: "contain",
-                  width: "200px",
-                  height: "200px",
-                  marginTop: "auto",
-                  // transform: "translateY(25%)",
-                }}
-                src={previewImageURL || "/images/product-default-img.png"}
-                alt="Product Image"
-              />
-              {/* <Button
-                icon={<UploadOutlined />}
-                style={{
-                  marginTop: "auto",
-                  marginBottom: "16px",
-                  backgroundColor: token.colorBgContainer,
-                  ...(!!previewImageURL && {
-                    position: "absolute",
-                    bottom: 0,
-                  }),
-                }}
-              >
-                {t("products.fields.images.description")}
-              </Button> 
-            </Flex> 
-            + Upload
-          </Upload> */}
-          <Upload.Dragger
-            action={`${apiUrl}/media/upload`}
-            // listType="picture-card"
-            // onChange={onChange}
-            // onPreview={onPreview}
-            showUploadList={false}
-            maxCount={1}
           >
             <Flex
               vertical
@@ -223,13 +172,10 @@ const ShowProduct = () => {
                   objectFit: "contain",
                   width: "200px",
                   height: "200px",
-                  marginTop: "auto",
-                  // transform: "translateY(25%)",
+                  marginTop: previewImageURL ? undefined : "auto",
+                  transform: previewImageURL ? undefined : "translateY(50%)",
                 }}
-                src={
-                  previewImageURL ||
-                  "https://img.icons8.com/?size=100&id=13917&format=png&color=000000"
-                }
+                src={previewImageURL || "/images/product-default-img.png"}
                 alt="Product Image"
               />
               {/* <Button

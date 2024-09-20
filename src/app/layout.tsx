@@ -90,6 +90,14 @@ export default function RootLayout({
                       create: "products/create",
                     },
                     {
+                      name: "stores",
+                      list: "/stores",
+                      show: "/stores/show/:id",
+                      meta: {
+                        icon: <ShopOutlined />,
+                      },
+                    },
+                    {
                       name: "couriers",
                       list: "/couriers",
                       show: "/couriers/show/:id",
@@ -97,13 +105,6 @@ export default function RootLayout({
                       create: "/couriers/create",
                       meta: {
                         icon: <RiMotorbikeLine />,
-                      },
-                    },
-                    {
-                      name: "stores",
-                      list: "/stores",
-                      meta: {
-                        icon: <ShopOutlined />,
                       },
                     },
                   ]}
