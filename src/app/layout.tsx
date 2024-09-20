@@ -90,19 +90,19 @@ export default function RootLayout({
                       create: "products/create",
                     },
                     {
+                      name: "stores",
+                      list: "/stores",
+                      meta: {
+                        icon: <ShopOutlined />,
+                      },
+                    },
+                    {
                       name: "couriers",
                       list: "/couriers",
                       show: "/couriers/show/:id",
                       edit: "/couriers/edit/:id",
                       meta: {
                         icon: <RiMotorbikeLine />,
-                      },
-                    },
-                    {
-                      name: "stores",
-                      list: "/stores",
-                      meta: {
-                        icon: <ShopOutlined />,
                       },
                     },
                   ]}
