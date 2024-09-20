@@ -45,83 +45,83 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Suspense>
-          {/* <GitHubBanner /> */}
-          <RefineKbarProvider>
-            <AntdRegistry>
-              <ColorModeContextProvider defaultMode={defaultMode}>
-                {/* <DevtoolsProvider> */}
-                <Refine
-                  routerProvider={routerProvider}
-                  dataProvider={dataProvider}
-                  notificationProvider={useNotificationProvider}
-                  authProvider={authProvider}
-                  i18nProvider={i18nProvider}
-                  resources={[
-                    {
-                      name: "users",
-                      list: "/users",
-                      show: "/users/show/:id",
-                      meta: {
-                        icon: <UserOutlined />,
-                      },
+        {/* <Suspense> */}
+        {/* <GitHubBanner /> */}
+        <RefineKbarProvider>
+          <AntdRegistry>
+            <ColorModeContextProvider defaultMode={defaultMode}>
+              {/* <DevtoolsProvider> */}
+              <Refine
+                routerProvider={routerProvider}
+                dataProvider={dataProvider}
+                notificationProvider={useNotificationProvider}
+                authProvider={authProvider}
+                i18nProvider={i18nProvider}
+                resources={[
+                  {
+                    name: "users",
+                    list: "/users",
+                    show: "/users/show/:id",
+                    meta: {
+                      icon: <UserOutlined />,
                     },
-                    {
-                      name: "orders",
-                      list: "/orders",
-                      show: "/orders/show/:id",
-                      meta: {
-                        icon: <ShoppingOutlined />,
-                      },
+                  },
+                  {
+                    name: "orders",
+                    list: "/orders",
+                    show: "/orders/show/:id",
+                    meta: {
+                      icon: <ShoppingOutlined />,
                     },
-                    {
-                      name: "categories",
-                      list: "/categories",
-                      show: "/categoies/show/:id",
-                      meta: {
-                        icon: <TagsOutlined />,
-                      },
+                  },
+                  {
+                    name: "categories",
+                    list: "/categories",
+                    show: "/categoies/show/:id",
+                    meta: {
+                      icon: <TagsOutlined />,
                     },
-                    {
-                      name: "products",
-                      list: "/products",
-                      show: "/products/show/:id",
-                      edit: "/products/edit/:id",
-                      create: "products/create",
+                  },
+                  {
+                    name: "products",
+                    list: "/products",
+                    show: "/products/show/:id",
+                    edit: "/products/edit/:id",
+                    create: "products/create",
+                  },
+                  {
+                    name: "stores",
+                    list: "/stores",
+                    show: "/stores/show/:id",
+                    meta: {
+                      icon: <ShopOutlined />,
                     },
-                    {
-                      name: "stores",
-                      list: "/stores",
-                      show: "/stores/show/:id",
-                      meta: {
-                        icon: <ShopOutlined />,
-                      },
+                  },
+                  {
+                    name: "couriers",
+                    list: "/couriers",
+                    show: "/couriers/show/:id",
+                    edit: "/couriers/edit/:id",
+                    meta: {
+                      icon: <RiMotorbikeLine />,
                     },
-                    {
-                      name: "couriers",
-                      list: "/couriers",
-                      show: "/couriers/show/:id",
-                      edit: "/couriers/edit/:id",
-                      meta: {
-                        icon: <RiMotorbikeLine />,
-                      },
-                    },
-                  ]}
-                  options={{
-                    syncWithLocation: true,
-                    warnWhenUnsavedChanges: true,
-                    useNewQueryKeys: true,
-                    projectId: "pMrfpJ-uo1R1T-OkWlNh",
-                  }}
-                >
-                  {children}
-                  <RefineKbar />
-                </Refine>
-                {/* </DevtoolsProvider> */}
-              </ColorModeContextProvider>
-            </AntdRegistry>
-          </RefineKbarProvider>
-        </Suspense>
+                  },
+                ]}
+                options={{
+                  syncWithLocation: true,
+                  warnWhenUnsavedChanges: true,
+                  useNewQueryKeys: true,
+                  projectId: "pMrfpJ-uo1R1T-OkWlNh",
+                }}
+              >
+                {children}
+                <RefineKbar />
+              </Refine>
+              {/* </DevtoolsProvider> */}
+            </ColorModeContextProvider>
+          </AntdRegistry>
+        </RefineKbarProvider>
+        {/* </Suspense> */}
       </body>
     </html>
   );
