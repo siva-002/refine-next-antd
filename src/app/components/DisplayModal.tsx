@@ -3,9 +3,13 @@ import { Modal } from "antd";
 import React from "react";
 import {
   DeleteOutlined,
+  DeleteFilled,
   EditOutlined,
+  EditFilled,
   InfoCircleOutlined,
+  InfoCircleFilled,
   CheckCircleOutlined,
+  CheckCircleFilled,
 } from "@ant-design/icons";
 
 interface ModalProps {
@@ -15,7 +19,7 @@ interface ModalProps {
   ModalCancelFunction: any;
   title: React.ReactNode;
   type?: "primary" | "danger";
-  text: "Update" | "Edit" | "Delete" | "Ok";
+  text?: "Update" | "Edit" | "Delete" | "Ok";
   Icon: "DeleteIcon" | "EditIcon" | "InfoIcon" | "CheckIcon";
   CustomIcon?: React.ReactNode;
 }
@@ -24,7 +28,7 @@ const DisplayModal = ({
   ModalOkFunction,
   ModalCancelFunction,
   title,
-  text,
+  text = "Ok",
   type: OkType = "primary",
   Icon,
   CustomIcon = null,
@@ -33,18 +37,18 @@ const DisplayModal = ({
   switch (Icon) {
     case "InfoIcon":
       CIcon = (
-        <InfoCircleOutlined style={{ color: "orange", fontSize: "1.2rem" }} />
+        <InfoCircleFilled style={{ color: "orange", fontSize: "1.2rem" }} />
       );
       break;
     case "DeleteIcon":
-      CIcon = <DeleteOutlined style={{ color: "red", fontSize: "1.2rem" }} />;
+      CIcon = <DeleteFilled style={{ color: "red", fontSize: "1.2rem" }} />;
       break;
     case "EditIcon":
-      CIcon = <EditOutlined style={{ color: "blue", fontSize: "1.2rem" }} />;
+      CIcon = <EditFilled style={{ color: "blue", fontSize: "1.2rem" }} />;
       break;
     default:
       CIcon = (
-        <CheckCircleOutlined style={{ color: "green", fontSize: "1.2rem" }} />
+        <CheckCircleFilled style={{ color: "green", fontSize: "1.2rem" }} />
       );
       break;
   }
