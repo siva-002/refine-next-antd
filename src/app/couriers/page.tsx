@@ -1,13 +1,14 @@
 "use client";
 import { EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import CourierStatus from "@app/components/couriers/CourierStatus";
+import CreateCourier from "@app/components/couriers/CreateCourier";
 import Rating from "@app/components/couriers/Rating";
 import { ICourier } from "@app/interfaces";
 import { FilterDropdown, List, ShowButton, useTable } from "@refinedev/antd";
 import { getDefaultFilter } from "@refinedev/core";
 import { Avatar, Button, Input, Table, theme } from "antd";
 import React, { useState } from "react";
-import CreateCourier from "./create/page";
+// import CreateCourier from "./create/page";
 
 export default function ShowCouriers() {
   const { tableProps, filters } = useTable();
@@ -18,6 +19,10 @@ export default function ShowCouriers() {
   return (
     <>
       {createCourier ? (
+        // <CreateCourier
+        //   setCreateCourier={setCreateCourier}
+        //   createCourier={createCourier}
+        // />
         <CreateCourier
           setCreateCourier={setCreateCourier}
           createCourier={createCourier}
