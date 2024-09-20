@@ -21,15 +21,16 @@ import {
   Upload,
   theme,
 } from "antd";
+import React from "react";
 
 interface CourierProps {
   setCreateCourier: (value: any) => void;
   createCourier: boolean;
 }
-export default function CreateCourier({
+const CreateCourier: React.FC<CourierProps> = ({
   setCreateCourier,
   createCourier,
-}: CourierProps) {
+}) => {
   const apiUrl = useApiUrl();
   const { formProps, saveButtonProps, formLoading, onFinish } =
     useForm<ICourier>({
@@ -249,4 +250,6 @@ export default function CreateCourier({
       </Create>
     </Drawer>
   );
-}
+};
+
+export default CreateCourier;
