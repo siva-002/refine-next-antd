@@ -233,7 +233,7 @@ export default function ShowCourier() {
                 </Card>
               </Col>
               <Col xs={24} sm={12} md={12}>
-                <DetailsTable id={query?.data?.data?.id} />
+                <DetailsTable courier={query?.data?.data} />
               </Col>
             </Flex>
           </Row>
