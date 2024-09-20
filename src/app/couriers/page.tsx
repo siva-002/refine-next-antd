@@ -16,128 +16,130 @@ export default function ShowCouriers() {
   // console.log(tableProps.dataSource);
 
   return (
-    <List
-      headerButtons={() => (
-        <Button onClick={() => setCreateCourier(true)}>Create</Button>
-      )}
-    >
+    <>
       {createCourier ? (
         <CreateCourier
           setCreateCourier={setCreateCourier}
           createCourier={createCourier}
         />
       ) : null}
-      <Table {...tableProps}>
-        <Table.Column dataIndex={"id"} title={"ID #"} />
-        <Table.Column
-          dataIndex={"name"}
-          title={"Name"}
-          defaultFilteredValue={getDefaultFilter("name", filters, "contains")}
-          filterIcon={(filtered) => (
-            <SearchOutlined
-              style={{ color: filtered ? token.colorPrimary : undefined }}
-            />
-          )}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder="Enter Name to Search" />
-            </FilterDropdown>
-          )}
-        />
-        <Table.Column
-          key={"avatar"}
-          dataIndex={"avatar"}
-          title={"Avatar"}
-          render={(value) => (
-            <Avatar //use value[0].url as the src
-              src={
-                "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
-              }
-              alt="profile"
-            />
-          )}
-        />
-        <Table.Column
-          dataIndex={"licensePlate"}
-          title={"Vehicle id"}
-          filterIcon={(filtered) => (
-            <SearchOutlined
-              style={{ color: filtered ? token.colorPrimary : undefined }}
-            />
-          )}
-          defaultFilteredValue={getDefaultFilter(
-            "licensePlate",
-            filters,
-            "contains"
-          )}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder="Enter Vehicle id to search" />
-            </FilterDropdown>
-          )}
-        />
-        <Table.Column
-          dataIndex={"gsm"}
-          title={"Gsm"}
-          filterIcon={(filtered) => (
-            <SearchOutlined
-              style={{ color: filtered ? token.colorPrimary : undefined }}
-            />
-          )}
-          defaultFilteredValue={getDefaultFilter("gsm", filters, "contains")}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder="Enter Gsm to search" />
-            </FilterDropdown>
-          )}
-        />
-        <Table.Column
-          key={"store.title"}
-          dataIndex={["store", "title"]}
-          title={"Store"}
-          filterIcon={(filtered) => (
-            <SearchOutlined
-              style={{ color: filtered ? token.colorPrimary : undefined }}
-            />
-          )}
-          defaultFilteredValue={getDefaultFilter(
-            "store.title",
-            filters,
-            "contains"
-          )}
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Input placeholder="Enter Store Title to search" />
-            </FilterDropdown>
-          )}
-        />
-        <Table.Column<ICourier>
-          dataIndex={""}
-          title={"Rating"}
-          render={(_, record) => {
-            return <Rating record={record} />;
-          }}
-        />
-        <Table.Column
-          dataIndex={"status"}
-          title={"Status"}
-          render={(status) => {
-            return <CourierStatus status={status} />;
-          }}
-        />
-        <Table.Column
-          dataIndex={""}
-          title={"Actions"}
-          fixed="right"
-          render={(_, record) => (
-            <ShowButton
-              icon={<EyeOutlined />}
-              hideText
-              recordItemId={record?.id}
-            />
-          )}
-        />
-      </Table>
-    </List>
+      <List
+        headerButtons={() => (
+          <Button onClick={() => setCreateCourier(true)}>Create</Button>
+        )}
+      >
+        <Table {...tableProps}>
+          <Table.Column dataIndex={"id"} title={"ID #"} />
+          <Table.Column
+            dataIndex={"name"}
+            title={"Name"}
+            defaultFilteredValue={getDefaultFilter("name", filters, "contains")}
+            filterIcon={(filtered) => (
+              <SearchOutlined
+                style={{ color: filtered ? token.colorPrimary : undefined }}
+              />
+            )}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Input placeholder="Enter Name to Search" />
+              </FilterDropdown>
+            )}
+          />
+          <Table.Column
+            key={"avatar"}
+            dataIndex={"avatar"}
+            title={"Avatar"}
+            render={(value) => (
+              <Avatar //use value[0].url as the src
+                src={
+                  "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+                }
+                alt="profile"
+              />
+            )}
+          />
+          <Table.Column
+            dataIndex={"licensePlate"}
+            title={"Vehicle id"}
+            filterIcon={(filtered) => (
+              <SearchOutlined
+                style={{ color: filtered ? token.colorPrimary : undefined }}
+              />
+            )}
+            defaultFilteredValue={getDefaultFilter(
+              "licensePlate",
+              filters,
+              "contains"
+            )}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Input placeholder="Enter Vehicle id to search" />
+              </FilterDropdown>
+            )}
+          />
+          <Table.Column
+            dataIndex={"gsm"}
+            title={"Gsm"}
+            filterIcon={(filtered) => (
+              <SearchOutlined
+                style={{ color: filtered ? token.colorPrimary : undefined }}
+              />
+            )}
+            defaultFilteredValue={getDefaultFilter("gsm", filters, "contains")}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Input placeholder="Enter Gsm to search" />
+              </FilterDropdown>
+            )}
+          />
+          <Table.Column
+            key={"store.title"}
+            dataIndex={["store", "title"]}
+            title={"Store"}
+            filterIcon={(filtered) => (
+              <SearchOutlined
+                style={{ color: filtered ? token.colorPrimary : undefined }}
+              />
+            )}
+            defaultFilteredValue={getDefaultFilter(
+              "store.title",
+              filters,
+              "contains"
+            )}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Input placeholder="Enter Store Title to search" />
+              </FilterDropdown>
+            )}
+          />
+          <Table.Column<ICourier>
+            dataIndex={""}
+            title={"Rating"}
+            render={(_, record) => {
+              return <Rating record={record} />;
+            }}
+          />
+          <Table.Column
+            dataIndex={"status"}
+            title={"Status"}
+            render={(status) => {
+              return <CourierStatus status={status} />;
+            }}
+          />
+          <Table.Column
+            dataIndex={""}
+            title={"Actions"}
+            fixed="right"
+            render={(_, record) => (
+              <ShowButton
+                icon={<EyeOutlined />}
+                hideText
+                recordItemId={record?.id}
+              />
+            )}
+          />
+        </Table>
+      </List>
+    </>
   );
 }

@@ -24,7 +24,7 @@ import {
 import React from "react";
 
 interface CourierProps {
-  setCreateCourier: (value: any) => void;
+  setCreateCourier: (value: boolean) => void;
   createCourier: boolean;
 }
 const CreateCourier: React.FC<CourierProps> = ({
