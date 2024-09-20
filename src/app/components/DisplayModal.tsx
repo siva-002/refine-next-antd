@@ -37,22 +37,23 @@ const DisplayModal = ({
   switch (Icon) {
     case "InfoIcon":
       CIcon = (
-        <InfoCircleFilled style={{ color: "orange", fontSize: "1.2rem" }} />
+        <InfoCircleFilled style={{ color: "orange", fontSize: "larger" }} />
       );
       break;
     case "DeleteIcon":
-      CIcon = <DeleteFilled style={{ color: "red", fontSize: "1.2rem" }} />;
+      CIcon = (
+        <DeleteFilled style={{ color: "orengered", fontSize: "larger" }} />
+      );
       break;
     case "EditIcon":
-      CIcon = <EditFilled style={{ color: "blue", fontSize: "1.2rem" }} />;
+      CIcon = <EditFilled style={{ color: "blue", fontSize: "larger" }} />;
       break;
     default:
       CIcon = (
-        <CheckCircleFilled style={{ color: "green", fontSize: "1.2rem" }} />
+        <CheckCircleFilled style={{ color: "green", fontSize: "larger" }} />
       );
       break;
   }
-  console.log(CIcon);
   return (
     <Modal
       width={"fit-content"}
