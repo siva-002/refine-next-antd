@@ -151,11 +151,7 @@ export default function ShowCourier() {
                 <DeleteFilled style={{ color: "red", marginRight: "5px" }} />
               }
               text="Delete"
-              title={
-                <span>
-                  Are you sure want to delete Courier {courier?.id}
-                </span>
-              }
+              title={`Are you sure want to delete courier ${courier?.id ?? ""}`}
               type="danger"
               ModalPopup={deleteModal}
               ModalOkFunction={deleteCourier}

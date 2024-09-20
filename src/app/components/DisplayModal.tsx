@@ -23,6 +23,7 @@ const DisplayModal = ({
 }: ModalProps) => {
   return (
     <Modal
+      style={{ width: "fit-content !important" }}
       closable={false}
       okType={OkType}
       okText={text}
