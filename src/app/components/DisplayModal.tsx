@@ -14,9 +14,10 @@ interface ModalProps {
   ModalOkFunction: any;
   ModalCancelFunction: any;
   title: React.ReactNode;
-  type: "primary" | "danger";
+  type?: "primary" | "danger";
   text: "Update" | "Edit" | "Delete" | "Ok";
   Icon: "DeleteIcon" | "EditIcon" | "InfoIcon" | "CheckIcon";
+  CustomIcon?: React.ReactNode;
 }
 const DisplayModal = ({
   ModalPopup,
@@ -26,10 +27,9 @@ const DisplayModal = ({
   text,
   type: OkType = "primary",
   Icon,
+  CustomIcon = null,
 }: ModalProps) => {
-  let CIcon = (
-    <InfoCircleOutlined style={{ color: "orange", fontSize: "1.2rem" }} />
-  );
+  let CIcon = null;
   switch (Icon) {
     case "InfoIcon":
       CIcon = (
@@ -48,13 +48,18 @@ const DisplayModal = ({
       );
       break;
   }
+  console.log(CIcon);
   return (
     <Modal
       width={"fit-content"}
       closable={false}
       okType={OkType}
       okText={text}
-      title={`${CIcon} ${title}`}
+      title={
+        <span>
+          {CustomIcon ?? CIcon} {title}
+        </span>
+      }
       centered
       open={ModalPopup}
       onOk={ModalOkFunction}
