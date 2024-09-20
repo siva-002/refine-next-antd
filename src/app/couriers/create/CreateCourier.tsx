@@ -163,102 +163,98 @@ const CreateCourier: React.FC<CourierProps> = ({
               </Flex>
             </Upload>
           </Form.Item>
-          <Flex justify="space-around">
-            <Form.Item
-              label={"Name"}
-              name="name"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label={"Gsm"}
-              name="gsm"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          </Flex>
-          <Flex justify="space-around">
-            <Form.Item
-              label={"Email"}
-              name="email"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label={"Address"}
-              name="address"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          </Flex>
-          <Flex justify="space-around">
-            <Form.Item
-              label={"Account Number"}
-              name="accountNumber"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label={"Store"}
-              name={["store", "id"]}
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Select options={options} />
-            </Form.Item>
-          </Flex>
-          <Flex justify="space-around">
-            <Form.Item
-              label={"Vehicle"}
-              name={["vehicle", "id"]}
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Select {...vehicleProps} />
-            </Form.Item>
-            <Form.Item
-              label={"Vehicle Id"}
-              name="licensePlate"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          </Flex>
+
+          <Form.Item
+            label={"Name"}
+            name="name"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label={"Gsm"}
+            name="gsm"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label={"Email"}
+            name="email"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label={"Address"}
+            name="address"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label={"Account Number"}
+            name="accountNumber"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label={"Store"}
+            name={["store", "id"]}
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Select options={options} />
+          </Form.Item>
+
+          <Form.Item
+            label={"Vehicle"}
+            name={["vehicle", "id"]}
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Select {...vehicleProps} />
+          </Form.Item>
+          <Form.Item
+            label={"Vehicle Id"}
+            name="licensePlate"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
         </Form>
       </Create>
     </Drawer>
