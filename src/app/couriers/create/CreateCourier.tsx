@@ -1,5 +1,9 @@
 "use client";
-import { CloudUploadOutlined, UploadOutlined } from "@ant-design/icons";
+import {
+  CloudUploadOutlined,
+  EditOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
 import { ICourier } from "@app/interfaces";
 import { Create, Edit, getValueFromEvent, useForm } from "@refinedev/antd";
 import {
@@ -106,6 +110,7 @@ const CreateCourier: React.FC<CourierProps> = ({
                 height: "100px",
                 position: "relative",
               }}
+              iconRender={() => <UploadOutlined />}
             >
               <Avatar
                 style={{
@@ -113,12 +118,19 @@ const CreateCourier: React.FC<CourierProps> = ({
                   height: previewImageURL ? "100px" : "50px",
                 }}
                 shape="circle"
-                src={
-                  previewImageURL ||
-                  "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
-                }
+                src={previewImageURL}
                 alt="Product Image"
               />
+              {previewImageURL ? (
+                <EditOutlined
+                  style={{
+                    position: "absolute",
+                    top: "20px",
+                    right: "20px",
+                    color: "blue",
+                  }}
+                />
+              ) : null}
             </Upload>
           </Form.Item>
           <Form.Item
