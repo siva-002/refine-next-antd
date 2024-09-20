@@ -89,8 +89,8 @@ const CreateCourier: React.FC<CourierProps> = ({
         <Form
           {...formProps}
           // onFinish={handleSubmit}
-          labelCol={{ span: 4 }}
-          wrapperCol={{ span: 10 }}
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 12 }}
           labelAlign="left"
         >
           <Form.Item
