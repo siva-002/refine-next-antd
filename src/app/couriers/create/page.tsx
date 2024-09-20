@@ -21,13 +21,15 @@ import {
   Upload,
   theme,
 } from "antd";
+
+interface CourierProps {
+  setCreateCourier: any;
+  createCourier: any;
+}
 export default function CreateCourier({
   setCreateCourier,
   createCourier,
-}: {
-  setCreateCourier: any;
-  createCourier: boolean;
-}) {
+}: CourierProps) {
   const apiUrl = useApiUrl();
   const { formProps, saveButtonProps, formLoading, onFinish } =
     useForm<ICourier>({
