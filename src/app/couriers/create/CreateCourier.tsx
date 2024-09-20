@@ -108,7 +108,7 @@ const CreateCourier: React.FC<CourierProps> = ({
               iconRender={() => <UploadOutlined />}
             >
               <Avatar
-                size={200}
+                size={100}
                 shape="circle"
                 src={
                   previewImageURL ||
