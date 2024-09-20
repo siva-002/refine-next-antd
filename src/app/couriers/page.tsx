@@ -29,8 +29,14 @@ export default function ShowCouriers() {
         />
       ) : null}
       <List
+    
         headerButtons={() => (
-          <Button onClick={() => setCreateCourier(true)}>Create</Button>
+          <Button
+            onClick={() => setCreateCourier(true)}
+            color={token.colorPrimary}
+          >
+            Create
+          </Button>
         )}
       >
         <Table {...tableProps}>

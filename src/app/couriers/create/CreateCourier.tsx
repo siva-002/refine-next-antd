@@ -80,7 +80,7 @@ const CreateCourier: React.FC<CourierProps> = ({
       open={createCourier}
       size="large"
     >
-      <Create saveButtonProps={saveButtonProps}>
+      <Create saveButtonProps={saveButtonProps} goBack={null}>
         <Form
           {...formProps}
           // onFinish={handleSubmit}
@@ -105,57 +105,14 @@ const CreateCourier: React.FC<CourierProps> = ({
               showUploadList={false}
               maxCount={1}
             >
-              <Flex
-                vertical
-                align="center"
-                justify="center"
-                style={{
-                  position: "relative",
-                  height: "100%",
-                }}
-              >
-                <Flex
-                  vertical
-                  align="center"
-                  justify="center"
-                  style={{
-                    width: "200px",
-                    height: "200px",
-                    border: previewImageURL ? "" : "1px solid #44454770",
-                  }}
-                  className="position-relative d-flex align-items-center justify-content-center rounded-pill overflow-hidden p-0 m-0"
-                >
-                  <Avatar
-                    shape="square"
-                    style={{
-                      aspectRatio: 1,
-                      objectFit: "contain",
-                      width: previewImageURL ? "200px" : "100px",
-                      height: previewImageURL ? "200px" : "100px",
-                      marginTop: "auto",
-                      transform: previewImageURL ? "" : "translateY(-50%)",
-                    }}
-                    src={
-                      previewImageURL ||
-                      "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
-                    }
-                    alt="Product Image"
-                  />
-                  <div
-                    className="position-absolute d-flex align-items-center justify-content-center rounded-bottom p-1 fs-6"
-                    style={{
-                      bottom: "0",
-                      width: "100%",
-                      backgroundColor: token.volcano,
-                      color: "#fff",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <CloudUploadOutlined className="fs-4 px-2" />{" "}
-                    <span>{!previewImageURL ? "Upload" : "Change"}</span>
-                  </div>
-                </Flex>
-              </Flex>
+              <Avatar
+                shape="circle"
+                src={
+                  previewImageURL ||
+                  "https://img.icons8.com/?size=100&id=kq0iMadL2AjZ&format=png&color=393939"
+                }
+                alt="Product Image"
+              />
             </Upload>
           </Form.Item>
           <Form.Item
