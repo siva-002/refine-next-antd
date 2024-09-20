@@ -7,10 +7,10 @@ interface ModalProps {
   // setModalPopup: (value: boolean) => void;
   ModalOkFunction: any;
   ModalCancelFunction: any;
-  title: React.ReactNode;
+  title: any;
   type: "primary" | "danger";
   text: "Update" | "Edit" | "Delete" | "Ok";
-  Icon: React.ReactNode;
+  Icon: any;
 }
 const DisplayModal = ({
   ModalPopup,
@@ -25,6 +25,7 @@ const DisplayModal = ({
   return (
     <Modal
       style={{ width: "fit-content !important" }}
+      width={0}
       closable={false}
       okType={OkType}
       okText={text}
