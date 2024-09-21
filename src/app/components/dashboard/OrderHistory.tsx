@@ -33,7 +33,7 @@ const OrderHistory = () => {
       ) : (
         <div id="ordersscroll" style={{ overflow: "auto", height: "300px" }}>
           <InfiniteScroll
-            style={{ overflow: "none", margin: "10px" }}
+            style={{ overflow: "none" }}
             dataLength={orders?.length}
             hasMore={hasNextPage || false}
             next={fetchNextPage}
@@ -49,10 +49,17 @@ const OrderHistory = () => {
               renderItem={(item) => {
                 return (
                   <List.Item>
-                    <Flex justify="space-between" style={{ width: "100%" }}>
-                      <OrderStatus record={item} />
-                      <Typography.Text>#{item?.orderNumber}</Typography.Text>
-                      <Typography.Text type="secondary">
+                    <Flex style={{ width: "100%", margin: "0 10px" }}>
+                      <div style={{ width: "40%" }}>
+                        <OrderStatus record={item} />
+                      </div>
+                      <Typography.Text style={{ width: "20%" }}>
+                        #{item?.orderNumber}
+                      </Typography.Text>
+                      <Typography.Text
+                        type="secondary"
+                        style={{ width: "40%" }}
+                      >
                         {dayjs(item.createdAt)?.fromNow()}
                       </Typography.Text>
                     </Flex>
