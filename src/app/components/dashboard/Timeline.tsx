@@ -31,7 +31,7 @@ const Timeline = () => {
       {isLoading ? (
         <Spin spinning size="large" />
       ) : (
-        <div id="ordersscroll" style={{ overflow: "auto" }}>
+        <div id="ordersscroll" style={{ overflow: "auto", width: "100%" }}>
           <InfiniteScroll
             style={{ overflow: "none" }}
             dataLength={orders?.length}
