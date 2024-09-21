@@ -83,7 +83,7 @@ const CreateCourier: React.FC<CourierProps> = ({
         list("couriers");
       }}
       open={createCourier}
-      size="large"
+      size="default"
     >
       <Create saveButtonProps={saveButtonProps} goBack={null}>
         <Form

@@ -7,7 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import relativeTime from "dayjs/plugin/relativeTime";
 import OrderStatus from "../OrderStatus";
 import { IOrder } from "@app/interfaces";
-const RecentOrder = () => {
+const OrderHistory = () => {
   const { data, hasNextPage, fetchNextPage, isLoading } =
     useInfiniteList<IOrder>({
       resource: "orders",
@@ -76,4 +76,4 @@ const RecentOrder = () => {
   );
 };
 
-export default RecentOrder;
+export default OrderHistory;

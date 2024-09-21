@@ -72,6 +72,7 @@ export default function RootLayout({
                       list: "/users",
                       show: "/users/show/:id",
                       meta: {
+                        label: "Customers",
                         icon: <UserOutlined />,
                       },
                     },
