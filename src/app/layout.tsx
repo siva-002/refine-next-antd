@@ -18,6 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "../../style/global.css";
 import {
+  DashboardOutlined,
   ShopFilled,
   ShopOutlined,
   ShoppingOutlined,
@@ -58,6 +59,13 @@ export default function RootLayout({
                   authProvider={authProvider}
                   i18nProvider={i18nProvider}
                   resources={[
+                    {
+                      name: "dashboard",
+                      list: "/dashboard",
+                      meta: {
+                        icon: <DashboardOutlined />,
+                      },
+                    },
                     {
                       name: "users",
                       list: "/users",

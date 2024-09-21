@@ -3,6 +3,7 @@
 import { CloseOutlined, SaveOutlined } from "@ant-design/icons";
 import { IStore } from "@app/interfaces";
 import { SaveButton, useForm } from "@refinedev/antd";
+import { useTranslate } from "@refinedev/core";
 import {
   Avatar,
   Button,
@@ -11,6 +12,7 @@ import {
   Form,
   Grid,
   Input,
+  Segmented,
   Typography,
   theme,
 } from "antd";
@@ -22,6 +24,7 @@ type ICreateStore = {
 const CreateStore = ({ onclose }: ICreateStore) => {
   const breakpoint = Grid.useBreakpoint();
   const { token } = theme.useToken();
+  const t = useTranslate();
   const { formProps, saveButtonProps, formLoading } = useForm<IStore>({
     resource: "stores",
     action: "create",
@@ -66,6 +69,24 @@ const CreateStore = ({ onclose }: ICreateStore) => {
         </Form.Item>
         <Form.Item label="Phone No" name="gsm" rules={[{ required: true }]}>
           <Input placeholder="111 111 11 11" />
+        </Form.Item>
+        <Form.Item
+          label={"Status"}
+          name={"isActive"}
+          rules={[{ required: true }]}
+        >
+          <Segmented
+            options={[
+              {
+                label: t("stores.fields.isActive.true"),
+                value: true,
+              },
+              {
+                label: t("stores.fields.isActive.false"),
+                value: false,
+              },
+            ]}
+          />
         </Form.Item>
       </Form>
 
