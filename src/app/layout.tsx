@@ -59,6 +59,10 @@ export default function RootLayout({
                   i18nProvider={i18nProvider}
                   resources={[
                     {
+                      name: "dashboard",
+                      list: "/dashboard",
+                    },
+                    {
                       name: "users",
                       list: "/users",
                       show: "/users/show/:id",

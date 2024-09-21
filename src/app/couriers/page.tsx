@@ -33,7 +33,7 @@ export default function ShowCouriers() {
         canCreate={true}
         createButtonProps={{
           onClick: () => setCreateCourier(true),
-          color: token?.colorPrimary, // Correct syntax for passing onClick
+          color: token?.colorPrimary,
         }}
         // headerButtons={() => (
         //   <Button
