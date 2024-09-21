@@ -58,7 +58,7 @@ const OrderHistory = () => {
                       </Typography.Text>
                       <Typography.Text
                         type="secondary"
-                        style={{ width: "40%" }}
+                        style={{ width: "40%", textAlign: "center" }}
                       >
                         {dayjs(item.createdAt)?.fromNow()}
                       </Typography.Text>
