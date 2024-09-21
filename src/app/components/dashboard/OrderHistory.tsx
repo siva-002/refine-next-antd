@@ -8,54 +8,61 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import OrderStatus from "../OrderStatus";
 import { IOrder } from "@app/interfaces";
 const OrderHistory = () => {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteList<IOrder>({
-    resource: "orders",
-    sorters: [
-      {
-        field: "createdAt",
-        order: "desc",
+  const { data, hasNextPage, fetchNextPage, isLoading } =
+    useInfiniteList<IOrder>({
+      resource: "orders",
+      sorters: [
+        {
+          field: "createdAt",
+          order: "desc",
+        },
+      ],
+      pagination: {
+        pageSize: 10,
+        current: 1,
       },
-    ],
-    pagination: {
-      pageSize: 5,
-      current: 1,
-    },
-  });
+    });
   dayjs.extend(relativeTime);
-  console.log("before", data);
+
   const orders = data?.pages.flatMap((page) => page.data) || [];
-  console.log("after", orders);
+
   return (
-    <div id="ordersscroll" style={{ overflow: "auto", height: "300px" }}>
-      <InfiniteScroll
-        dataLength={orders?.length}
-        hasMore={hasNextPage ?? false}
-        next={fetchNextPage}
-        loader={
-          <span style={{ display: "flex", justifyContent: "center" }}>
-            <Spin />
-          </span>
-        }
-        scrollableTarget="ordersscroll"
-      >
-        <List
-          dataSource={orders}
-          renderItem={(item) => {
-            return (
-              <List.Item>
-                <Flex justify="space-between">
-                  <OrderStatus record={item} />
-                  <Typography.Text>{item?.orderNumber}</Typography.Text>
-                  <Typography.Text>
-                    {dayjs(item.createdAt)?.fromNow()}
-                  </Typography.Text>
-                </Flex>
-              </List.Item>
-            );
-          }}
-        ></List>
-      </InfiniteScroll>
-    </div>
+    <>
+      {isLoading ? (
+        <Spin spinning size="large" />
+      ) : (
+        <div id="ordersscroll" style={{ overflow: "auto", height: "300px" }}>
+          <InfiniteScroll
+            dataLength={orders?.length}
+            hasMore={hasNextPage || false}
+            next={fetchNextPage}
+            loader={
+              <span style={{ display: "flex", justifyContent: "center" }}>
+                <Spin />
+              </span>
+            }
+            scrollableTarget="ordersscroll"
+          >
+            <List
+              dataSource={orders}
+              renderItem={(item) => {
+                return (
+                  <List.Item>
+                    <Flex justify="space-between" style={{ width: "100%" }}>
+                      <OrderStatus record={item} />
+                      <Typography.Text>#{item?.orderNumber}</Typography.Text>
+                      <Typography.Text>
+                        {dayjs(item.createdAt)?.fromNow()}
+                      </Typography.Text>
+                    </Flex>
+                  </List.Item>
+                );
+              }}
+            ></List>
+          </InfiniteScroll>
+        </div>
+      )}
+    </>
   );
 };
 
