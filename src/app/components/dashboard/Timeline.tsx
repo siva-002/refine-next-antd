@@ -7,7 +7,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import relativeTime from "dayjs/plugin/relativeTime";
 import OrderStatus from "../OrderStatus";
 import { IOrder } from "@app/interfaces";
-const Timeline = () => {
+
+interface Iheight {
+  height?: string;
+}
+const Timeline = ({ height = "200px" }: Iheight) => {
   const { data, hasNextPage, fetchNextPage, isLoading } =
     useInfiniteList<IOrder>({
       resource: "orders",
@@ -31,7 +35,10 @@ const Timeline = () => {
       {isLoading ? (
         <Spin spinning size="large" />
       ) : (
-        <div id="ordersscroll" style={{ overflow: "auto", width: "100%" }}>
+        <div
+          id="ordersscroll"
+          style={{ overflow: "auto", width: "100%", height: height }}
+        >
           <InfiniteScroll
             style={{ overflow: "none" }}
             dataLength={orders?.length}
@@ -42,7 +49,7 @@ const Timeline = () => {
                 <Spin />
               </span>
             }
-            // scrollableTarget="ordersscroll"
+            scrollableTarget="ordersscroll"
           >
             <List
               dataSource={orders}
