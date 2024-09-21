@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 58304862a6ad49fa7ce7022296eac0c59967150d
 import { Header } from "@components/header";
 import { CustomHeader } from "@components/sider-title";
 import { authProviderServer } from "@providers/auth-provider";
@@ -13,7 +17,14 @@ export default async function Layout({ children }: React.PropsWithChildren) {
   }
 
   return (
+<<<<<<< HEAD
     <ThemedLayoutV2 Header={Header} Title={CustomHeader}>
+=======
+    <ThemedLayoutV2
+      Header={Header}
+      Title={CustomHeader}
+    >
+>>>>>>> 58304862a6ad49fa7ce7022296eac0c59967150d
       {children}
     </ThemedLayoutV2>
   );
