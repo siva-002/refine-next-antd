@@ -1,8 +1,11 @@
 "use client";
 import React from "react";
-import { Row, Col, Card } from "antd";
+import { Row, Col, Card, theme } from "antd";
+import OrderHistory from "@app/components/dashboard/OrderHistory";
+import { ClockCircleFilled } from "@ant-design/icons";
 
 const GridDesign = () => {
+  const { token } = theme.useToken();
   return (
     <div style={{ padding: 20 }}>
       <Row gutter={[16, 16]}>
@@ -26,8 +29,16 @@ const GridDesign = () => {
           </Card>
         </Col>
         <Col span={12}>
-          <Card title="Column 4" bordered={false}>
-            Content 4
+          <Card
+            title={
+              <span>
+                <ClockCircleFilled color={token?.colorPrimary} /> Orders
+                Timeline
+              </span>
+            }
+            bordered={false}
+          >
+            <OrderHistory />
           </Card>
         </Col>
       </Row>
