@@ -4,8 +4,11 @@ import { Typography } from "antd/lib";
 import dayjs from "dayjs";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import relativeTime from "dayjs/plugin/relativeTime";
+import OrderStatus from "../OrderStatus";
+import { IOrder } from "@app/interfaces";
 const OrderHistory = () => {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteList({
+  const { data, hasNextPage, fetchNextPage } = useInfiniteList<IOrder>({
     resource: "orders",
     sorters: [
       {
@@ -18,6 +21,7 @@ const OrderHistory = () => {
       current: 1,
     },
   });
+  dayjs.extend(relativeTime);
   console.log("before", data);
   const orders = data?.pages.flatMap((page) => page.data) || [];
   console.log("after", orders);
@@ -37,13 +41,14 @@ const OrderHistory = () => {
         <List
           dataSource={orders}
           renderItem={(item) => {
-            const date = dayjs(item.createdAt);
             return (
               <List.Item>
                 <Flex justify="space-between">
-                  <Typography.Text>{item?.status?.text}</Typography.Text>
+                  <OrderStatus record={item} />
                   <Typography.Text>{item?.orderNumber}</Typography.Text>
-                  <Typography.Text>{date?.fromNow()}</Typography.Text>
+                  <Typography.Text>
+                    {dayjs(item.createdAt)?.fromNow()}
+                  </Typography.Text>
                 </Flex>
               </List.Item>
             );
