@@ -63,6 +63,7 @@ export default function RootLayout({
                       name: "dashboard",
                       list: "/dashboard",
                       meta: {
+                        label: "Dashboard",
                         icon: <DashboardOutlined />,
                       },
                     },
