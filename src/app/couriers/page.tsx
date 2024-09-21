@@ -5,6 +5,7 @@ import CreateCourier from "./create/CreateCourier";
 import Rating from "@app/components/couriers/Rating";
 import { ICourier } from "@app/interfaces";
 import { FilterDropdown, List, ShowButton, useTable } from "@refinedev/antd";
+import { Show } from "@refinedev/antd";
 import { getDefaultFilter } from "@refinedev/core";
 import { Avatar, Button, Input, Table, theme } from "antd";
 import React, { useState } from "react";
@@ -29,15 +30,19 @@ export default function ShowCouriers() {
         />
       ) : null}
       <List
-    
-        headerButtons={() => (
-          <Button
-            onClick={() => setCreateCourier(true)}
-            color={token.colorPrimary}
-          >
-            Create
-          </Button>
-        )}
+        canCreate={true}
+        createButtonProps={{
+          onClick: () => setCreateCourier(true),
+          color: token?.colorPrimary, // Correct syntax for passing onClick
+        }}
+        // headerButtons={() => (
+        //   <Button
+        //     onClick={() => setCreateCourier(true)}
+        //     color={token.colorPrimary}
+        //   >
+        //     Create
+        //   </Button>
+        // )}
       >
         <Table {...tableProps}>
           <Table.Column dataIndex={"id"} title={"ID #"} />
