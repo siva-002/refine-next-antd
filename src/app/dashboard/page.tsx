@@ -23,18 +23,17 @@ const GridDesign = () => {
           </Card>
         </Col>
         {/* Second row with 2 columns */}
-        <Col span={12}>
+        <Col span={14}>
           <Card title="Column 3" bordered={false}>
             Content 3
           </Card>
         </Col>
-        <Col span={12}>
+        <Col span={10}>
           <Card
             title={
               <span>
                 <ClockCircleFilled style={{ color: token?.blue }} />
-                {""}
-                Orders Timeline
+                <span style={{ marginLeft: "5px" }}> Orders Timeline</span>
               </span>
             }
             bordered={false}
