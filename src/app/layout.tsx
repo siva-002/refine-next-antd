@@ -60,6 +60,14 @@ export default function RootLayout({
                   i18nProvider={i18nProvider}
                   resources={[
                     {
+                      name: "dashboard",
+                      list: "/dashboard",
+                      meta: {
+                        label: "Dashboard",
+                        icon: <DashboardOutlined />,
+                      },
+                    },
+                    {
                       name: "users",
                       list: "/users",
                       show: "/users/show/:id",
