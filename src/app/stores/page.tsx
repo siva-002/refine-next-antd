@@ -1,15 +1,23 @@
 "use client";
 
-import { SearchOutlined } from "@ant-design/icons";
+import { PlusSquareOutlined, SearchOutlined } from "@ant-design/icons";
+import CreateStore from "@app/components/store/CreateStore";
 import StoreStatus from "@app/components/store/StoreStatus";
 import { IStore } from "@app/interfaces";
-import { FilterDropdown, List, ShowButton, useTable } from "@refinedev/antd";
+import {
+  CreateButton,
+  FilterDropdown,
+  List,
+  ShowButton,
+  useTable,
+} from "@refinedev/antd";
 import { useTranslate } from "@refinedev/core";
 import { Input, Select, Table, theme } from "antd";
-import React from "react";
+import React, { useState } from "react";
 
 const StoreList = () => {
   const t = useTranslate();
+  const [createStore, setCreateStore] = useState(false);
   const { tableProps, sorters, filters } = useTable<IStore>({
     filters: {
       initial: [
@@ -30,7 +38,19 @@ const StoreList = () => {
 
   const { token } = theme.useToken();
   return (
-    <List>
+    <List
+      headerButtons={(props) => [
+        <CreateButton
+          {...props.createButtonProps}
+          key="create"
+          size="large"
+          icon={<PlusSquareOutlined />}
+          onClick={() => setCreateStore(true)}
+        >
+          {"Add New Store"}
+        </CreateButton>,
+      ]}
+    >
       <Table
         {...tableProps}
         rowKey={"id"}
@@ -44,7 +64,6 @@ const StoreList = () => {
         <Table.Column dataIndex={"id"} title={t("stores.fields.id")} />
         <Table.Column
           dataIndex={"title"}
-          
           title={t("stores.fields.title")}
           filterIcon={(filtered) => (
             <SearchOutlined
@@ -112,6 +131,7 @@ const StoreList = () => {
           )}
         />
       </Table>
+      {createStore && <CreateStore onclose={setCreateStore} />}
     </List>
   );
 };
