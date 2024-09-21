@@ -32,8 +32,8 @@ const GridDesign = () => {
           <Card
             title={
               <span>
-                <ClockCircleFilled color={token?.colorPrimary} /> Orders
-                Timeline
+                <ClockCircleFilled style={{ color: token?.colorPrimary }} />
+                Orders Timeline
               </span>
             }
             bordered={false}
