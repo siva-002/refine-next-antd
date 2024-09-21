@@ -31,7 +31,7 @@ const Timeline = () => {
       {isLoading ? (
         <Spin spinning size="large" />
       ) : (
-        <div id="ordersscroll" style={{ overflow: "auto", height: "300px" }}>
+        <div id="ordersscroll" style={{ overflow: "auto" }}>
           <InfiniteScroll
             style={{ overflow: "none" }}
             dataLength={orders?.length}
@@ -42,14 +42,14 @@ const Timeline = () => {
                 <Spin />
               </span>
             }
-            scrollableTarget="ordersscroll"
+            // scrollableTarget="ordersscroll"
           >
             <List
               dataSource={orders}
               renderItem={(item) => {
                 return (
                   <List.Item>
-                    <Flex style={{ width: "100%", margin: "0 10px" }}>
+                    <Flex style={{ width: "100%" }}>
                       <Flex style={{ width: "40%" }} justify="center">
                         <OrderStatus record={item} />
                       </Flex>
