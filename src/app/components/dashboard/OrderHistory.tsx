@@ -50,10 +50,12 @@ const OrderHistory = () => {
                 return (
                   <List.Item>
                     <Flex style={{ width: "100%", margin: "0 10px" }}>
-                      <div style={{ width: "40%" }}>
+                      <Flex style={{ width: "40%" }} justify="center">
                         <OrderStatus record={item} />
-                      </div>
-                      <Typography.Text style={{ width: "20%" }}>
+                      </Flex>
+                      <Typography.Text
+                        style={{ width: "20%", textAlign: "center" }}
+                      >
                         #{item?.orderNumber}
                       </Typography.Text>
                       <Typography.Text
