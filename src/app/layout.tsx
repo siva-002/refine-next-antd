@@ -18,6 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "../../style/global.css";
 import {
+  DashboardOutlined,
   ShopFilled,
   ShopOutlined,
   ShoppingOutlined,
@@ -61,12 +62,17 @@ export default function RootLayout({
                     {
                       name: "dashboard",
                       list: "/dashboard",
+                      meta: {
+                        label: "Dashboard",
+                        icon: <DashboardOutlined />,
+                      },
                     },
                     {
                       name: "users",
                       list: "/users",
                       show: "/users/show/:id",
                       meta: {
+                        label: "Customers",
                         icon: <UserOutlined />,
                       },
                     },
