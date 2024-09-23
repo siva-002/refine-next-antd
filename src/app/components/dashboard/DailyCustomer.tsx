@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Line } from "@ant-design/charts";
+import { Bar } from "@ant-design/charts";
 const DailyCustomer = () => {
   const data = [
     { year: "1991", value: 3 },
@@ -20,7 +20,7 @@ const DailyCustomer = () => {
     yField: "value",
   };
 
-  return <Line {...config} />;
+  return <Bar {...config} />;
 };
 
 export default DailyCustomer;
