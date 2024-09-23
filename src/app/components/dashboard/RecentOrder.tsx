@@ -10,7 +10,12 @@ const GetProductList = ({ products }: { products: IProduct[] }) => {
   const data = getUniqueListWithCount({ list: products, field: "id" });
   console.log(data);
 
-  return <></>;
+  return data?.map((item) => (
+    <Flex>
+      <Typography.Text>{item?.name}</Typography.Text>
+      <Typography.Text type="secondary">x{item?.count}</Typography.Text>
+    </Flex>
+  ));
 };
 const RecentOrder = () => {
   const [pageSize, setPageSize] = useState<number>(8);
