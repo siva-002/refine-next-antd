@@ -18,7 +18,7 @@ a {
 }
 
 
-.ant-ribbon.ant-ribbon-placement-end {
+.Product-Show .ant-ribbon.ant-ribbon-placement-end {
   height: 30px !important;
   display: flex;
   align-items: center;
@@ -30,6 +30,6 @@ a {
   display: none !important;
 }
 
-.ant-segmented-group{
+.ant-segmented-group {
   padding: 5px !important;
 }
