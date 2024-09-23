@@ -18,8 +18,11 @@ const DailyCustomer = () => {
       query: dateWeekFilter,
     },
   });
-  console.log(customerData);
-  console.log(customerData?.data);
+
+  if (customerData?.data) {
+    console.log(customerData);
+    console.log(customerData?.data?.data);
+  }
   // const plotdata =
   //   customerData?.data?.data?.map((item: any) => {
   //     return {
