@@ -47,13 +47,14 @@ const DailyCustomer = () => {
           text: "Customer Count", // Optional: add title for y-axis
         },
       },
-      // label: {
-      //   // position: "center", // Shows values inside bars
-      //   style: {
-      //     fill: "#FFFFFF",
-      //     opacity: 0.6,
-      //   },
-      // },
+      axis: {
+        x: {
+          labelFill: token.colorTextBase,
+        },
+        y: {
+          labelFill: token.colorTextBase,
+        },
+      },
     };
 
     // console.log("plot", plotdata);
