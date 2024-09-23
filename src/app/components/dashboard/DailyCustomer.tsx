@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { Bar } from "@ant-design/charts";
+import { Column } from "@ant-design/charts";
 import dayjs from "dayjs";
 import { useApiUrl, useCustom } from "@refinedev/core";
+import { Spin } from "antd";
 const DailyCustomer = () => {
   const today = dayjs();
   const API_URL = useApiUrl();
@@ -19,26 +20,58 @@ const DailyCustomer = () => {
     },
   });
 
-  console.log(customerData);
-  const data = [
-    { year: "1991", value: 3 },
-    { year: "1992", value: 4 },
-    { year: "1993", value: 3.5 },
-    { year: "1994", value: 5 },
-    { year: "1995", value: 4.9 },
-    { year: "1996", value: 6 },
-    { year: "1997", value: 7 },
-    { year: "1998", value: 9 },
-    { year: "1999", value: 13 },
-  ];
+  if (customerData?.data) {
+    // console.log(customerData);
+    // console.log(customerData?.data?.data);
+    const plotdata =
+      customerData?.data?.data?.map((item: any) => {
+        return {
+          timeText: dayjs(item?.date)?.format("ddd"),
+          value: item?.value,
+        };
+      }) || [];
+    const config = {
+      data: plotdata,
+      xField: "timeText",
+      yField: "value",
+      isGroup: true,
+      xAxis: {
+        label: {
+          formatter: (text: string) => text,
+        },
+      },
+      yAxis: {
+        title: {
+          text: "Customer Count", // Optional: add title for y-axis
+        },
+      },
+      label: {
+        // position: "center", // Shows values inside bars
+        style: {
+          fill: "#FFFFFF",
+          opacity: 0.6,
+        },
+      },
+    };
 
-  const config = {
-    data,
-    xField: "year",
-    yField: "value",
-  };
+    // console.log("plot", plotdata);
+    return <Column {...config} />;
+  }
 
-  return <Bar {...config} />;
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Spin size="default" />
+    </div>
+  );
+  // return plotdata ? <Bar {...config} /> : null;
 };
 
 export default DailyCustomer;
