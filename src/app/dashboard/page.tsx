@@ -26,7 +26,7 @@ const Dashboard = () => {
   };
   const RecentOrderStyles = {
     body: {
-      paddingBottom: "80px",
+      paddingBottom: "60px",
     },
   };
   return (

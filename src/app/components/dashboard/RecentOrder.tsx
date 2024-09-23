@@ -39,7 +39,11 @@ const RecentOrder = () => {
                 <Typography.Text style={{ width: "10%", textAlign: "left" }}>
                   #{item?.orderNumber}
                 </Typography.Text>
-                <Flex vertical={true} style={{ width: "50%" }} justify="center">
+                <Flex
+                  vertical={true}
+                  style={{ width: "50%", alignItems: "center" }}
+                  justify="center"
+                >
                   <Typography.Text ellipsis>
                     {item?.user?.fullName}
                   </Typography.Text>
@@ -54,7 +58,7 @@ const RecentOrder = () => {
                 <Flex vertical={true} style={{ width: "30%" }} justify="center">
                   <Typography.Text ellipsis>{"product"}</Typography.Text>
                 </Flex>
-                <Typography.Text style={{ width: "5%" }}>
+                <Typography.Text style={{ width: "10%" }}>
                   <CalculatePrice product={item?.products} />
                 </Typography.Text>
                 <Flex style={{ width: "5%" }} justify="center">
