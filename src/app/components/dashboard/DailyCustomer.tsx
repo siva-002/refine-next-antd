@@ -30,9 +30,19 @@ const DailyCustomer = () => {
         };
       }) || [];
     const config = {
-      plotdata,
+      data: plotdata,
       xField: "timeText",
       yField: "value",
+      xAxis: {
+        label: {
+          formatter: (text: string) => text,
+        },
+      },
+      yAxis: {
+        title: {
+          text: "Customer Count", // Optional: add title for y-axis
+        },
+      },
     };
 
     console.log("plot", plotdata);
