@@ -33,6 +33,7 @@ const DailyCustomer = () => {
       data: plotdata,
       xField: "timeText",
       yField: "value",
+      isGroup: true,
       xAxis: {
         label: {
           formatter: (text: string) => text,
@@ -41,6 +42,13 @@ const DailyCustomer = () => {
       yAxis: {
         title: {
           text: "Customer Count", // Optional: add title for y-axis
+        },
+      },
+      label: {
+        position: "middle", // Shows values inside bars
+        style: {
+          fill: "#FFFFFF",
+          opacity: 0.6,
         },
       },
     };
