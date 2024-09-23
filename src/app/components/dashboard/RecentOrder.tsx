@@ -34,8 +34,8 @@ const RecentOrder = () => {
         dataSource={OrdersData}
         renderItem={(item) => {
           return (
-            <List.Item style={{ width: "100%" }}>
-              <Flex justify="space-between">
+            <List.Item>
+              <Flex justify="space-between" style={{ width: "100%" }}>
                 <Typography.Text style={{ width: "10%", textAlign: "left" }}>
                   #{item?.orderNumber}
                 </Typography.Text>
@@ -63,6 +63,7 @@ const RecentOrder = () => {
         pageSize={pageSize}
         onChange={handlePageChange}
         total={data?.total}
+        showSizeChanger={false}
       />
     </>
   );
