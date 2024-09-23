@@ -21,8 +21,8 @@ const DailyCustomer = () => {
   });
 
   if (customerData?.data) {
-    console.log(customerData);
-    console.log(customerData?.data?.data);
+    // console.log(customerData);
+    // console.log(customerData?.data?.data);
     const plotdata =
       customerData?.data?.data?.map((item: any) => {
         return {
@@ -46,7 +46,7 @@ const DailyCustomer = () => {
         },
       },
       label: {
-        position: "middle", // Shows values inside bars
+        // position: "center", // Shows values inside bars
         style: {
           fill: "#FFFFFF",
           opacity: 0.6,
@@ -54,7 +54,7 @@ const DailyCustomer = () => {
       },
     };
 
-    console.log("plot", plotdata);
+    // console.log("plot", plotdata);
     return <Column {...config} />;
   }
 
@@ -68,7 +68,7 @@ const DailyCustomer = () => {
         height: "100%",
       }}
     >
-      <Spin size="large" />
+      <Spin size="default" />
     </div>
   );
   // return plotdata ? <Bar {...config} /> : null;
