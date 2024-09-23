@@ -3,9 +3,11 @@ import React from "react";
 import { Column } from "@ant-design/charts";
 import dayjs from "dayjs";
 import { useApiUrl, useCustom } from "@refinedev/core";
-import { Spin } from "antd";
+import { Spin, theme } from "antd";
 const DailyCustomer = () => {
   const today = dayjs();
+  const { token } = theme.useToken();
+  // console.log(token);
   const API_URL = useApiUrl();
   const dateWeekFilter = {
     start: today.subtract(6, "days").startOf("day").format(),
@@ -45,17 +47,17 @@ const DailyCustomer = () => {
           text: "Customer Count", // Optional: add title for y-axis
         },
       },
-      label: {
-        // position: "center", // Shows values inside bars
-        style: {
-          fill: "#FFFFFF",
-          opacity: 0.6,
-        },
-      },
+      // label: {
+      //   // position: "center", // Shows values inside bars
+      //   style: {
+      //     fill: "#FFFFFF",
+      //     opacity: 0.6,
+      //   },
+      // },
     };
 
     // console.log("plot", plotdata);
-    return <Column {...config} />;
+    return <Column {...config} colorField="#fa6d3ea3" />;
   }
 
   return (

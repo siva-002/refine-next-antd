@@ -50,7 +50,7 @@ const Dashboard = () => {
             }
             bordered={false}
           >
-            <Flex align="center" justify="center">
+            <Flex align="center" justify="center" style={{ height: "300px" }}>
               <DailyRevenue />
             </Flex>
           </Card>
@@ -65,7 +65,7 @@ const Dashboard = () => {
             }
             bordered={false}
           >
-            <Flex align="center" justify="center">
+            <Flex align="center" justify="center" style={{ height: "300px" }}>
               <DailyOrder />
             </Flex>
           </Card>
@@ -74,8 +74,7 @@ const Dashboard = () => {
           <Card
             title={
               <div>
-                <UserOutlined style={{ color: token.volcano }} />
-                Customer
+                <UserOutlined style={{ color: token.volcano }} /> Customer
               </div>
             }
             bordered={false}
