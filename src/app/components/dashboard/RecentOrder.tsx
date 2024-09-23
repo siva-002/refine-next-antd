@@ -27,23 +27,24 @@ const RecentOrder = () => {
       renderItem={(item) => {
         return (
           <List.Item>
-            <Flex>
-              <Typography.Title>#{item?.orderNumber}</Typography.Title>
-
-              <Flex vertical={true}>
+            <Flex justify="space-between">
+              <Typography.Text style={{ width: "10%", textAlign: "left" }}>
+                #{item?.orderNumber}
+              </Typography.Text>
+              <Flex vertical={true} style={{ width: "30%" }} justify="center">
                 <Typography.Text ellipsis>
                   #{item?.user?.fullName}
                 </Typography.Text>
-                <Typography.Text ellipsis>
-                  #{item?.adress?.text}
-                </Typography.Text>
               </Flex>
-              <Typography.Text>
+              <Flex vertical={true} style={{ width: "30%" }} justify="center">
+                <Typography.Text ellipsis>{"product"}</Typography.Text>
+              </Flex>
+              <Typography.Text style={{ width: "20%" }}>
                 <CalculatePrice product={item?.products} />
               </Typography.Text>
-              <div>
+              <Flex style={{ width: "10%" }} justify="center">
                 <OrderMenuButton record={item} />
-              </div>
+              </Flex>
             </Flex>
           </List.Item>
         );
