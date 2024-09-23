@@ -22,7 +22,7 @@ const Timeline = ({ height = "500px" }: Iheight) => {
         },
       ],
       pagination: {
-        pageSize: 10,
+        pageSize: 12,
         current: 1,
       },
     });
