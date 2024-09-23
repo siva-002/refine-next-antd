@@ -11,7 +11,7 @@ import { IOrder } from "@app/interfaces";
 interface Iheight {
   height?: string;
 }
-const Timeline = ({ height = "200px" }: Iheight) => {
+const Timeline = ({ height = "500px" }: Iheight) => {
   const { data, hasNextPage, fetchNextPage, isLoading } =
     useInfiniteList<IOrder>({
       resource: "orders",
