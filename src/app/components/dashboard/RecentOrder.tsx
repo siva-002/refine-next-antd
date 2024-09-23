@@ -27,7 +27,7 @@ const RecentOrder = () => {
       dataSource={OrdersData}
       renderItem={(item) => {
         return (
-          <List.Item>
+          <List.Item style={{ width: "100%" }}>
             <Flex justify="space-between">
               <Typography.Text style={{ width: "10%", textAlign: "left" }}>
                 #{item?.orderNumber}
