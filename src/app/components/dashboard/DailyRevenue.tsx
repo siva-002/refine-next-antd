@@ -56,6 +56,26 @@ const DailyRevenue = () => {
           labelFill: token.colorTextBase,
         },
       },
+
+      line: {
+        style: {
+          stroke: "#fa6d3e", // Set the line color
+          lineWidth: 1, // Set the line width
+          lineDash: [10, 10], // Solid line (use ['2', '2'] for dashed lines)
+        },
+      },
+      point: {
+        shape: "circle", // Change the shape of the points
+        style: {
+          fill: "#fa6d3e", // Set the color of the points
+          r: 5, // Radius of the points
+        },
+      },
+      areaStyle: {
+        fill: "#fa6d3e", // Set the area color
+        opacity: 0.3, // Adjust opacity for the area
+      },
+      smooth: true,
     };
 
     // console.log("plot", plotdata);

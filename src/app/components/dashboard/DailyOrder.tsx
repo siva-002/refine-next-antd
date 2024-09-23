@@ -7,7 +7,7 @@ import { Spin, theme } from "antd";
 const DailyOrder = () => {
   const today = dayjs();
   const API_URL = useApiUrl();
-  const {token} = theme.useToken()
+  const { token } = theme.useToken();
   const dateWeekFilter = {
     start: today.subtract(6, "days").startOf("day").format(),
     end: today.endOf("day").format(),
@@ -57,7 +57,7 @@ const DailyOrder = () => {
     };
 
     // console.log("plot", plotdata);
-    return <Column {...config} colorField="#fa6d3ea3"/>;
+    return <Column {...config} colorField="#fa6d3ea3" />;
   }
 
   return (
