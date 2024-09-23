@@ -30,7 +30,7 @@ const RecentOrder = () => {
   return (
     <>
       <List
-        style={{ width: "100%" }}
+        style={{ width: "100%", position: "relative" }}
         dataSource={OrdersData}
         renderItem={(item) => {
           return (
@@ -41,7 +41,10 @@ const RecentOrder = () => {
                 </Typography.Text>
                 <Flex vertical={true} style={{ width: "30%" }} justify="center">
                   <Typography.Text ellipsis>
-                    #{item?.user?.fullName}
+                    {item?.user?.fullName}
+                  </Typography.Text>
+                  <Typography.Text ellipsis>
+                    {item?.adress.text}
                   </Typography.Text>
                 </Flex>
                 <Flex vertical={true} style={{ width: "30%" }} justify="center">
@@ -59,6 +62,7 @@ const RecentOrder = () => {
         }}
       />
       <Pagination
+        style={{ position: "absolute", bottom: "20px", right: "10px" }}
         current={currentPage}
         pageSize={pageSize}
         onChange={handlePageChange}
