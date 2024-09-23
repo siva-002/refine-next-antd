@@ -11,7 +11,7 @@ const GetProductList = ({ products }: { products: IProduct[] }) => {
   console.log(data);
 
   return data?.map((item) => (
-    <Flex>
+    <Flex key={item?.id}>
       <Typography.Text>{item?.name}</Typography.Text>
       <Typography.Text type="secondary">x{item?.count}</Typography.Text>
     </Flex>
