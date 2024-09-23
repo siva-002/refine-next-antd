@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Line } from "@ant-design/charts";
 const DailyCustomer = () => {
