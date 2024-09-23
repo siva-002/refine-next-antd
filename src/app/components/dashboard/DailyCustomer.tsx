@@ -34,6 +34,8 @@ const DailyCustomer = () => {
       xField: "timeText",
       yField: "value",
     };
+
+    console.log("plot", plotdata);
     return <Bar {...config} />;
   }
 
