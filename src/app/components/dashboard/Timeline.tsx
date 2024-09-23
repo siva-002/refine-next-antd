@@ -1,6 +1,6 @@
 import { useInfiniteList } from "@refinedev/core";
 import { Flex, List, Spin, Tag } from "antd";
-import { Typography } from "antd/lib";
+import { Typography } from "antd";
 import dayjs from "dayjs";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
