@@ -19,9 +19,14 @@ import RecentOrder from "@app/components/dashboard/RecentOrder";
 
 const Dashboard = () => {
   const { token } = theme.useToken();
-  const styles = {
+  const timelineStyles = {
     body: {
       padding: 0,
+    },
+  };
+  const RecentOrderStyles = {
+    body: {
+      paddingBottom: "60px",
     },
   };
   return (
@@ -90,7 +95,7 @@ const Dashboard = () => {
         </Col>
         <Col xs={24} sm={24} md={12} lg={10}>
           <Card
-            style={styles.body}
+            style={timelineStyles.body}
             title={
               <div>
                 <HistoryOutlined style={{ color: token.volcano }} /> Timeline
@@ -98,7 +103,7 @@ const Dashboard = () => {
             }
             bordered={false}
           >
-            <Flex align="center" justify="center">
+            <Flex align="center" justify="center" vertical>
               <Timeline />
             </Flex>{" "}
           </Card>
@@ -107,6 +112,7 @@ const Dashboard = () => {
       <Row gutter={[16, 16]} className="mt-4">
         <Col xs={24} sm={24} md={12} lg={14}>
           <Card
+            style={RecentOrderStyles?.body}
             title={
               <div>
                 <ShoppingOutlined style={{ color: token.volcano }} /> Recent
@@ -115,7 +121,7 @@ const Dashboard = () => {
             }
             bordered={false}
           >
-            <Flex align="center" justify="center">
+            <Flex vertical>
               <RecentOrder />
             </Flex>
           </Card>
