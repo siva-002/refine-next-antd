@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { Bar } from "@ant-design/charts";
+import { Column } from "@ant-design/charts";
 import dayjs from "dayjs";
 import { useApiUrl, useCustom } from "@refinedev/core";
+import { Spin } from "antd";
 const DailyCustomer = () => {
   const today = dayjs();
   const API_URL = useApiUrl();
@@ -54,10 +55,22 @@ const DailyCustomer = () => {
     };
 
     console.log("plot", plotdata);
-    return <Bar {...config} />;
+    return <Column {...config} />;
   }
 
-  return null;
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Spin size="large" />
+    </div>
+  );
   // return plotdata ? <Bar {...config} /> : null;
 };
 
