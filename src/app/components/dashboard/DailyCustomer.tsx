@@ -25,8 +25,7 @@ const DailyCustomer = () => {
     const plotdata =
       customerData?.data?.data?.map((item: any) => {
         return {
-          time: item?.date?.unix(),
-          timeText: item?.date?.format("DD MMM YYYY"),
+          timeText: item?.date?.format("ddd"),
           value: item?.value,
         };
       }) || [];
