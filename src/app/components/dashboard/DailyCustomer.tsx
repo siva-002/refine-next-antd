@@ -19,13 +19,14 @@ const DailyCustomer = () => {
     },
   });
 
-  const plotdata = customerData?.data?.map((item: any) => {
-    return {
-      time: item?.date?.unix(),
-      timeText: item?.date?.format("DD MMM YYYY"),
-      value: item?.value,
-    };
-  });
+  const plotdata =
+    customerData?.data?.map((item: any) => {
+      return {
+        time: item?.date?.unix(),
+        timeText: item?.date?.format("DD MMM YYYY"),
+        value: item?.value,
+      };
+    }) || [];
   console.log(customerData);
   // const data = [
   //   { year: "1991", value: 3 },
@@ -45,7 +46,7 @@ const DailyCustomer = () => {
     yField: "value",
   };
 
-  return <Bar {...config} />;
+  return plotdata ? <Bar {...config} /> : null;
 };
 
 export default DailyCustomer;
