@@ -19,7 +19,7 @@ const DeliveryMap = () => {
     },
   });
   // console.log("deliveryMap", data?.data[0]);
-  return data ? <MapDComponent data={data?.data} /> : "Loading...";
+  return <>{data ? <MapDComponent data={data?.data} /> : "Loading..."}</>;
 };
 
 export default DeliveryMap;

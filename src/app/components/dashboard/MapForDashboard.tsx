@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L, { Rectangle, icon, popup } from "leaflet";
@@ -14,6 +14,14 @@ import "leaflet-routing-machine";
 const MapDComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
   //   console.log("MapCompo", data);
   //   console.log(data);
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
   const CourierPosition = Array.isArray(data)
     ? data.map((item) => item?.courier?.store?.address?.coordinate || [0, 0])
     : [];
