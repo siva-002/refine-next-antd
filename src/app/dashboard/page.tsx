@@ -98,7 +98,7 @@ const Dashboard = () => {
             }
             bordered={false}
           >
-            <Flex align="center" justify="center">
+            <Flex align="center" justify="center" vertical>
               <Timeline />
             </Flex>{" "}
           </Card>
@@ -115,7 +115,7 @@ const Dashboard = () => {
             }
             bordered={false}
           >
-            <Flex align="center" justify="center">
+            <Flex vertical>
               <RecentOrder />
             </Flex>
           </Card>

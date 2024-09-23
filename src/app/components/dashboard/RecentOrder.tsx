@@ -57,7 +57,7 @@ const RecentOrder = () => {
             </List.Item>
           );
         }}
-      ></List>
+      />
       <Pagination
         current={currentPage}
         pageSize={pageSize}
