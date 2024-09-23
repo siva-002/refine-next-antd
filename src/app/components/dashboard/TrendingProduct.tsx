@@ -1,6 +1,8 @@
+"use client";
+
 import { ITrendingProducts } from "@app/interfaces";
 import { useSelect, useSimpleList } from "@refinedev/antd";
-import { Avatar, Badge, Flex, List, theme } from "antd";
+import { Avatar, Badge, Flex, List, Typography, theme } from "antd";
 import React from "react";
 
 const TrendingProduct = () => {
@@ -56,7 +58,10 @@ const TrendingProduct = () => {
               </span>
               <span className="text-secondary">
                 Ordered
-                <span className="text-light fw-bold"> {item.orderCount} </span>
+                <Typography.Text className="fw-bold">
+                  {" "}
+                  {item.orderCount}{" "}
+                </Typography.Text>
                 times
               </span>
             </Flex>

@@ -27,7 +27,7 @@ const Dashboard = () => {
   return (
     <List>
       <Row gutter={[16, 16]}>
-        <Col sm={24} md={12} lg={8}>
+        <Col xs={24} sm={24} md={12} lg={8}>
           <Card
             title={
               <div>
@@ -42,7 +42,7 @@ const Dashboard = () => {
             </Flex>
           </Card>
         </Col>
-        <Col sm={24} md={12} lg={8}>
+        <Col xs={24} sm={24} md={12} lg={8}>
           <Card
             title={
               <div>
@@ -57,7 +57,7 @@ const Dashboard = () => {
             </Flex>
           </Card>
         </Col>
-        <Col sm={24} md={12} lg={8}>
+        <Col xs={24} sm={24} md={12} lg={8}>
           <Card
             title={
               <div>
@@ -73,7 +73,7 @@ const Dashboard = () => {
         </Col>
       </Row>
       <Row gutter={[16, 16]} className="mt-4">
-        <Col sm={24} md={12} lg={14}>
+        <Col xs={24} sm={24} md={12} lg={14}>
           <Card
             title={
               <div>
@@ -88,7 +88,7 @@ const Dashboard = () => {
             </Flex>{" "}
           </Card>
         </Col>
-        <Col sm={24} md={12} lg={10}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Card
             style={styles.body}
             title={
@@ -105,7 +105,7 @@ const Dashboard = () => {
         </Col>
       </Row>
       <Row gutter={[16, 16]} className="mt-4">
-        <Col sm={24} md={12} lg={14}>
+        <Col xs={24} sm={24} md={12} lg={14}>
           <Card
             title={
               <div>
@@ -120,7 +120,7 @@ const Dashboard = () => {
             </Flex>
           </Card>
         </Col>
-        <Col sm={24} md={12} lg={10}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Card
             title={
               <div>

@@ -1,6 +1,6 @@
 import { useInfiniteList } from "@refinedev/core";
 import { Flex, List, Spin, Tag } from "antd";
-import { Typography } from "antd/lib";
+import { Typography } from "antd";
 import dayjs from "dayjs";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -11,7 +11,7 @@ import { IOrder } from "@app/interfaces";
 interface Iheight {
   height?: string;
 }
-const Timeline = ({ height = "200px" }: Iheight) => {
+const Timeline = ({ height = "500px" }: Iheight) => {
   const { data, hasNextPage, fetchNextPage, isLoading } =
     useInfiniteList<IOrder>({
       resource: "orders",
@@ -22,7 +22,7 @@ const Timeline = ({ height = "200px" }: Iheight) => {
         },
       ],
       pagination: {
-        pageSize: 10,
+        pageSize: 12,
         current: 1,
       },
     });
