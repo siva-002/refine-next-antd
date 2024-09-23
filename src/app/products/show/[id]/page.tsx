@@ -46,7 +46,7 @@ const ShowProduct = () => {
         wrap={true}
         className="position-relative w-100 rounded-2"
       >
-        <Flex>
+        <Flex className="Product-Show">
           <Badge.Ribbon
             text={product?.name}
             color="volcano"
