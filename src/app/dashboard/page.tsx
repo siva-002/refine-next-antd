@@ -74,12 +74,13 @@ const Dashboard = () => {
           <Card
             title={
               <div>
-                <UserOutlined style={{ color: token.volcano }} /> Daily Customer
+                <UserOutlined style={{ color: token.volcano }} />
+                Customer
               </div>
             }
             bordered={false}
           >
-            <Flex align="center" justify="center">
+            <Flex align="center" justify="center" style={{ height: "300px" }}>
               <DailyCustomer />
             </Flex>{" "}
           </Card>
