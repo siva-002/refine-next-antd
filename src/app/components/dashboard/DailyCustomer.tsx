@@ -32,8 +32,8 @@ const DailyCustomer = () => {
       }) || [];
     const config = {
       data: plotdata,
-      xField: "value",
-      yField: "timeText",
+      xField: "timeText",
+      yField: "value",
       isGroup: true,
       xAxis: {
         label: {
