@@ -33,7 +33,7 @@ const Timeline = ({ height = "500px" }: Iheight) => {
   return (
     <>
       {isLoading ? (
-        <Spin spinning size="large" />
+        <Spin spinning size="default" />
       ) : (
         <div
           id="ordersscroll"
