@@ -19,6 +19,11 @@ import RecentOrder from "@app/components/dashboard/RecentOrder";
 
 const Dashboard = () => {
   const { token } = theme.useToken();
+  const styles = {
+    body: {
+      padding: 0,
+    },
+  };
   return (
     <List>
       <Row gutter={[16, 16]}>
@@ -85,6 +90,7 @@ const Dashboard = () => {
         </Col>
         <Col xs={24} sm={24} md={12} lg={10}>
           <Card
+            style={styles.body}
             title={
               <div>
                 <HistoryOutlined style={{ color: token.volcano }} /> Timeline
