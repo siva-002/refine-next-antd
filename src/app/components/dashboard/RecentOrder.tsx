@@ -47,14 +47,11 @@ const RecentOrder = () => {
         renderItem={(item) => {
           return (
             <List.Item>
-              <Flex justify="space-between" style={{ width: "100%" }}>
-                <Typography.Text style={{ width: "15%", textAlign: "left" }}>
+              <Flex style={{ width: "100%" }}>
+                <Typography.Text style={{ width: "15%" }}>
                   #{item?.orderNumber}
                 </Typography.Text>
-                <Flex
-                  vertical={true}
-                  style={{ width: "50%", alignItems: "center" }}
-                >
+                <Flex vertical={true} style={{ width: "40%" }}>
                   <Typography.Text ellipsis>
                     {item?.user?.fullName}
                   </Typography.Text>
@@ -66,7 +63,7 @@ const RecentOrder = () => {
                     {item?.adress.text}
                   </Typography.Text>
                 </Flex>
-                <Flex vertical={true} style={{ width: "25%" }}>
+                <Flex vertical={true} style={{ width: "30%" }}>
                   <GetProductList products={item?.products} />
                   {/* <Typography.Text ellipsis></Typography.Text> */}
                 </Flex>
