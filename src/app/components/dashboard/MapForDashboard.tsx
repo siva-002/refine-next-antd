@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L, { icon, popup } from "leaflet";
+import L, { Rectangle, icon, popup } from "leaflet";
 import type { IOrder } from "@app/interfaces";
 import { BaseRecord, useNavigation } from "@refinedev/core";
 import "leaflet/dist/leaflet.css";
@@ -20,16 +20,6 @@ const RoutingMachine: React.FC<RoutingMachineProps> = ({ waypoints, item }) => {
   // clearMap(map);
 
   // console.log("POint", waypoints);
-
-  const { list } = useNavigation();
-
-  const StoreIcon = new L.Icon({
-    iconUrl:
-      "https://static.vecteezy.com/system/resources/previews/015/131/905/original/flat-cartoon-style-shop-facade-front-view-modern-flat-storefront-or-supermarket-design-png.png", // Replace with the path to your custom image
-    iconSize: [32, 32], // Size of the icon
-    // iconAnchor: position && [Number(position[0]), Number(position[1])], // Point of the icon which will correspond to marker's location
-    //   popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
-  });
 
   const BikeIcon = new L.Icon({
     iconUrl:
@@ -65,39 +55,35 @@ const RoutingMachine: React.FC<RoutingMachineProps> = ({ waypoints, item }) => {
       createMarker: () => null, // Hide default markers
     } as any).addTo(map);
 
-    // L.marker(waypoints[0], {
-    //   icon: BikeIcon,
-    //   title: item[0],
-    // }).addTo(map);
-    // L.marker(waypoints[1], { icon: StoreIcon, title: item[1] }).addTo(map);
-    // L.marker(waypoints[2], { icon: CustomerIcon, title: item[2] }).addTo(map);
-
-    const icons = [BikeIcon, StoreIcon, CustomerIcon];
+    const icons = [BikeIcon, CustomerIcon];
     waypoints?.map((position, index) => {
       const marker = L.marker(position, {
         icon: icons[index],
         title: item[index],
       }).addTo(map);
+
       marker.bindPopup(item[index]);
     });
   }, [map, waypoints]);
 
   return null;
 };
-// function clearMap(map: any) {
-//   // console.log(map);
-//   // Remove all markers and layers from the map
-//   map.eachLayer((layer: any) => {
-//     if (layer instanceof L.Marker) {
-//       map.removeLayer(layer);
-//     }
-//   });
-// }
-const MapComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
-  // console.log("MapCompo", data);
-  const CourierPosition = data?.courier?.store?.address?.coordinate;
-  const StorePosition = data?.store?.address?.coordinate;
-  const CustomerPosition = data?.adress?.coordinate;
+const MapDComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
+  //   console.log("MapCompo", data);
+  //   console.log(data);
+  const CourierPosition = Array.isArray(data)
+    ? data.map((item) => item?.courier?.store?.address?.coordinate || [0, 0])
+    : [];
+  const CustomerPosition = Array.isArray(data)
+    ? data.map((item) => item?.adress?.coordinate || [0, 0])
+    : [];
+  const CourierPopup = Array.isArray(data)
+    ? data.map((item) => item?.courier?.store?.address?.text)
+    : [];
+
+  const CustomerPopup = Array.isArray(data)
+    ? data.map((item) => item?.adress?.text)
+    : [];
   //   const customIcon = new L.Icon({
   //     iconUrl:
   //       "https://png.pngtree.com/png-clipart/20230123/original/pngtree-flat-red-location-sign-png-image_8927579.png", // Replace with the path to your custom image
@@ -106,58 +92,62 @@ const MapComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
   //     //   popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
   //   });
 
+  const BikeIcon = L.icon({
+    iconUrl: "/images/marker-courier.svg", // Path to your SVG file
+    iconSize: [32, 32], // Adjust size as needed
+    iconAnchor: [16, 32], // Point of the icon which will correspond to marker's location
+    popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
+  });
+  const CustomerIcon = new L.Icon({
+    iconUrl: "/images/marker-customer.svg", // Path to your SVG file
+    iconSize: [32, 32], // Adjust size as needed
+    iconAnchor: [16, 32], // Point of the icon which will correspond to marker's location
+    popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
+  });
+
+  const CenterPosition: any = ["40.73061", "-73.935242"];
+
   return (
     <>
-      {CourierPosition !== undefined && (
+      {CourierPosition[0] !== undefined && (
         <MapContainer
-          bounds={[
-            [CourierPosition[0], CourierPosition[1]],
-            [StorePosition[0], StorePosition[1]],
-            [CustomerPosition[0], CustomerPosition[1]],
-          ]}
-          zoom={13}
+          bounds={[[CenterPosition[0], CenterPosition[1]]]}
+          zoom={10}
           scrollWheelZoom={false}
           // className="col-md-12"
-          style={{ height: "50vh" }}
+          style={{ height: "500px", width: "100%" }}
         >
           <TileLayer
+            maxZoom={10}
             // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {/* <Marker
-            position={[CourierPosition[0], CourierPosition[1]]}
-            icon={BikeIcon}
-          >
-            <Popup>{data?.courier?.store?.address?.text}</Popup>
-          </Marker>
-          <Marker
-            position={[StorePosition[0], StorePosition[1]]}
-            icon={StoreIcon}
-          >
-            <Popup>{data?.store?.address?.text}</Popup>
-          </Marker>
-          <Marker
-            position={[CustomerPosition[0], CustomerPosition[1]]}
-            icon={CustomerIcon}
-          >
-            <Popup>{data?.store?.address?.text}</Popup>
-          </Marker> */}
-          <RoutingMachine
-            item={[
-              data?.courier?.store?.address?.text,
-              data?.store?.address?.text,
-              data?.adress?.text,
-            ]}
-            waypoints={[
-              [CourierPosition[0], CourierPosition[1]],
-              [StorePosition[0], StorePosition[1]],
-              [CustomerPosition[0], CustomerPosition[1]],
-            ]}
-          />
+          {CourierPosition.map((item, index) => (
+            <Marker
+              key={"Courier" + index}
+              position={[item[0], item[1]]}
+              icon={BikeIcon}
+            >
+              {CourierPopup.map((item, index) => (
+                <Popup key={"CourierPopup" + index}>{item}</Popup>
+              ))}
+            </Marker>
+          ))}
+          {CustomerPosition.map((item, index) => (
+            <Marker
+              key={"Customer" + index}
+              position={[item[0], item[1]]}
+              icon={CustomerIcon}
+            >
+              {CustomerPopup.map((item, index) => (
+                <Popup key={"CustomerPopup" + index}>{item}</Popup>
+              ))}
+            </Marker>
+          ))}
         </MapContainer>
       )}
     </>
   );
 };
 
-export default MapComponent;
+export default MapDComponent;

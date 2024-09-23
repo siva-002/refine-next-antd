@@ -6,7 +6,7 @@ import React from "react";
 import { getUniqueListWithCount } from "./UniqueOrderProduct";
 
 const OrderTabel = ({ data }: { data: any }) => {
-  console.log(data);
+  // console.log(data);
   const products = data || [];
   const uniqueProducts = getUniqueListWithCount({
     list: products,
