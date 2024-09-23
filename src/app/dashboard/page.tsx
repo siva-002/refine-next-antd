@@ -12,10 +12,18 @@ import {
 import DailyRevenue from "@app/components/dashboard/DailyRevenue";
 import DailyOrder from "@app/components/dashboard/DailyOrder";
 import DailyCustomer from "@app/components/dashboard/DailyCustomer";
-import DeliveryMap from "@app/components/dashboard/DeliveryMap";
+// import DeliveryMap from "@app/components/dashboard/DeliveryMap";
+
+const DeliveryMap = dynamic(
+  () => import("@app/components/dashboard/DeliveryMap"),
+  {
+    ssr: false,
+  }
+);
 import Timeline from "@app/components/dashboard/Timeline";
 import TrendingProduct from "@app/components/dashboard/TrendingProduct";
 import RecentOrder from "@app/components/dashboard/RecentOrder";
+import dynamic from "next/dynamic";
 
 const Dashboard = () => {
   const { token } = theme.useToken();
@@ -90,7 +98,7 @@ const Dashboard = () => {
           >
             <Flex align="center" justify="center">
               <DeliveryMap />
-            </Flex>{" "}
+            </Flex>
           </Card>
         </Col>
         <Col xs={24} sm={24} md={12} lg={10}>
