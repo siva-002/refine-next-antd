@@ -1,10 +1,17 @@
-import { IOrder } from "@app/interfaces";
+import { IOrder, IProduct } from "@app/interfaces";
 import { useList, useTable } from "@refinedev/core";
 import { Flex, List, Pagination, Typography } from "antd";
 import React, { useState } from "react";
 import CalculatePrice from "../CalculatePrice";
 import OrderMenuButton from "../OrderMenuButton";
+import { getUniqueListWithCount } from "../getUniqueListWithCount";
 
+const GetProductList = ({ products }: { products: IProduct[] }) => {
+  const data = getUniqueListWithCount({ list: products, field: "id" });
+  console.log(data);
+
+  return <></>;
+};
 const RecentOrder = () => {
   const [pageSize, setPageSize] = useState<number>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -55,7 +62,8 @@ const RecentOrder = () => {
                   </Typography.Text>
                 </Flex>
                 <Flex vertical={true} style={{ width: "25%" }}>
-                  <Typography.Text ellipsis>{"product"}</Typography.Text>
+                  <GetProductList products={item?.products} />
+                  {/* <Typography.Text ellipsis></Typography.Text> */}
                 </Flex>
                 <Typography.Text style={{ width: "10%" }}>
                   <CalculatePrice product={item?.products} />
