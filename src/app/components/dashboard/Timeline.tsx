@@ -1,5 +1,5 @@
 import { useInfiniteList } from "@refinedev/core";
-import { Flex, List, Spin } from "antd";
+import { Flex, List, Spin, Tag } from "antd";
 import { Typography } from "antd/lib";
 import dayjs from "dayjs";
 import React from "react";
@@ -50,6 +50,11 @@ const Timeline = ({ height = "200px" }: Iheight) => {
               </span>
             }
             scrollableTarget="ordersscroll"
+            endMessage={
+              <Tag style={{ display: "flex", justifyContent: "center" }}>
+                You have reached the end
+              </Tag>
+            }
           >
             <List
               dataSource={orders}
@@ -57,7 +62,7 @@ const Timeline = ({ height = "200px" }: Iheight) => {
                 return (
                   <List.Item>
                     <Flex style={{ width: "100%" }}>
-                      <Flex style={{ width: "40%" }} justify="center">
+                      <Flex style={{ width: "40%" }} justify="start">
                         <OrderStatus record={item} />
                       </Flex>
                       <Typography.Text
