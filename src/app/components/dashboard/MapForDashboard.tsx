@@ -10,7 +10,6 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 
 import "leaflet-routing-machine";
 
-
 const MapDComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
   //   console.log("MapCompo", data);
   //   console.log(data);
@@ -63,6 +62,7 @@ const MapDComponent = ({ data }: { data: IOrder | undefined | BaseRecord }) => {
         >
           <TileLayer
             maxZoom={10}
+            // minZoom={5}
             // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />

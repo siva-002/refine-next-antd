@@ -48,7 +48,7 @@ const RecentOrder = () => {
     <>
       {isLoading ? (
         <Spin
-          size="large"
+          size="default"
           style={{
             display: "flex",
             justifyContent: "center",
