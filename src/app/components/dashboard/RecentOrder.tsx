@@ -43,7 +43,7 @@ const RecentOrder = () => {
                   <Typography.Text ellipsis>
                     {item?.user?.fullName}
                   </Typography.Text>
-                  <Typography.Text ellipsis>
+                  <Typography.Text ellipsis style={{ width: "60%" }}>
                     {item?.adress.text}
                   </Typography.Text>
                 </Flex>
