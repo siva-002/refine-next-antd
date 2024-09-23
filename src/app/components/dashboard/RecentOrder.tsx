@@ -23,6 +23,7 @@ const RecentOrder = () => {
 
   return (
     <List
+      style={{ width: "100%" }}
       dataSource={OrdersData}
       renderItem={(item) => {
         return (
