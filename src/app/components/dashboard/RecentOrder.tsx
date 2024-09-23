@@ -39,21 +39,25 @@ const RecentOrder = () => {
                 <Typography.Text style={{ width: "10%", textAlign: "left" }}>
                   #{item?.orderNumber}
                 </Typography.Text>
-                <Flex vertical={true} style={{ width: "30%" }} justify="center">
+                <Flex vertical={true} style={{ width: "50%" }} justify="center">
                   <Typography.Text ellipsis>
                     {item?.user?.fullName}
                   </Typography.Text>
-                  <Typography.Text ellipsis style={{ width: "60%" }}>
+                  <Typography.Text
+                    ellipsis
+                    style={{ width: "60%" }}
+                    type="secondary"
+                  >
                     {item?.adress.text}
                   </Typography.Text>
                 </Flex>
                 <Flex vertical={true} style={{ width: "30%" }} justify="center">
                   <Typography.Text ellipsis>{"product"}</Typography.Text>
                 </Flex>
-                <Typography.Text style={{ width: "20%" }}>
+                <Typography.Text style={{ width: "5%" }}>
                   <CalculatePrice product={item?.products} />
                 </Typography.Text>
-                <Flex style={{ width: "10%" }} justify="center">
+                <Flex style={{ width: "5%" }} justify="center">
                   <OrderMenuButton record={item} />
                 </Flex>
               </Flex>
