@@ -13,7 +13,10 @@ const GetProductList = ({ products }: { products: IProduct[] }) => {
       {data?.map((item) => (
         <Flex key={item?.id}>
           <Typography.Text>{item?.name}</Typography.Text>
-          <Typography.Text type="secondary"> x{item?.count}</Typography.Text>
+          <Typography.Text type="secondary" style={{ marginLeft: "2px" }}>
+            {" "}
+            x{item?.count}
+          </Typography.Text>
         </Flex>
       ))}
     </>
@@ -79,7 +82,6 @@ const RecentOrder = () => {
                   </Flex>
                   <Flex vertical={true} style={{ width: "30%" }}>
                     <GetProductList products={item?.products} />
-                    {/* <Typography.Text ellipsis></Typography.Text> */}
                   </Flex>
                   <Typography.Text style={{ width: "10%" }}>
                     <CalculatePrice product={item?.products} />
