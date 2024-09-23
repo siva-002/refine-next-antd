@@ -89,7 +89,7 @@ const Dashboard = () => {
             bordered={false}
           >
             <Flex align="center" justify="center">
-              <DeliveryMap />
+              {/* <DeliveryMap /> */}
             </Flex>{" "}
           </Card>
         </Col>
