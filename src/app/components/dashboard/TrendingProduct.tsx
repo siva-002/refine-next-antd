@@ -54,7 +54,7 @@ const TrendingProduct = () => {
               </span>
               <span className="text-start w-100 fs-5">{item.product.name}</span>
               <span className="mb-2 fw-bold text-secondary">
-                ${item.product.price * item.orderCount}
+                ${item.product.price}
               </span>
               <span className="text-secondary">
                 Ordered
