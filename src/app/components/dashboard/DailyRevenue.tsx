@@ -60,8 +60,8 @@ const DailyRevenue = () => {
       line: {
         style: {
           stroke: "#fa6d3e", // Set the line color
-          lineWidth: 1, // Set the line width
-          lineDash: [10, 10], // Solid line (use ['2', '2'] for dashed lines)
+          lineWidth: 3, // Set the line width
+          lineDash: [2, 2], // Solid line (use ['2', '2'] for dashed lines)
         },
       },
       point: {
