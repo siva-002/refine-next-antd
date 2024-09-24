@@ -3,10 +3,11 @@ import React from "react";
 import { Column } from "@ant-design/charts";
 import dayjs from "dayjs";
 import { useApiUrl, useCustom } from "@refinedev/core";
-import { Spin } from "antd";
+import { Spin, theme } from "antd";
 const DailyOrder = () => {
   const today = dayjs();
   const API_URL = useApiUrl();
+  const { token } = theme.useToken();
   const dateWeekFilter = {
     start: today.subtract(6, "days").startOf("day").format(),
     end: today.endOf("day").format(),
@@ -45,17 +46,18 @@ const DailyOrder = () => {
           text: "Customer Count", // Optional: add title for y-axis
         },
       },
-      // label: {
-      //   // position: "center", // Shows values inside bars
-      //   style: {
-      //     fill: "#FFFFFF",
-      //     opacity: 0.6,
-      //   },
-      // },
+      axis: {
+        x: {
+          labelFill: token.colorTextBase,
+        },
+        y: {
+          labelFill: token.colorTextBase,
+        },
+      },
     };
 
     // console.log("plot", plotdata);
-    return <Column {...config} colorField="#fa6d3ea3"/>;
+    return <Column {...config} colorField="#fa6d3ea3" />;
   }
 
   return (
