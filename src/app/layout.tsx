@@ -100,14 +100,6 @@ export default function RootLayout({
                       create: "products/create",
                     },
                     {
-                      name: "stores",
-                      list: "/stores",
-                      show: "/stores/show/:id",
-                      meta: {
-                        icon: <ShopOutlined />,
-                      },
-                    },
-                    {
                       name: "couriers",
                       list: "/couriers",
                       show: "/couriers/show/:id",
