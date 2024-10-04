@@ -1,24 +1,10 @@
 import { Header } from "@components/header";
 import { CustomHeader } from "@components/sider-title";
 import { authProviderServer } from "@providers/auth-provider";
-import { Sider, ThemedLayoutV2 } from "@refinedev/antd";
+import { Sider, ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd";
 import { redirect } from "next/navigation";
 import React from "react";
 
-const CustomSider = (props: any) => {
-  console.log(props);
-  return <></>;
-  // const { items, collapsed, dashboard } = props;
-
-  // return (
-  //   <div>
-  //     {/* Render items without the logout button */}
-  //     <div>{dashboard}</div> {/* Show dashboard or other elements you want */}
-  //     <div>{items}</div> {/* Render any other items */}
-  //     {/* Don't render logout button */}
-  //   </div>
-  // );
-};
 export default async function Layout({ children }: React.PropsWithChildren) {
   const data = await getData();
 
@@ -27,7 +13,21 @@ export default async function Layout({ children }: React.PropsWithChildren) {
   }
 
   return (
-    <ThemedLayoutV2 Header={Header} Title={CustomHeader} Sider={CustomSider}>
+    // <ThemedLayoutV2 Header={Header} Title={CustomHeader} Sider={CustomSider}>
+    <ThemedLayoutV2
+      Sider={() => (
+        <ThemedSiderV2
+          render={({ items, logout, collapsed }) => {
+            return (
+              <>
+                <div>My Custom Element</div>
+                {items}
+              </>
+            );
+          }}
+        />
+      )}
+    >
       {children}
     </ThemedLayoutV2>
   );
