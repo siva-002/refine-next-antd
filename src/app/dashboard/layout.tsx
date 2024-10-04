@@ -25,11 +25,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
   }
 
   return (
-    <ThemedLayoutV2
-      Header={Header}
-      Title={CustomHeader}
-      Sider={(props: any) => <CustomSider {...props} />}
-    >
+    <ThemedLayoutV2 Header={Header} Title={CustomHeader} Sider={CustomSider}>
       {children}
     </ThemedLayoutV2>
   );
