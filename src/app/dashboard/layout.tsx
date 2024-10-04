@@ -5,6 +5,18 @@ import { Sider, ThemedLayoutV2 } from "@refinedev/antd";
 import { redirect } from "next/navigation";
 import React from "react";
 
+const CustomSider = (props: any) => {
+  const { items, collapsed, dashboard } = props;
+
+  return (
+    <div>
+      {/* Render items without the logout button */}
+      <div>{dashboard}</div> {/* Show dashboard or other elements you want */}
+      <div>{items}</div> {/* Render any other items */}
+      {/* Don't render logout button */}
+    </div>
+  );
+};
 export default async function Layout({ children }: React.PropsWithChildren) {
   const data = await getData();
 
@@ -16,7 +28,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
     <ThemedLayoutV2
       Header={Header}
       Title={CustomHeader}
-      Sider={(props: any) => <Sider {...props} />}
+      Sider={(props: any) => <CustomSider {...props} />}
     >
       {children}
     </ThemedLayoutV2>
