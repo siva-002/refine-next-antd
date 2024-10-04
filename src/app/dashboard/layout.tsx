@@ -6,16 +6,18 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const CustomSider = (props: any) => {
-  const { items, collapsed, dashboard } = props;
+  console.log(props);
+  return <></>;
+  // const { items, collapsed, dashboard } = props;
 
-  return (
-    <div>
-      {/* Render items without the logout button */}
-      <div>{dashboard}</div> {/* Show dashboard or other elements you want */}
-      <div>{items}</div> {/* Render any other items */}
-      {/* Don't render logout button */}
-    </div>
-  );
+  // return (
+  //   <div>
+  //     {/* Render items without the logout button */}
+  //     <div>{dashboard}</div> {/* Show dashboard or other elements you want */}
+  //     <div>{items}</div> {/* Render any other items */}
+  //     {/* Don't render logout button */}
+  //   </div>
+  // );
 };
 export default async function Layout({ children }: React.PropsWithChildren) {
   const data = await getData();
