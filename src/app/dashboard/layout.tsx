@@ -13,7 +13,11 @@ export default async function Layout({ children }: React.PropsWithChildren) {
   }
 
   return (
-    <ThemedLayoutV2 Header={Header} Title={CustomHeader}>
+    <ThemedLayoutV2
+      Header={Header}
+      Title={CustomHeader}
+      Sider={(props) => <ThemedLayoutV2.Sider {...props} logoutButton={null} />}
+    >
       {children}
     </ThemedLayoutV2>
   );
