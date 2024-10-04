@@ -1,9 +1,10 @@
 import { Header } from "@components/header";
 import { CustomHeader } from "@components/sider-title";
 import { authProviderServer } from "@providers/auth-provider";
-import { ThemedLayoutV2 } from "@refinedev/antd";
+import { Sider, ThemedLayoutV2 } from "@refinedev/antd";
 import { redirect } from "next/navigation";
 import React from "react";
+import { render } from "react-dom";
 
 export default async function Layout({ children }: React.PropsWithChildren) {
   const data = await getData();
@@ -16,7 +17,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
     <ThemedLayoutV2
       Header={Header}
       Title={CustomHeader}
-      Sider={(props) => <ThemedLayoutV2.Sider {...props} logoutButton={null} />}
+      Sider={(props)=><Sider {...props} />}
     >
       {children}
     </ThemedLayoutV2>
