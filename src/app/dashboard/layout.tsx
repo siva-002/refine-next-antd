@@ -4,7 +4,6 @@ import { authProviderServer } from "@providers/auth-provider";
 import { Sider, ThemedLayoutV2 } from "@refinedev/antd";
 import { redirect } from "next/navigation";
 import React from "react";
-import { render } from "react-dom";
 
 export default async function Layout({ children }: React.PropsWithChildren) {
   const data = await getData();
@@ -17,7 +16,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
     <ThemedLayoutV2
       Header={Header}
       Title={CustomHeader}
-      Sider={(props)=><Sider {...props} />}
+      Sider={(props: any) => <Sider {...props} />}
     >
       {children}
     </ThemedLayoutV2>
